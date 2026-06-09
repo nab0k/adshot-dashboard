@@ -6,7 +6,7 @@
 <title>LinkedIn Outreach — Adshot Europe</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-:root{--bg:#0e0e0e;--surface:#171717;--border:#2a2a2a;--text:#f0ede8;--muted:#6b6860;--accent:#ff4d00;--green:#2ecc71;--blue:#4a9eff;--amber:#f5a623}
+:root{--bg:#0e0e0e;--surface:#171717;--border:#2a2a2a;--text:#f0ede8;--muted:#6b6860;--accent:#ff4d00;--green:#2ecc71;--blue:#4a9eff;--amber:#f5a623;--purple:#b085f5}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;min-height:100vh}
 header{border-bottom:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between}
@@ -14,12 +14,13 @@ header{border-bottom:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;
 .header-meta{font-size:12px;color:var(--muted)}
 main{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 4rem}
 .page-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.section-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;margin-top:2.5rem}
+.section-title:first-of-type{margin-top:0}
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:2.5rem}
 .kpi{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem}
 .kpi-val{font-size:32px;font-weight:700;line-height:1;letter-spacing:-.02em}
-.kpi-val.accent{color:var(--accent)}.kpi-val.green{color:var(--green)}
+.kpi-val.accent{color:var(--accent)}.kpi-val.green{color:var(--green)}.kpi-val.blue{color:var(--blue)}
 .kpi-lbl{font-size:11px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:.06em}
-.section-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
 .cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:2.5rem}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem}
 .card-head{display:flex;align-items:center;gap:12px;margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
@@ -32,19 +33,28 @@ main{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 4rem}
 .rates{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
 .pill{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500}
 .pill-acc{background:#0d1f35;color:var(--blue)}.pill-rep{background:#0d2a1a;color:var(--green)}.pill-warn{background:#2a1a00;color:var(--amber)}
-.chart-section{margin-bottom:2.5rem}.chart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem}
+.chart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:1rem}
 .chart-canvas-wrap{position:relative;height:200px}
-.delta-section{margin-bottom:2.5rem}
-.delta-table{width:100%;border-collapse:collapse;font-size:13px}
-.delta-table th{text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border);font-weight:500}
-.delta-table td{padding:10px 12px;border-bottom:1px solid var(--border)}
-.delta-table tr:last-child td{border-bottom:none}
-.delta-pos{color:var(--green);font-weight:600}.delta-zero{color:var(--muted)}
-.account-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
-.tag-dv{background:#1a2a3a;color:var(--blue)}.tag-ks{background:#1a2e1a;color:var(--green)}.tag-st{background:#2a1e3a;color:#b085f5}.tag-sn{background:#3a1a0a;color:var(--accent)}
+/* Replies */
+.replies-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.5rem}
+.filters{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
+.filter-btn{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:5px 14px;font-size:12px;color:var(--muted);cursor:pointer;transition:all .15s}
+.filter-btn.active{border-color:var(--accent);color:var(--text)}
+.replies-table{width:100%;border-collapse:collapse;font-size:13px}
+.replies-table th{text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border);font-weight:500}
+.replies-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.replies-table tr:last-child td{border-bottom:none}
+.replies-table tr:hover td{background:rgba(255,255,255,.02)}
+.acc-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.tag-dv{background:#1a2a3a;color:var(--blue)}.tag-ks{background:#1a2e1a;color:var(--green)}.tag-st{background:#2a1e3a;color:var(--purple)}.tag-sn{background:#3a1a0a;color:var(--accent)}
+.status-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px}
+.s-new{background:#2a2a00;color:var(--amber)}.s-work{background:#0d1f35;color:var(--blue)}.s-meet{background:#0d2a1a;color:var(--green)}.s-no{background:#2a0d0d;color:#e05c5c}.s-irr{background:#1a1a1a;color:var(--muted)}
+.reply-text{color:var(--muted);font-size:12px;margin-top:3px;line-height:1.4}
+.name-cell a{color:var(--text);text-decoration:none}.name-cell a:hover{color:var(--accent)}
+.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
 footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;font-size:11px;color:var(--muted);display:flex;justify-content:space-between}
 footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text)}
-@media(max-width:700px){.kpi-row{grid-template-columns:repeat(2,1fr)}.cards-grid{grid-template-columns:1fr}header{padding:1rem 1.25rem}main{padding:1.5rem 1.25rem 3rem}}
+@media(max-width:700px){.kpi-row,.replies-kpi{grid-template-columns:repeat(2,1fr)}.cards-grid{grid-template-columns:1fr}header{padding:1rem 1.25rem}main{padding:1.5rem 1.25rem 3rem}}
 </style>
 </head>
 <body>
@@ -54,42 +64,96 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 </header>
 <main>
   <p class="page-title">LinkedIn Outreach — статистика кампаній</p>
+
+  <div class="section-title">Outreach — воронка</div>
   <div class="kpi-row">
-    <div class="kpi"><div class="kpi-val" id="kpi-accepted">—</div><div class="kpi-lbl">Прийнято запрошень</div></div>
+    <div class="kpi"><div class="kpi-val blue" id="kpi-accepted">—</div><div class="kpi-lbl">Прийнято запрошень</div></div>
     <div class="kpi"><div class="kpi-val" id="kpi-messaged">—</div><div class="kpi-lbl">Повідомлень надіслано</div></div>
     <div class="kpi"><div class="kpi-val green" id="kpi-replied">—</div><div class="kpi-lbl">Відповідей отримано</div></div>
     <div class="kpi"><div class="kpi-val accent" id="kpi-reply-rate">—</div><div class="kpi-lbl">Reply rate</div></div>
   </div>
-  <div class="section-title">По акаунтах</div>
+
   <div class="cards-grid" id="cards-grid"></div>
-  <div class="chart-section">
-    <div class="section-title">Reply rate по акаунтах</div>
-    <div class="chart-wrap"><div class="chart-canvas-wrap"><canvas id="replyChart" role="img" aria-label="Reply rate"></canvas></div></div>
+
+  <div class="chart-wrap">
+    <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem">Reply rate по акаунтах</div>
+    <div class="chart-canvas-wrap"><canvas id="replyChart"></canvas></div>
   </div>
-  <div class="chart-section">
-    <div class="section-title">Воронка — прийнято / повідомлено / відповіли</div>
-    <div class="chart-wrap"><div class="chart-canvas-wrap"><canvas id="funnelChart" role="img" aria-label="Funnel"></canvas></div></div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Replies — відповіді контактів</div>
+  <div class="replies-kpi">
+    <div class="kpi"><div class="kpi-val" id="r-total">—</div><div class="kpi-lbl">Всього відповідей</div></div>
+    <div class="kpi"><div class="kpi-val green" id="r-meet">—</div><div class="kpi-lbl">Зустрічей</div></div>
+    <div class="kpi"><div class="kpi-val blue" id="r-work">—</div><div class="kpi-lbl">В роботі</div></div>
+    <div class="kpi"><div class="kpi-val accent" id="r-conv">—</div><div class="kpi-lbl">Конверсія в зустріч</div></div>
   </div>
-  <div class="delta-section" id="delta-section" style="display:none">
-    <div class="section-title">Динаміка відносно baseline (09.06.2026)</div>
-    <div class="chart-wrap">
-      <table class="delta-table" id="delta-table">
-        <thead><tr><th>Дата</th><th>Акаунт</th><th>Прийнято +Δ</th><th>Повідомлень +Δ</th><th>Відповідей +Δ</th></tr></thead>
-        <tbody id="delta-tbody"></tbody>
-      </table>
-    </div>
+
+  <div class="filters" id="filters"></div>
+
+  <div class="chart-wrap" style="padding:0;overflow:hidden">
+    <table class="replies-table">
+      <thead>
+        <tr>
+          <th>Контакт</th>
+          <th>Акаунт</th>
+          <th>Дата</th>
+          <th>Статус</th>
+        </tr>
+      </thead>
+      <tbody id="replies-tbody"></tbody>
+    </table>
   </div>
+
 </main>
 <footer>
   <span>Adshot Europe · <a href="https://adshot.eu" target="_blank">adshot.eu</a></span>
-  <span>Дані: Notion API · Оновлюється щодня о 08:00</span>
+  <span>Дані: Notion · Оновлюється щодня о 08:00</span>
 </footer>
+
 <script>
-const ACCOUNTS={'ДВ':{label:'Дмитро Васильченко',role:'Outreach manager',cls:'av-dv',tag:'tag-dv'},'КС':{label:'Катерина Скибиляк',role:'Account Director',cls:'av-ks',tag:'tag-ks'},'СЦ':{label:'Сергій Циганенко',role:'Co-founder',cls:'av-st',tag:'tag-st'},'СН':{label:'Сергій Набок',role:'Managing Partner',cls:'av-sn',tag:'tag-sn'}};
+const ACCOUNTS={
+  'ДВ':{label:'Дмитро Васильченко',role:'Outreach manager',cls:'av-dv',tag:'tag-dv'},
+  'КС':{label:'Катерина Скибиляк',role:'Account Director',cls:'av-ks',tag:'tag-ks'},
+  'СЦ':{label:'Сергій Циганенко',role:'Co-founder',cls:'av-st',tag:'tag-st'},
+  'СН':{label:'Сергій Набок',role:'Managing Partner',cls:'av-sn',tag:'tag-sn'},
+};
 const COLORS={'ДВ':'#4a9eff','КС':'#2ecc71','СЦ':'#b085f5','СН':'#ff4d00'};
+const STATUS_CLS={'Новий':'s-new','В роботі':'s-work','Зустріч':'s-meet','Відмова':'s-no','Не релевантний':'s-irr','New':'s-new'};
+
+let allReplies=[];
+let activeFilter='all';
+
+function renderReplies(filter){
+  const tbody=document.getElementById('replies-tbody');
+  const filtered=filter==='all'?allReplies:allReplies.filter(r=>r.account===filter);
+  if(!filtered.length){tbody.innerHTML='<tr><td colspan="4" style="color:var(--muted);padding:2rem;text-align:center">Відповідей поки немає</td></tr>';return;}
+  tbody.innerHTML=filtered.map(r=>{
+    const info=ACCOUNTS[r.account]||{};
+    const statusCls=STATUS_CLS[r.status]||'s-irr';
+    const date=r.reply_date?new Date(r.reply_date).toLocaleDateString('uk-UA'):'—';
+    const nameCell=r.profile_url
+      ?`<a href="${r.profile_url}" target="_blank">${r.name}</a>`
+      :r.name;
+    return `<tr>
+      <td class="name-cell">
+        <div>${nameCell}</div>
+        ${r.company?`<div style="font-size:11px;color:var(--muted);margin-top:2px">${r.company}${r.position?' · '+r.position:''}</div>`:''}
+        ${r.their_reply?`<div class="reply-text">"${r.their_reply.slice(0,120)}${r.their_reply.length>120?'…':''}"</div>`:''}
+      </td>
+      <td><span class="acc-tag ${info.tag||''}">${r.account}</span></td>
+      <td style="color:var(--muted);font-size:12px;white-space:nowrap">${date}</td>
+      <td><span class="status-badge ${statusCls}">${r.status||'—'}</span></td>
+    </tr>`;
+  }).join('');
+}
+
 async function init(){
-  const{updated_at,records}=await fetch('data.json?_='+Date.now()).then(r=>r.json());
+  const{updated_at,records,replies=[]}=await fetch('data.json?_='+Date.now()).then(r=>r.json());
   document.getElementById('updated-at').textContent=new Date(updated_at).toLocaleString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+
+  // Outreach KPIs
   const baseline={},latest={};
   records.forEach(r=>{if(r.is_baseline)baseline[r.account]=r;if(!latest[r.account]||r.date>latest[r.account].date)latest[r.account]=r;});
   const accs=Object.keys(ACCOUNTS),cur=accs.map(a=>latest[a]||baseline[a]||{});
@@ -98,6 +162,8 @@ async function init(){
   document.getElementById('kpi-messaged').textContent=totMsg;
   document.getElementById('kpi-replied').textContent=totRep;
   document.getElementById('kpi-reply-rate').textContent=totMsg>0?(totRep/totMsg*100).toFixed(1)+'%':'—';
+
+  // Cards
   const grid=document.getElementById('cards-grid');
   accs.forEach((acc,i)=>{
     const r=cur[i],info=ACCOUNTS[acc],mx=r.processed||1;
@@ -105,12 +171,37 @@ async function init(){
     const rr=r.messaged>0?(r.replied/r.messaged*100).toFixed(1):null;
     grid.innerHTML+=`<div class="card"><div class="card-head"><div class="av ${info.cls}">${acc}</div><div><div class="card-name">${info.label}</div><div class="card-role">${info.role}</div></div></div><div class="funnel">${['processed','accepted','messaged','replied'].map((k,j)=>`<div class="funnel-step"><div class="funnel-num">${r[k]||0}</div><div class="funnel-lbl">${['Оброблено','Прийнято','Повідомлень','Відповідей'][j]}</div><div class="funnel-bar ${'bar-proc bar-acc bar-msg bar-rep'.split(' ')[j]}" style="width:${Math.round((r[k]||0)/mx*100)}%"></div></div>`).join('')}</div><div class="rates"><span class="pill pill-acc">Accept ${ar}%</span>${rr!==null?`<span class="pill pill-rep">Reply ${rr}%</span>`:`<span class="pill pill-warn">Messaging не запущено</span>`}</div></div>`;
   });
+
+  // Reply rate chart
   new Chart(document.getElementById('replyChart'),{type:'bar',data:{labels:accs.map(a=>ACCOUNTS[a].label.split(' ')[0]),datasets:[{data:accs.map((a,i)=>{const r=cur[i];return r.messaged>0?parseFloat((r.replied/r.messaged*100).toFixed(1)):0;}),backgroundColor:accs.map(a=>COLORS[a]),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860',font:{size:12}}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860',callback:v=>v+'%'},max:16}}}});
-  new Chart(document.getElementById('funnelChart'),{type:'bar',data:{labels:accs.map(a=>ACCOUNTS[a].label.split(' ')[0]),datasets:[{label:'Прийнято',data:cur.map(r=>r.accepted||0),backgroundColor:'#1e3a5a',borderRadius:4},{label:'Повідомлень',data:cur.map(r=>r.messaged||0),backgroundColor:'#5a3a00',borderRadius:4},{label:'Відповідей',data:cur.map(r=>r.replied||0),backgroundColor:'#0a3a1a',borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{color:'#6b6860',font:{size:11},boxWidth:10,padding:16}}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860',font:{size:12}}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}}}}});
-  const nonBase=records.filter(r=>!r.is_baseline);
-  if(nonBase.length>0){document.getElementById('delta-section').style.display='block';const tb=document.getElementById('delta-tbody');nonBase.sort((a,b)=>b.date.localeCompare(a.date)).forEach(r=>{const base=baseline[r.account]||{},info=ACCOUNTS[r.account]||{};const fmt=v=>v>0?`<span class="delta-pos">+${v}</span>`:`<span class="delta-zero">${v}</span>`;tb.innerHTML+=`<tr><td>${new Date(r.date).toLocaleDateString('uk-UA')}</td><td><span class="account-tag ${info.tag||''}">${r.account}</span> ${info.label||''}</td><td>${fmt((r.accepted||0)-(base.accepted||0))}</td><td>${fmt((r.messaged||0)-(base.messaged||0))}</td><td>${fmt((r.replied||0)-(base.replied||0))}</td></tr>`;});}
+
+  // Replies KPIs
+  allReplies=replies;
+  const total=replies.length;
+  const meet=replies.filter(r=>r.status==='Зустріч').length;
+  const work=replies.filter(r=>r.status==='В роботі').length;
+  const conv=total>0?(meet/total*100).toFixed(0)+'%':'—';
+  document.getElementById('r-total').textContent=total;
+  document.getElementById('r-meet').textContent=meet;
+  document.getElementById('r-work').textContent=work;
+  document.getElementById('r-conv').textContent=conv;
+
+  // Filters
+  const filtersEl=document.getElementById('filters');
+  const filterOptions=[['all','Всі'],['ДВ','Дмитро'],['КС','Катерина'],['СЦ','Циганенко'],['СН','Набок']];
+  filtersEl.innerHTML=filterOptions.map(([val,lbl])=>`<button class="filter-btn${val==='all'?' active':''}" data-val="${val}">${lbl}</button>`).join('');
+  filtersEl.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      filtersEl.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      renderReplies(btn.dataset.val);
+    });
+  });
+
+  renderReplies('all');
 }
-init().catch(e=>{document.querySelector('main').innerHTML=`<p style="color:#6b6860;padding:2rem">Помилка: ${e.message}</p>`;});
+
+init().catch(e=>{document.querySelector('main').innerHTML=`<p style="color:var(--muted);padding:2rem">Помилка: ${e.message}</p>`;});
 </script>
 </body>
 </html>
