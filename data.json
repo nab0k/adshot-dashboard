@@ -1,0 +1,49 @@
+{
+  "updated_at": "2026-06-09T09:00:00Z",
+  "records": [
+    {
+      "name": "ДВ — Baseline 09.06.2026",
+      "account": "ДВ",
+      "date": "2026-06-09",
+      "processed": 297,
+      "accepted": 296,
+      "messaged": 24,
+      "replied": 1,
+      "failed": 1,
+      "is_baseline": true
+    },
+    {
+      "name": "КС — Baseline 09.06.2026",
+      "account": "КС",
+      "date": "2026-06-09",
+      "processed": 298,
+      "accepted": 296,
+      "messaged": 41,
+      "replied": 5,
+      "failed": 2,
+      "is_baseline": true
+    },
+    {
+      "name": "СЦ — Baseline 09.06.2026",
+      "account": "СЦ",
+      "date": "2026-06-09",
+      "processed": 196,
+      "accepted": 191,
+      "messaged": 0,
+      "replied": 0,
+      "failed": 5,
+      "is_baseline": true
+    },
+    {
+      "name": "СН — Baseline 09.06.2026",
+      "account": "СН",
+      "date": "2026-06-09",
+      "processed": 163,
+      "accepted": 160,
+      "messaged": 13,
+      "replied": 1,
+      "failed": 3,
+      "is_baseline": true
+    }
+  ]
+}
