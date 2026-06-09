@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-06-09T14:32:07Z",
+  "updated_at": "2026-06-09T14:35:26Z",
   "records": [
     {
       "name": "СН — 2026-06-09",
       "account": "СН",
       "date": "2026-06-09",
-      "processed": 259,
-      "accepted": 0,
+      "processed": 163,
+      "accepted": 160,
       "messaged": 14,
-      "replied": 0,
-      "failed": 0,
+      "replied": 1,
+      "failed": 3,
       "is_baseline": false
     },
     {
