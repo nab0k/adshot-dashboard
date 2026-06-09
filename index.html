@@ -85,7 +85,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
   <span>Дані: Notion API · Оновлюється щодня о 08:00</span>
 </footer>
 <script>
-const ACCOUNTS={'ДВ':{label:'Дмитро Васильченко',role:'Outreach manager',cls:'av-dv',tag:'tag-dv'},'КС':{label:'Катерина Скібіляк',role:'Account Director',cls:'av-ks',tag:'tag-ks'},'СЦ':{label:'Сергій Циганенко',role:'Co-founder',cls:'av-st',tag:'tag-st'},'СН':{label:'Сергій Набок',role:'Managing Partner',cls:'av-sn',tag:'tag-sn'}};
+const ACCOUNTS={'ДВ':{label:'Дмитро Васильченко',role:'Outreach manager',cls:'av-dv',tag:'tag-dv'},'КС':{label:'Катерина Скибиляк',role:'Account Director',cls:'av-ks',tag:'tag-ks'},'СЦ':{label:'Сергій Циганенко',role:'Co-founder',cls:'av-st',tag:'tag-st'},'СН':{label:'Сергій Набок',role:'Managing Partner',cls:'av-sn',tag:'tag-sn'}};
 const COLORS={'ДВ':'#4a9eff','КС':'#2ecc71','СЦ':'#b085f5','СН':'#ff4d00'};
 async function init(){
   const{updated_at,records}=await fetch('data.json?_='+Date.now()).then(r=>r.json());
