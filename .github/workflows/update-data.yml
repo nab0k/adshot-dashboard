@@ -17,6 +17,7 @@ jobs:
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: 37ac42d0b11b80c798f6ec1950a51643
+          NOTION_REPLIES_DATABASE_ID: 35dffa2025a84a03b4620946249883a4
         run: python3 fetch_notion.py
 
       - name: Commit and push
