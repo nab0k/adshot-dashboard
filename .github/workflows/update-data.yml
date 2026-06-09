@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 6 * * *'
   workflow_dispatch:
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -37,9 +38,7 @@ for page in raw.get("results", []):
     chk  = lambda k: p.get(k,{}).get("checkbox", False)
     date = lambda k: ((p.get(k,{}).get("date") or {}).get("start"))
     ttl  = lambda k: (p.get(k,{}).get("title") or [{}])[0].get("plain_text","")
-    records.append({"name":ttl("Name"),"account":sel("Account"),"date":date("Date"),
-        "processed":num("Processed"),"accepted":num("Accepted"),"messaged":num("Messaged"),
-        "replied":num("Replied"),"failed":num("Failed"),"is_baseline":chk("Is baseline")})
+    records.append({"name":ttl("Name"),"account":sel("Account"),"date":date("Date"),"processed":num("Processed"),"accepted":num("Accepted"),"messaged":num("Messaged"),"replied":num("Replied"),"failed":num("Failed"),"is_baseline":chk("Is baseline")})
 
 records.sort(key=lambda r: r["date"] or "")
 with open("data.json","w",encoding="utf-8") as f:
