@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-09T14:41:29Z",
+  "updated_at": "2026-06-09T14:44:10Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -44,6 +44,18 @@
       "replied": 0,
       "failed": 5,
       "is_baseline": true
+    }
+  ],
+  "replies": [
+    {
+      "name": "João Jesus",
+      "account": "СН",
+      "company": "Cerveja Musa",
+      "position": "Brand Manager",
+      "profile_url": "https://www.linkedin.com/in/joão-jesus/",
+      "their_reply": "Hi, Serhii. Thanks for reaching out. For our brand, AI content is a no go for now, but best of wishes and good luck to you. Cheers, João",
+      "status": "Відмова",
+      "reply_date": "2026-06-02"
     }
   ]
 }
