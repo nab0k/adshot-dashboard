@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T09:11:15Z",
+  "updated_at": "2026-06-10T09:11:42Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -44,6 +44,17 @@
       "replied": 0,
       "failed": 5,
       "is_baseline": true
+    },
+    {
+      "name": "СЦ — 2026-06-10",
+      "account": "СЦ",
+      "date": "2026-06-10",
+      "processed": 243,
+      "accepted": 237,
+      "messaged": 0,
+      "replied": 0,
+      "failed": 6,
+      "is_baseline": false
     },
     {
       "name": "КС — 2026-06-10",
