@@ -167,31 +167,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     <div class="chart-canvas-wrap"><canvas id="replyChart"></canvas></div>
   </div>
 
-  <div class="divider"></div>
 
-  <div class="section-title">Replies — відповіді контактів</div>
-  <div class="replies-kpi">
-    <div class="kpi"><div class="kpi-val" id="r-total">—</div><div class="kpi-lbl">Всього відповідей</div></div>
-    <div class="kpi"><div class="kpi-val green" id="r-meet">—</div><div class="kpi-lbl">Зустрічей</div></div>
-    <div class="kpi"><div class="kpi-val blue" id="r-work">—</div><div class="kpi-lbl">В роботі</div></div>
-    <div class="kpi"><div class="kpi-val accent" id="r-conv">—</div><div class="kpi-lbl">Конверсія в зустріч</div></div>
-  </div>
-
-  <div class="filters" id="filters"></div>
-
-  <div class="chart-wrap" style="padding:0;overflow:hidden">
-    <table class="replies-table">
-      <thead>
-        <tr>
-          <th style="width:40%">Контакт</th>
-          <th>Акаунт</th>
-          <th>Дата</th>
-          <th>Статус</th>
-        </tr>
-      </thead>
-      <tbody id="replies-tbody"></tbody>
-    </table>
-  </div>
 
 
   <div class="divider"></div>
@@ -315,87 +291,6 @@ const STATUS_CLS={'Новий':'s-new','В роботі':'s-work','Зустрі�
 
 let allReplies=[];
 
-function renderReplies(filter){
-  const tbody=document.getElementById('replies-tbody');
-  const filtered=filter==='all'?allReplies:allReplies.filter(r=>r.account===filter);
-  if(!filtered.length){
-    tbody.innerHTML='<tr><td colspan="4" style="color:var(--muted);padding:2rem;text-align:center">Відповідей поки немає</td></tr>';
-    return;
-  }
-  tbody.innerHTML='';
-  filtered.forEach((r,i)=>{
-    const info=ACCOUNTS[r.account]||{};
-    const statusCls=STATUS_CLS[r.status]||'s-irr';
-    const date=r.reply_date?new Date(r.reply_date).toLocaleDateString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}):'—';
-    const nameHtml=r.profile_url
-      ?`<a href="${r.profile_url}" target="_blank" onclick="event.stopPropagation()">${r.name}</a>`
-      :r.name;
-    const companyHtml=r.company||r.position?`<div style="font-size:11px;color:var(--muted);margin-top:2px">${[r.position,r.company].filter(Boolean).join(' · ')}</div>`:'';
-    const hasConvo = r.their_reply || r.our_last_message;
-
-    const rowId = `row-${i}`;
-    const expandId = `expand-${i}`;
-
-    const mainRow = document.createElement('tr');
-    mainRow.className = 'reply-row';
-    mainRow.setAttribute('data-idx', i);
-    mainRow.innerHTML = `
-      <td class="name-cell">
-        <div>${nameHtml}${hasConvo?`<span class="chevron">▶</span>`:''}</div>
-        ${companyHtml}
-      </td>
-      <td><span class="acc-tag ${info.tag||''}">${r.account}</span></td>
-      <td style="color:var(--muted);font-size:12px;white-space:nowrap">${date}</td>
-      <td><span class="status-badge ${statusCls}">${r.status||'—'}</span></td>
-    `;
-
-    const expandRow = document.createElement('tr');
-    expandRow.className = 'expand-row';
-    expandRow.id = expandId;
-
-    const expandTd = document.createElement('td');
-    expandTd.setAttribute('colspan', '4');
-
-    const inner = document.createElement('div');
-    inner.className = 'expand-inner';
-
-    if(hasConvo){
-      const convo = document.createElement('div');
-      convo.className = 'convo';
-
-      if(r.our_last_message){
-        convo.innerHTML += `<div style="align-self:flex-end;max-width:88%"><div class="bubble-label" style="text-align:right">Ми</div><div class="bubble bubble-us">${r.our_last_message}</div></div>`;
-      }
-      if(r.their_reply){
-        convo.innerHTML += `<div style="align-self:flex-start;max-width:88%"><div class="bubble-label">${r.name}</div><div class="bubble bubble-them">${r.their_reply}</div></div>`;
-      }
-      inner.appendChild(convo);
-    }
-
-    expandTd.appendChild(inner);
-    expandRow.appendChild(expandTd);
-
-    if(hasConvo){
-      mainRow.addEventListener('click', ()=>{
-        const isOpen = expandRow.classList.contains('open');
-        // Закрити всі
-        document.querySelectorAll('.expand-row.open').forEach(el=>{
-          el.classList.remove('open');
-          el.previousElementSibling?.classList.remove('expanded');
-        });
-        if(!isOpen){
-          expandRow.classList.add('open');
-          mainRow.classList.add('expanded');
-          // Скролл до розкритого рядка
-          setTimeout(()=>mainRow.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
-        }
-      });
-    }
-
-    tbody.appendChild(mainRow);
-    tbody.appendChild(expandRow);
-  });
-}
 
 async function init(){
   const [data, apolloData] = await Promise.all([
@@ -437,29 +332,7 @@ async function init(){
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860',font:{size:12}}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860',callback:v=>v+'%'},max:16}}}
   });
 
-  allReplies=replies;
-  const total=replies.length;
-  const meet=replies.filter(r=>r.status==='Зустріч').length;
-  const work=replies.filter(r=>r.status==='В роботі').length;
-  document.getElementById('r-total').textContent=total;
-  document.getElementById('r-meet').textContent=meet;
-  document.getElementById('r-work').textContent=work;
-  document.getElementById('r-conv').textContent=total>0?(meet/total*100).toFixed(0)+'%':'—';
 
-  const filtersEl=document.getElementById('filters');
-  [['all','Всі'],['ДВ','Дмитро'],['КС','Катерина'],['СЦ','Циганенко'],['СН','Набок']].forEach(([val,lbl])=>{
-    const btn=document.createElement('button');
-    btn.className='filter-btn'+(val==='all'?' active':'');
-    btn.textContent=lbl;
-    btn.addEventListener('click',()=>{
-      filtersEl.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      renderReplies(val);
-    });
-    filtersEl.appendChild(btn);
-  });
-
-  renderReplies('all');
 
 
 
@@ -516,9 +389,12 @@ async function init(){
     const tbody = document.getElementById('rd-tbody');
     const filtered = filter === 'all' ? rdDialogs
       : rdDialogs.filter(d => {
-          const name = d.account?.name || '';
-          const short = Object.entries(ACC_MAP).find(([k,v]) => name.toLowerCase().includes(v.toLowerCase()))?.[0];
-          return short === filter;
+          const name = (d.account?.name || '').toLowerCase();
+          if (filter === 'ДВ') return name.includes('dmytro') || name.includes('vasylchenko');
+          if (filter === 'КС') return name.includes('kateryna') || name.includes('skybyliak');
+          if (filter === 'СЦ') return name.includes('tsyganenko') || name.includes('tsyhanenko');
+          if (filter === 'СН') return name.includes('nabok');
+          return false;
         });
 
     if (!filtered.length) {
