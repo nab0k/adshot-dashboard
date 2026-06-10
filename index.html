@@ -110,6 +110,17 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 .ta-compare-title{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px}
 .ta-funnel-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px}
 .ta-funnel-bar{height:4px;border-radius:2px;margin-top:3px;transition:width .3s}
+
+.ap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem}
+.ap-seq{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem}
+.ap-seq-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap-seq-status{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;flex-shrink:0}
+.ap-stat-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;font-size:12px}
+.ap-stat-lbl{color:var(--muted)}
+.ap-stat-val{font-weight:500;color:var(--text)}
+.ap-bar{height:3px;border-radius:2px;margin-top:3px;margin-bottom:8px}
+.ap-rate{font-size:11px;padding:2px 8px;border-radius:20px;margin-top:8px;display:inline-block}
+.ap-no-data{color:var(--muted);font-size:13px;padding:1rem 0}
 </style>
 </head>
 <body>
@@ -223,6 +234,17 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
       <div class="ta-chart"><canvas id="ta-chart-c" role="img" aria-label="Area chart тренду прийнятих і reply rate">Area chart тренд.</canvas></div>
     </div>
   </div>
+
+
+  <div class="divider"></div>
+  <div class="section-title">Apollo.io — Email sequences</div>
+  <div class="kpi-row" id="ap-kpi">
+    <div class="kpi"><div class="kpi-val" id="ap-total">—</div><div class="kpi-lbl">Sequences активних</div></div>
+    <div class="kpi"><div class="kpi-val blue" id="ap-contacts">—</div><div class="kpi-lbl">Контактів в роботі</div></div>
+    <div class="kpi"><div class="kpi-val green" id="ap-replied">—</div><div class="kpi-lbl">Відповідей</div></div>
+    <div class="kpi"><div class="kpi-val accent" id="ap-rr">—</div><div class="kpi-lbl">Reply rate</div></div>
+  </div>
+  <div class="ap-grid" id="ap-sequences"></div>
 
 </main>
 <footer>
@@ -384,6 +406,52 @@ async function init(){
   });
 
   renderReplies('all');
+
+
+  // ── Apollo ────────────────────────────────────────────────────────────────
+  const apollo = data.apollo || null;
+  if (apollo && apollo.sequences && apollo.sequences.length) {
+    const seqs = apollo.sequences;
+    const activeSeqs = seqs.filter(s => s.active);
+    const totActive = seqs.reduce((s,q)=>s+(q.stats.num_active||0),0);
+    const totReplied = seqs.reduce((s,q)=>s+(q.stats.emails_replied||0),0);
+    const totSent = seqs.reduce((s,q)=>s+(q.stats.emails_sent||0),0);
+    const rr = totSent > 0 ? (totReplied/totSent*100).toFixed(1)+'%' : '—';
+
+    document.getElementById('ap-total').textContent = activeSeqs.length;
+    document.getElementById('ap-contacts').textContent = totActive;
+    document.getElementById('ap-replied').textContent = totReplied;
+    document.getElementById('ap-rr').textContent = rr;
+
+    const grid = document.getElementById('ap-sequences');
+    seqs.forEach(s => {
+      const st = s.stats;
+      const total = (st.num_active||0) + (st.num_paused||0) + (st.num_finished||0);
+      const openRate = st.emails_sent > 0 ? Math.round(st.emails_opened/st.emails_sent*100) : 0;
+      const replyRate = st.emails_sent > 0 ? (st.emails_replied/st.emails_sent*100).toFixed(1) : '0';
+      const color = s.active ? '#2ecc71' : '#6b6860';
+
+      const card = document.createElement('div');
+      card.className = 'ap-seq';
+      card.innerHTML = `
+        <div class="ap-seq-name">
+          <span class="ap-seq-status" style="background:${color};display:inline-block"></span>${s.name}
+        </div>
+        <div class="ap-stat-row"><span class="ap-stat-lbl">Active</span><span class="ap-stat-val" style="color:#4a9eff">${st.num_active||0}</span></div>
+        <div class="ap-stat-row"><span class="ap-stat-lbl">Paused</span><span class="ap-stat-val">${st.num_paused||0}</span></div>
+        <div class="ap-stat-row"><span class="ap-stat-lbl">Finished</span><span class="ap-stat-val">${st.num_finished||0}</span></div>
+        <div class="divider" style="margin:.5rem 0"></div>
+        <div class="ap-stat-row"><span class="ap-stat-lbl">Sent</span><span class="ap-stat-val">${st.emails_sent||0}</span></div>
+        <div class="ap-stat-row"><span class="ap-stat-lbl">Opened</span><span class="ap-stat-val">${st.emails_opened||0} (${openRate}%)</span></div>
+        <div class="ap-stat-row"><span class="ap-stat-lbl">Replied</span><span class="ap-stat-val" style="color:#2ecc71">${st.emails_replied||0}</span></div>
+        <div class="ap-stat-row"><span class="ap-stat-lbl">Bounced</span><span class="ap-stat-val" style="color:#e05c5c">${st.num_bounced||0}</span></div>
+        <span class="ap-rate" style="background:#0d2a1a;color:#2ecc71">Reply ${replyRate}%</span>
+      `;
+      grid.appendChild(card);
+    });
+  } else {
+    document.getElementById('ap-sequences').innerHTML = '<div class="ap-no-data">Даних ще немає. Запусти fetch_apollo_local.py щоб підтягнути дані з Apollo.</div>';
+  }
 
   // CRM
   const SC={'Lead':'#6b6860','Contacted':'#4a9eff','Meeting scheduled':'#f5a623','Proposal sent':'#ff7043','Negotiation':'#b085f5','Won':'#2ecc71'};
