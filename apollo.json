@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-10T19:00:00Z",
+  "updated_at": "2026-06-10T18:01:44Z",
   "sequences": [
     {
       "id": "6a272dc179965a000c3b68c0",
-      "name": "Allegro",
+      "name": "Allegro ",
       "active": true,
       "stats": {
         "num_active": 19,
@@ -37,6 +37,44 @@
         "emails_replied": 8,
         "open_rate": 22.4,
         "reply_rate": 2.7
+      }
+    },
+    {
+      "id": "6a05bac4ca776c001d70977e",
+      "name": "LinkedIn Outreach - Direct Clients",
+      "active": false,
+      "stats": {
+        "num_active": 0,
+        "num_paused": 76,
+        "num_finished": 0,
+        "num_bounced": 0,
+        "num_not_sent": 0,
+        "unique_scheduled": 0,
+        "emails_sent": 0,
+        "emails_opened": 0,
+        "emails_clicked": 0,
+        "emails_replied": 0,
+        "open_rate": 0.0,
+        "reply_rate": 0.0
+      }
+    },
+    {
+      "id": "6a04a4d07a38ee00117bef66",
+      "name": "SaaS, Fintech, iGaming, E-commerce",
+      "active": false,
+      "stats": {
+        "num_active": 0,
+        "num_paused": 80,
+        "num_finished": 4,
+        "num_bounced": 0,
+        "num_not_sent": 0,
+        "unique_scheduled": 0,
+        "emails_sent": 68,
+        "emails_opened": 23,
+        "emails_clicked": 0,
+        "emails_replied": 0,
+        "open_rate": 33.8,
+        "reply_rate": 0.0
       }
     }
   ]
