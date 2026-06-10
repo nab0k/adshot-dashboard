@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T15:36:35Z",
+  "updated_at": "2026-06-10T15:53:12Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -76,6 +76,17 @@
       "messaged": 46,
       "replied": 5,
       "failed": 2,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-10",
+      "account": "СН",
+      "date": "2026-06-10",
+      "processed": 210,
+      "accepted": 206,
+      "messaged": 18,
+      "replied": 1,
+      "failed": 4,
       "is_baseline": false
     }
   ],
@@ -275,6 +286,13 @@
         "messaged": 46,
         "replied": 5,
         "failed": 2
+      },
+      "СН": {
+        "processed": 210,
+        "accepted": 206,
+        "messaged": 18,
+        "replied": 1,
+        "failed": 4
       }
     },
     "2026-06-09": {
