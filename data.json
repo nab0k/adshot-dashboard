@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T13:15:56Z",
+  "updated_at": "2026-06-10T14:05:03Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -166,11 +166,11 @@
       "company": "Wells / Sonae MC",
       "contact": "Miguel Duarte Silva",
       "stage": "Meeting scheduled",
-      "deal_size": 12000,
+      "deal_size": 5000,
       "next_steps": "Зустріч наступного тижня. Дізнатись про болі і тип відео. Wells pharmacy retail.",
       "notes": "Теплий контакт — ходимо в один зал, познайомились на івенті Better Marketing. Канал: WhatsApp + особиста зустріч. Бренд: Wells (pharmacy retail, Sonae MC). Тип відео ще не обговорювали.",
       "linkedin_url": "",
-      "bitrix_url": "",
+      "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30622/",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-17"
     },
@@ -186,6 +186,19 @@
       "bitrix_url": "",
       "last_contact": "2026-06-02",
       "next_steps_date": "2026-06-25"
+    },
+    {
+      "name": "WY Agência +",
+      "company": "WY Agência ",
+      "contact": "Filipe Moreira",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Чекаємо на завдання на прорахунок",
+      "notes": "",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": "2026-06-08",
+      "next_steps_date": "2026-06-16"
     },
     {
       "name": "Spraga Lisbon",
@@ -209,7 +222,7 @@
       "next_steps": "Чекаємо коли João зустрінеться з director of Safety. Презентація вже готова. Follow-up ~16 червня якщо немає новин.",
       "notes": "Head of Communication & Image, TotalEnergies Renewables Portugal. Email: ",
       "linkedin_url": "https://www.linkedin.com/in/joao-bernardo/",
-      "bitrix_url": "",
+      "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30342/",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-16"
     },
@@ -251,6 +264,19 @@
       "bitrix_url": "",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-17"
+    },
+    {
+      "name": "Filipe Moreira — WYgroup",
+      "company": "WYgroup",
+      "contact": "Filipe Moreira",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Очікуємо коли прийде відео-завдання. Вони челенджать нас на прорахунок.",
+      "notes": "Агенція-партнерство. Філіппе — особистий знайомий з залу, працює стратегом. Була зустріч з командою, проговорили всі можливості. Договір: коли буде відео-завдання — челенджують нас.",
+      "linkedin_url": "",
+      "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30621/",
+      "last_contact": "2026-06-10",
+      "next_steps_date": "2026-07-01"
     }
   ]
 }
