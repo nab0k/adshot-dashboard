@@ -569,6 +569,92 @@ async function init(){
     document.getElementById('ap-sequences').innerHTML = '<div class="ap-no-data">Даних ще немає. Запусти fetch_apollo_local.py щоб підтягнути дані з Apollo.</div>';
   }
 
+
+  // ── Analytics tabs ────────────────────────────────────────────────────────
+  const daily = data.daily || {};
+  const ACCS4 = ['ДВ','КС','СЦ','СН'];
+  const ACC_COLORS4 = {'ДВ':'#4a9eff','КС':'#2ecc71','СЦ':'#b085f5','СН':'#ff4d00'};
+  const ACC_LABELS4 = {'ДВ':'Дмитро','КС':'Катерина','СЦ':'Циганенко','СН':'Набок'};
+  let chartTrend=null, chartAcc=null, chartFunnel=null, chartReply=null;
+  let taFilter='all';
+
+  function getDates(){return Object.keys(daily).sort();}
+  function aggByDate(dates,acc){return dates.map(d=>{const day=daily[d]||{};if(acc==='all')return{accepted:ACCS4.reduce((s,a)=>s+(day[a]?.accepted||0),0),messaged:ACCS4.reduce((s,a)=>s+(day[a]?.messaged||0),0),replied:ACCS4.reduce((s,a)=>s+(day[a]?.replied||0),0)};return day[acc]||{accepted:0,messaged:0,replied:0};});}
+
+  function renderTrendTab(acc){
+    const dates=getDates(),lbls=dates.map(d=>d.slice(5)),vals=aggByDate(dates,acc);
+    const tot=vals.reduce((s,v)=>({accepted:s.accepted+(v.accepted||0),messaged:s.messaged+(v.messaged||0),replied:s.replied+(v.replied||0)}),{accepted:0,messaged:0,replied:0});
+    const last=vals[vals.length-1]||{},prev=vals[vals.length-2]||{};
+    document.getElementById('ta-acc').textContent=tot.accepted;
+    document.getElementById('ta-msg').textContent=tot.messaged;
+    document.getElementById('ta-rep').textContent=tot.replied;
+    document.getElementById('ta-rr').textContent=tot.messaged>0?(tot.replied/tot.messaged*100).toFixed(1)+'%':'—';
+    const fmt=(n,l)=>n===0?'—':(n>0?'+':'')+n+' '+l;
+    const cls=n=>n>0?'up':n<0?'down':'flat';
+    const da=(last.accepted||0)-(prev.accepted||0),dm=(last.messaged||0)-(prev.messaged||0),dr=(last.replied||0)-(prev.replied||0);
+    document.getElementById('ta-acc-d').textContent=fmt(da,'вчора');document.getElementById('ta-acc-d').className='ta-delta '+cls(da);
+    document.getElementById('ta-msg-d').textContent=fmt(dm,'вчора');document.getElementById('ta-msg-d').className='ta-delta '+cls(dm);
+    document.getElementById('ta-rep-d').textContent=fmt(dr,'вчора');document.getElementById('ta-rep-d').className='ta-delta '+cls(dr);
+    document.getElementById('ta-rr-d').textContent='—';
+    const wrap=document.getElementById('ta-chart-wrap-a'),empty=document.getElementById('ta-empty');
+    document.getElementById('ta-days').textContent=dates.length;
+    if(dates.length<3){wrap.style.display='none';empty.style.display='block';return;}
+    wrap.style.display='block';empty.style.display='none';
+    const ds=acc==='all'
+      ?[{label:'Прийнято',data:vals.map(v=>v.accepted),borderColor:'#4a9eff',backgroundColor:'rgba(74,158,255,.07)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#4a9eff'},
+        {label:'Повідомлень',data:vals.map(v=>v.messaged),borderColor:'#f5a623',backgroundColor:'rgba(245,166,35,.05)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#f5a623'},
+        {label:'Відповідей',data:vals.map(v=>v.replied),borderColor:'#2ecc71',backgroundColor:'rgba(46,204,113,.05)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#2ecc71'}]
+      :[{label:'Прийнято',data:vals.map(v=>v.accepted),borderColor:ACC_COLORS4[acc]||'#4a9eff',backgroundColor:'rgba(74,158,255,.07)',fill:true,tension:.4,pointRadius:4},
+        {label:'Повідомлень',data:vals.map(v=>v.messaged),borderColor:'#f5a623',fill:true,tension:.4,pointRadius:4},
+        {label:'Відповідей',data:vals.map(v=>v.replied),borderColor:'#2ecc71',fill:true,tension:.4,pointRadius:4}];
+    document.getElementById('ta-legend-a').innerHTML=ds.map(x=>`<span class="ta-leg"><span class="ta-leg-dot" style="background:${x.borderColor}"></span>${x.label}</span>`).join('');
+    if(chartTrend)chartTrend.destroy();
+    chartTrend=new Chart(document.getElementById('ta-chart-a'),{type:'line',data:{labels:lbls,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860',font:{size:11}}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}}}}});
+  }
+
+  function renderAccountsTab(){
+    if(chartAcc)chartAcc.destroy();
+    const dates=getDates(),lbls=dates.map(d=>d.slice(5));
+    chartAcc=new Chart(document.getElementById('ta-chart-acc'),{type:'bar',data:{labels:lbls,datasets:ACCS4.map(acc=>({label:ACC_LABELS4[acc],data:dates.map(d=>(daily[d]?.[acc]?.accepted||0)),backgroundColor:ACC_COLORS4[acc],borderRadius:3}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860'}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}}}}});
+  }
+
+  function renderFunnelTab(){
+    if(chartFunnel)chartFunnel.destroy();
+    const latest=records.filter(r=>!r.is_baseline).reduce((m,r)=>{if(!m[r.account]||r.date>m[r.account].date)m[r.account]=r;return m},{});
+    chartFunnel=new Chart(document.getElementById('ta-chart-funnel'),{type:'bar',data:{labels:ACCS4.map(a=>ACC_LABELS4[a]),datasets:[{label:'Оброблено',data:ACCS4.map(a=>latest[a]?.processed||0),backgroundColor:'rgba(74,158,255,.35)',borderRadius:3},{label:'Прийнято',data:ACCS4.map(a=>latest[a]?.accepted||0),backgroundColor:'#4a9eff',borderRadius:3},{label:'Повідомлень',data:ACCS4.map(a=>latest[a]?.messaged||0),backgroundColor:'#f5a623',borderRadius:3},{label:'Відповідей',data:ACCS4.map(a=>latest[a]?.replied||0),backgroundColor:'#2ecc71',borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}},y:{grid:{display:false},ticks:{color:'#6b6860'}}}}});
+  }
+
+  function renderReplyTab(){
+    if(chartReply)chartReply.destroy();
+    const latest=records.filter(r=>!r.is_baseline).reduce((m,r)=>{if(!m[r.account]||r.date>m[r.account].date)m[r.account]=r;return m},{});
+    const accsWithMsg=ACCS4.filter(a=>(latest[a]?.messaged||0)>0);
+    chartReply=new Chart(document.getElementById('ta-chart-reply'),{type:'bar',data:{labels:accsWithMsg.map(a=>ACC_LABELS4[a]),datasets:[{data:accsWithMsg.map(a=>{const r=latest[a];return r.messaged>0?parseFloat((r.replied/r.messaged*100).toFixed(1)):0;}),backgroundColor:accsWithMsg.map(a=>ACC_COLORS4[a]),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860'}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860',callback:v=>v+'%'},max:20}}}});
+  }
+
+  document.getElementById('an-tabs').querySelectorAll('.an-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.getElementById('an-tabs').querySelectorAll('.an-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.an-panel').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+      tab.classList.add('active');
+      const panel=document.getElementById('an-'+tab.dataset.tab);
+      panel.classList.add('active');panel.style.display='block';
+      if(tab.dataset.tab==='accounts'&&!chartAcc)renderAccountsTab();
+      if(tab.dataset.tab==='funnel'&&!chartFunnel)renderFunnelTab();
+      if(tab.dataset.tab==='reply'&&!chartReply)renderReplyTab();
+    });
+  });
+
+  document.getElementById('ta-accs').querySelectorAll('.ta-chip').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.getElementById('ta-accs').querySelectorAll('.ta-chip').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      taFilter=btn.dataset.acc;
+      renderTrendTab(taFilter);
+    });
+  });
+
+  renderTrendTab('all');
+
   // CRM
   const SC={'Lead':'#6b6860','Contacted':'#4a9eff','Meeting scheduled':'#f5a623','Proposal sent':'#ff7043','Negotiation':'#b085f5','Won':'#2ecc71'};
   const crmDeals=(data.crm||[]).filter(d=>!['Won','Lost'].includes(d.stage));
