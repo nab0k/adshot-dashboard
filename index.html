@@ -383,28 +383,8 @@ async function init(){
 
 
 
-  // ── Apollo Replied Emails ─────────────────────────────────────────────────
-  const erContacts = apolloData?.replied_contacts || [];
-  const erTbody = document.getElementById('er-tbody');
-  if (!erContacts.length) {
-    erTbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted);padding:1.5rem;text-align:center">Немає відповідей або дані ще не завантажені</td></tr>';
-  } else {
-    erTbody.innerHTML = erContacts.map(c => {
-      const date = c.replied_at ? new Date(c.replied_at).toLocaleDateString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—';
-      const nameCell = c.linkedin_url
-        ? `<a href="${c.linkedin_url}" target="_blank" style="color:var(--text);text-decoration:none">${c.name}</a>`
-        : c.name;
-      return `<tr>
-        <td>
-          <div style="font-weight:500">${nameCell}</div>
-          ${c.title ? `<div style="font-size:11px;color:var(--muted);margin-top:2px">${c.title}</div>` : ''}
-        </td>
-        <td style="color:var(--muted);font-size:12px">${c.company||'—'}</td>
-        <td><span class="er-seq">${c.sequence_name||'—'}</span></td>
-        <td style="font-size:12px;color:var(--muted);white-space:nowrap">${date}</td>
-      </tr>`;
-    }).join('');
-  }
+  
+  // Apollo Replied Emails renderer removed: no real inbound reply text yet.
 
   // ── Replied Dialogs ───────────────────────────────────────────────────────
   const RD_WORKER = 'https://adshot-eu-dashboard-bot.nabokmanberstein.workers.dev';
