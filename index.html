@@ -389,9 +389,12 @@ async function init(){
     const tbody = document.getElementById('rd-tbody');
     const filtered = filter === 'all' ? rdDialogs
       : rdDialogs.filter(d => {
-          const name = d.account?.name || '';
-          const short = Object.entries(ACC_MAP).find(([k,v]) => name.toLowerCase().includes(v.toLowerCase()))?.[0];
-          return short === filter;
+          const name = (d.account?.name || '').toLowerCase();
+          if (filter === 'ДВ') return name.includes('dmytro') || name.includes('vasylchenko');
+          if (filter === 'КС') return name.includes('kateryna') || name.includes('skybyliak');
+          if (filter === 'СЦ') return name.includes('tsyganenko') || name.includes('tsyhanenko');
+          if (filter === 'СН') return name.includes('nabok');
+          return false;
         });
 
     if (!filtered.length) {
