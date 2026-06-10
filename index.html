@@ -148,6 +148,13 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 .an-tab.active{color:var(--text);border-bottom-color:var(--text)}
 .an-tab:hover{color:var(--text)}
 .an-panel{display:none}.an-panel.active{display:block}
+
+.er-table{width:100%;border-collapse:collapse;font-size:13px}
+.er-table th{text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border);font-weight:500}
+.er-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.er-table tr:last-child td{border-bottom:none}
+.er-table tr:hover td{background:rgba(255,255,255,.02)}
+.er-seq{font-size:11px;padding:2px 8px;border-radius:4px;background:#1a2a3a;color:#4a9eff;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -300,6 +307,18 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     </table>
   </div>
 
+
+  <div class="divider"></div>
+  <div class="section-title">Apollo.io — Replied emails</div>
+  <div class="chart-wrap" style="padding:0;overflow:hidden">
+    <table class="er-table">
+      <thead><tr>
+        <th>Контакт</th><th>Компанія</th><th>Sequence</th><th>Дата</th>
+      </tr></thead>
+      <tbody id="er-tbody"><tr><td colspan="4" style="color:var(--muted);padding:1.5rem;text-align:center">Завантаження...</td></tr></tbody>
+    </table>
+  </div>
+
 </main>
 <footer>
   <span>Adshot Europe · <a href="https://adshot.eu" target="_blank">adshot.eu</a></span>
@@ -362,6 +381,30 @@ async function init(){
 
 
 
+
+
+  // ── Apollo Replied Emails ─────────────────────────────────────────────────
+  const erContacts = apolloData?.replied_contacts || [];
+  const erTbody = document.getElementById('er-tbody');
+  if (!erContacts.length) {
+    erTbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted);padding:1.5rem;text-align:center">Немає відповідей або дані ще не завантажені</td></tr>';
+  } else {
+    erTbody.innerHTML = erContacts.map(c => {
+      const date = c.replied_at ? new Date(c.replied_at).toLocaleDateString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—';
+      const nameCell = c.linkedin_url
+        ? `<a href="${c.linkedin_url}" target="_blank" style="color:var(--text);text-decoration:none">${c.name}</a>`
+        : c.name;
+      return `<tr>
+        <td>
+          <div style="font-weight:500">${nameCell}</div>
+          ${c.title ? `<div style="font-size:11px;color:var(--muted);margin-top:2px">${c.title}</div>` : ''}
+        </td>
+        <td style="color:var(--muted);font-size:12px">${c.company||'—'}</td>
+        <td><span class="er-seq">${c.sequence_name||'—'}</span></td>
+        <td style="font-size:12px;color:var(--muted);white-space:nowrap">${date}</td>
+      </tr>`;
+    }).join('');
+  }
 
   // ── Replied Dialogs ───────────────────────────────────────────────────────
   const RD_WORKER = 'https://adshot-eu-dashboard-bot.nabokmanberstein.workers.dev';
