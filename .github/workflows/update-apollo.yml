@@ -1,0 +1,28 @@
+name: Update Apollo data
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 08:00 Lisbon (UTC+1)
+    - cron: '0 19 * * *'  # 20:00 Lisbon (UTC+1)
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch Apollo sequences
+        env:
+          APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+        run: python3 fetch_apollo.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add apollo.json
+          git diff --cached --quiet || git commit -m "chore: update apollo sequences $(date -u +%Y-%m-%d\ %H:%M)"
+          git push
