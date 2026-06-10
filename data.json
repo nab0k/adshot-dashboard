@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T11:56:31Z",
+  "updated_at": "2026-06-10T12:26:03Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -153,10 +153,11 @@
       "company": "Sempre Fixe / Campo de Ourique",
       "contact": "Ankit Ruia",
       "stage": "Meeting scheduled",
-      "deal_size": 8000,
+      "deal_size": 3000,
       "next_steps": "Запропонувати strategic session цього або наступного тижня.",
-      "notes": "Особисто знайомі. Офф-план розробка Campo de Ourique. Фреймінг: “one video, two audiences, one budget” — банківська комунікація + продажний контент. Особистий бренд Ankit + продаж нерухомості. Strategic session як friendly gesture — окремо від комерційного обговорення.",
+      "notes": "Особисто знайомі. Офф-план розробка Campo de Ourique. Фреймінг: one video, two audiences, one budget. Бюджет не підтверджено. Орієнтир: €2-4k за відео згідно з надісланими матеріалами.",
       "linkedin_url": "",
+      "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30619/",
       "last_contact": "2026-06-10",
       "next_steps_date": "2026-06-17"
     },
@@ -169,6 +170,7 @@
       "next_steps": "Зустріч наступного тижня. Дізнатись про болі і тип відео. Wells pharmacy retail.",
       "notes": "Теплий контакт — ходимо в один зал, познайомились на івенті Better Marketing. Канал: WhatsApp + особиста зустріч. Бренд: Wells (pharmacy retail, Sonae MC). Тип відео ще не обговорювали.",
       "linkedin_url": "",
+      "bitrix_url": "",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-17"
     },
@@ -181,6 +183,7 @@
       "next_steps": "Follow-up наприкінця червня. Зустріч у липні.",
       "notes": "Email: ",
       "linkedin_url": "",
+      "bitrix_url": "",
       "last_contact": "2026-06-02",
       "next_steps_date": "2026-06-25"
     },
@@ -193,6 +196,7 @@
       "next_steps": "Продовжувати діалог.",
       "notes": "",
       "linkedin_url": "",
+      "bitrix_url": "",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-16"
     },
@@ -205,6 +209,7 @@
       "next_steps": "Чекаємо коли João зустрінеться з director of Safety. Презентація вже готова. Follow-up ~16 червня якщо немає новин.",
       "notes": "Head of Communication & Image, TotalEnergies Renewables Portugal. Email: ",
       "linkedin_url": "https://www.linkedin.com/in/joao-bernardo/",
+      "bitrix_url": "",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-16"
     },
@@ -217,6 +222,7 @@
       "next_steps": "Очікуємо відповідь ~5-7 днів. Далі паралельний outreach до Michał Marcińczyk, Matthias Frechen.",
       "notes": "Allegro входить на ринок України. Значний дослідницький бекграунд зроблено.",
       "linkedin_url": "",
+      "bitrix_url": "",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-16"
     },
@@ -229,6 +235,7 @@
       "next_steps": "Продовжувати діалог, запросити інтро до marketing team.",
       "notes": "",
       "linkedin_url": "",
+      "bitrix_url": "",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-16"
     },
@@ -241,6 +248,7 @@
       "next_steps": "Запропонувати неформальну зустріч.",
       "notes": "Особистий контакт з залу. Теплий.",
       "linkedin_url": "",
+      "bitrix_url": "",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-17"
     }
