@@ -819,5 +819,48 @@ init().catch(e=>{document.querySelector('main').innerHTML=`<p style="color:var(-
 })();
 </script>
 
-</body>
+
+<script id="disable-apollo-ghost-replies">
+(() => {
+  window.shouldShowApolloEmailReplies = function(apolloData) {
+    const rows = apolloData?.email_replies || apolloData?.replied_contacts || [];
+    return Array.isArray(rows) && rows.some(r => {
+      const text = (r.reply_text || r.body || r.inbound_text || '').trim();
+      return text.length > 0;
+    });
+  };
+
+  window.addEventListener('load', () => {
+    fetch('apollo.json?no_ghosts=' + Date.now(), { cache: 'no-store' })
+      .then(r => r.json())
+      .then(data => {
+        if (window.shouldShowApolloEmailReplies(data)) return;
+
+        const headings = [...document.querySelectorAll('h1,h2,h3,h4')];
+        for (const h of headings) {
+          const title = (h.textContent || '').trim();
+          if (!/APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i.test(title)) continue;
+
+          let box = h.parentElement;
+          while (box && box !== document.body) {
+            const text = (box.textContent || '').trim();
+            const hasTitle = /APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i.test(text);
+            const hasTable = !!box.querySelector('table, thead, tbody');
+            const tooBig = text.length > 40000 || box.querySelector('header');
+
+            if (hasTitle && hasTable && !tooBig) {
+              box.remove();
+              return;
+            }
+            box = box.parentElement;
+          }
+
+          h.remove();
+        }
+      })
+      .catch(() => {});
+  });
+})();
+</script>
+\n</body>
 </html>
