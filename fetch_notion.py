@@ -128,6 +128,42 @@ output = {
     "crm": crm_deals
 }
 
+# ── Daily aggregation ────────────────────────────────────────────────────────
+daily = {}
+for r in records:
+    date = r.get("date")
+    account = r.get("account")
+    if not date or not account or r.get("is_baseline"):
+        continue
+    if date not in daily:
+        daily[date] = {}
+    daily[date][account] = {
+        "processed": r.get("processed", 0),
+        "accepted":  r.get("accepted",  0),
+        "messaged":  r.get("messaged",  0),
+        "replied":   r.get("replied",   0),
+        "failed":    r.get("failed",    0),
+    }
+
+# Також додаємо baseline як першу точку якщо немає інших даних
+baseline_records = [r for r in records if r.get("is_baseline")]
+if baseline_records:
+    base_date = baseline_records[0].get("date", "")
+    if base_date and base_date not in daily:
+        daily[base_date] = {}
+        for r in baseline_records:
+            acc = r.get("account")
+            if acc:
+                daily[base_date][acc] = {
+                    "processed": r.get("processed", 0),
+                    "accepted":  r.get("accepted",  0),
+                    "messaged":  r.get("messaged",  0),
+                    "replied":   r.get("replied",   0),
+                    "failed":    r.get("failed",    0),
+                }
+
+output["daily"] = daily
+
 with open("data.json", "w", encoding="utf-8") as f:
     json.dump(output, f, ensure_ascii=False, indent=2)
 
