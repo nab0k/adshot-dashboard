@@ -67,25 +67,23 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;font-size:11px;c
 footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text)}
 @media(max-width:700px){.kpi-row,.replies-kpi{grid-template-columns:repeat(2,1fr)}.cards-grid{grid-template-columns:1fr}header{padding:1rem 1.25rem}main{padding:1.5rem 1.25rem 3rem}.bubble{max-width:100%}}
 
-/* CRM */
 .crm-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.5rem}
 .pipeline{display:flex;gap:8px;margin-bottom:1.5rem;overflow-x:auto;padding-bottom:4px}
 .pipeline-col{flex:0 0 180px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px}
 .pipeline-col-title{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-weight:500}
-.pipeline-card{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px;margin-bottom:8px;cursor:default;transition:border-color .15s}
+.pipeline-card{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px;margin-bottom:8px}
 .pipeline-card:hover{border-color:#444}
-.pipeline-card-name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pipeline-card-company{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pipeline-card-name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pipeline-card-co{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pipeline-card-deal{font-size:11px;color:var(--green);margin-top:5px;font-weight:500}
-.pipeline-card-date{font-size:10px;color:var(--amber);margin-top:3px}
-.stage-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;flex-shrink:0}
-.followups-table{width:100%;border-collapse:collapse;font-size:13px}
-.followups-table th{text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border);font-weight:500}
-.followups-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
-.followups-table tr:last-child td{border-bottom:none}
-.followups-table tr:hover td{background:rgba(255,255,255,.02)}
-.overdue{color:#e05c5c}
-.today{color:var(--amber)}
+.pipeline-card-date{font-size:10px;margin-top:3px}
+.stage-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px;flex-shrink:0}
+.fu-table{width:100%;border-collapse:collapse;font-size:13px}
+.fu-table th{text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border);font-weight:500}
+.fu-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.fu-table tr:last-child td{border-bottom:none}
+.fu-table tr:hover td{background:rgba(255,255,255,.02)}
+.overdue{color:#e05c5c}.today-date{color:var(--amber)}
 </style>
 </head>
 <body>
@@ -140,23 +138,17 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 
   <div class="divider"></div>
   <div class="section-title">CRM — Pipeline</div>
-
   <div class="crm-kpi">
-    <div class="kpi"><div class="kpi-val" id="crm-total">—</div><div class="kpi-lbl">Активних deals</div></div>
-    <div class="kpi"><div class="kpi-val accent" id="crm-pipeline">—</div><div class="kpi-lbl">Pipeline €</div></div>
-    <div class="kpi"><div class="kpi-val amber" id="crm-meetings">—</div><div class="kpi-lbl">Зустрічей заплановано</div></div>
-    <div class="kpi"><div class="kpi-val" id="crm-followups">—</div><div class="kpi-lbl">Follow-ups цього тижня</div></div>
+    <div class="kpi"><div class="kpi-val" id="c-total">—</div><div class="kpi-lbl">Активних deals</div></div>
+    <div class="kpi"><div class="kpi-val accent" id="c-pipe">—</div><div class="kpi-lbl">Pipeline €</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:var(--amber)" id="c-meet">—</div><div class="kpi-lbl">Зустрічей</div></div>
+    <div class="kpi"><div class="kpi-val" id="c-fu">—</div><div class="kpi-lbl">Follow-ups цього тижня</div></div>
   </div>
-
-  <div class="pipeline" id="crm-pipeline-board"></div>
-
+  <div class="pipeline" id="c-board"></div>
   <div class="chart-wrap" style="padding:0;overflow:hidden">
-    <table class="followups-table">
-      <thead><tr>
-        <th>Контакт</th><th>Компанія</th><th>Stage</th><th>Next step date</th><th>Що робити</th>
-      </tr></thead>
-      <tbody id="crm-followups-tbody"></tbody>
-    </table>
+    <table class="fu-table"><thead><tr>
+      <th>Контакт</th><th>Компанія</th><th>Stage</th><th>Дата</th><th>Що робити</th>
+    </tr></thead><tbody id="c-tbody"></tbody></table>
   </div>
 
 </main>
@@ -319,75 +311,37 @@ async function init(){
 
   renderReplies('all');
 
-  // ── CRM ──────────────────────────────────────────────────────────────────
-  const crmDeals = data.crm || [];
-  const STAGE_COLORS = {
-    'Lead':'#6b6860','Contacted':'#4a9eff','Meeting scheduled':'#f5a623',
-    'Proposal sent':'#ff7043','Negotiation':'#b085f5','Won':'#2ecc71'
-  };
-  const STAGES = ['Contacted','Meeting scheduled','Proposal sent','Negotiation'];
-
-  // KPIs
-  const activeDeals = crmDeals.filter(d=>!['Won','Lost'].includes(d.stage));
-  const pipelineVal = activeDeals.reduce((s,d)=>s+(d.deal_size||0),0);
-  const meetings = activeDeals.filter(d=>d.stage==='Meeting scheduled').length;
-  const now = new Date();
-  const weekEnd = new Date(now); weekEnd.setDate(weekEnd.getDate()+7);
-  const followupsThisWeek = activeDeals.filter(d=>{
-    if(!d.next_steps_date) return false;
-    const nd = new Date(d.next_steps_date);
-    return nd >= now && nd <= weekEnd;
-  }).length;
-
-  document.getElementById('crm-total').textContent = activeDeals.length;
-  document.getElementById('crm-pipeline').textContent = pipelineVal > 0 ? '€'+Math.round(pipelineVal/1000)+'k' : '—';
-  document.getElementById('crm-meetings').textContent = meetings;
-  document.getElementById('crm-followups').textContent = followupsThisWeek;
-
-  // Pipeline board
-  const board = document.getElementById('crm-pipeline-board');
-  STAGES.forEach(stage => {
-    const deals = crmDeals.filter(d=>d.stage===stage);
-    const col = document.createElement('div');
-    col.className = 'pipeline-col';
-    const stageTotal = deals.reduce((s,d)=>s+(d.deal_size||0),0);
-    col.innerHTML = `<div class="pipeline-col-title"><span class="stage-dot" style="background:${STAGE_COLORS[stage]||'#444'}"></span>${stage}${stageTotal>0?' · €'+Math.round(stageTotal/1000)+'k':''}</div>`;
-    if(!deals.length){
-      col.innerHTML += `<div style="font-size:11px;color:var(--muted);padding:4px 0">Немає</div>`;
-    }
+  // CRM
+  const SC={'Lead':'#6b6860','Contacted':'#4a9eff','Meeting scheduled':'#f5a623','Proposal sent':'#ff7043','Negotiation':'#b085f5','Won':'#2ecc71'};
+  const crmDeals=(data.crm||[]).filter(d=>!['Won','Lost'].includes(d.stage));
+  const now=new Date();
+  const weekEnd=new Date(now);weekEnd.setDate(weekEnd.getDate()+7);
+  document.getElementById('c-total').textContent=crmDeals.length;
+  const pipeVal=crmDeals.reduce((s,d)=>s+(d.deal_size||0),0);
+  document.getElementById('c-pipe').textContent=pipeVal>0?'€'+Math.round(pipeVal/1000)+'k':'—';
+  document.getElementById('c-meet').textContent=crmDeals.filter(d=>d.stage==='Meeting scheduled').length;
+  document.getElementById('c-fu').textContent=crmDeals.filter(d=>{if(!d.next_steps_date)return false;const nd=new Date(d.next_steps_date);return nd>=now&&nd<=weekEnd;}).length;
+  const board=document.getElementById('c-board');
+  ['Contacted','Meeting scheduled','Proposal sent','Negotiation'].forEach(stage=>{
+    const deals=crmDeals.filter(d=>d.stage===stage);
+    const tot=deals.reduce((s,d)=>s+(d.deal_size||0),0);
+    const col=document.createElement('div');col.className='pipeline-col';
+    col.innerHTML=`<div class="pipeline-col-title"><span class="stage-dot" style="background:${SC[stage]}"></span>${stage}${tot>0?' · €'+Math.round(tot/1000)+'k':''}</div>`;
+    if(!deals.length)col.innerHTML+=`<div style="font-size:11px;color:var(--muted)">Немає</div>`;
     deals.forEach(d=>{
-      const dateStr = d.next_steps_date ? new Date(d.next_steps_date).toLocaleDateString('uk-UA',{day:'2-digit',month:'2-digit'}) : '';
-      const isOverdue = d.next_steps_date && new Date(d.next_steps_date) < now;
-      const card = document.createElement('div');
-      card.className = 'pipeline-card';
-      card.innerHTML = `
-        <div class="pipeline-card-name">${d.contact||d.name}</div>
-        <div class="pipeline-card-company">${d.company||'—'}</div>
-        ${d.deal_size>0?`<div class="pipeline-card-deal">€${d.deal_size.toLocaleString()}</div>`:''}
-        ${dateStr?`<div class="pipeline-card-date ${isOverdue?'overdue':''}">${isOverdue?'⚠ ':''}${dateStr}</div>`:''}
-      `;
-      col.appendChild(card);
+      const nd=d.next_steps_date?new Date(d.next_steps_date):null;
+      const overdue=nd&&nd<now;
+      const ds=nd?nd.toLocaleDateString('uk-UA',{day:'2-digit',month:'2-digit'}):'';
+      col.innerHTML+=`<div class="pipeline-card"><div class="pipeline-card-name">${d.contact||d.name}</div><div class="pipeline-card-co">${d.company||''}</div>${d.deal_size>0?`<div class="pipeline-card-deal">€${d.deal_size.toLocaleString()}</div>`:''}<div class="pipeline-card-date ${overdue?'overdue':''}">${overdue?'⚠ ':''}${ds}</div></div>`;
     });
     board.appendChild(col);
   });
-
-  // Follow-ups table — всі активні, відсортовані за датою
-  const tbody = document.getElementById('crm-followups-tbody');
-  const sorted = [...activeDeals].sort((a,b)=>(a.next_steps_date||'9999').localeCompare(b.next_steps_date||'9999'));
-  sorted.forEach(d=>{
-    const nd = d.next_steps_date ? new Date(d.next_steps_date) : null;
-    const isOverdue = nd && nd < now;
-    const isToday = nd && nd.toDateString()===now.toDateString();
-    const dateStr = nd ? nd.toLocaleDateString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—';
-    const dateCls = isOverdue?'overdue':isToday?'today':'';
-    const dot = STAGE_COLORS[d.stage]||'#444';
-    tbody.innerHTML += `<tr>
-      <td style="font-weight:500">${d.contact||d.name}</td>
-      <td style="color:var(--muted);font-size:12px">${d.company||'—'}</td>
-      <td><span style="display:inline-flex;align-items:center;gap:5px;font-size:11px"><span class="stage-dot" style="background:${dot}"></span>${d.stage}</span></td>
-      <td class="${dateCls}" style="font-size:12px;white-space:nowrap">${dateStr}</td>
-      <td style="font-size:12px;color:var(--muted);max-width:220px">${d.next_steps||'—'}</td>
-    </tr>`;
+  const tb=document.getElementById('c-tbody');
+  [...crmDeals].sort((a,b)=>(a.next_steps_date||'9999').localeCompare(b.next_steps_date||'9999')).forEach(d=>{
+    const nd=d.next_steps_date?new Date(d.next_steps_date):null;
+    const overdue=nd&&nd<now;const isToday=nd&&nd.toDateString()===now.toDateString();
+    const ds=nd?nd.toLocaleDateString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}):'—';
+    tb.innerHTML+=`<tr><td style="font-weight:500">${d.contact||d.name}</td><td style="color:var(--muted);font-size:12px">${d.company||'—'}</td><td><span style="display:inline-flex;align-items:center;font-size:11px"><span class="stage-dot" style="background:${SC[d.stage]||'#444'}"></span>${d.stage}</span></td><td class="${overdue?'overdue':isToday?'today-date':''}" style="font-size:12px;white-space:nowrap">${ds}</td><td style="font-size:12px;color:var(--muted);max-width:220px">${d.next_steps||'—'}</td></tr>`;
   });
 
 }
