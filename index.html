@@ -736,23 +736,59 @@ async function init(){
 init().catch(e=>{document.querySelector('main').innerHTML=`<p style="color:var(--muted);padding:2rem">Помилка: ${e.message}</p>`;});
 </script>
 
-<script id="hide-apollo-replied-email-sausage">
-document.addEventListener('DOMContentLoaded', () => {
-  const blocks = [...document.querySelectorAll('section, .section, .panel, .card, .block')];
-
-  for (const el of blocks) {
-    const text = (el.innerText || '').trim();
-
-    const looksLikeApolloReplies =
-      /Apollo\.io|Apollo/i.test(text) &&
-      /Replied emails|Email replies|replied_contacts|відпові.*email|листи/i.test(text) &&
-      !/Replied Dialogs|LinkedHelper|LinkedIn/i.test(text);
-
-    if (looksLikeApolloReplies) {
-      el.remove();
-    }
+\n
+<script id="kill-apollo-replied-email-sausage">
+(() => {
+  function looksLikeApolloReplies(el) {
+    const text = (el.innerText || el.textContent || '').trim();
+    return /APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i.test(text)
+      || (/Apollo/i.test(text) && /Replied Emails/i.test(text) && !/Replied Dialogs|LinkedHelper|LinkedIn/i.test(text));
   }
-});
+
+  function findKillBox(el) {
+    let node = el;
+    for (let i = 0; i < 8 && node && node !== document.body; i++) {
+      const text = (node.innerText || node.textContent || '').trim();
+      const hasApolloTitle = /APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i.test(text);
+      const hasTable = !!node.querySelector?.('table, thead, tbody');
+      const isBigEnough = text.length > 80;
+
+      if (hasApolloTitle && (hasTable || isBigEnough)) {
+        return node;
+      }
+
+      node = node.parentElement;
+    }
+    return null;
+  }
+
+  function killApolloSausage() {
+    const nodes = [...document.querySelectorAll('h1,h2,h3,h4,section,article,div')];
+
+    for (const el of nodes) {
+      if (!looksLikeApolloReplies(el)) continue;
+
+      const box = findKillBox(el);
+      if (box) {
+        box.remove();
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  killApolloSausage();
+
+  const observer = new MutationObserver(() => {
+    killApolloSausage();
+  });
+
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
+})();
 </script>
 \n</body>
 </html>
