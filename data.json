@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T15:02:07Z",
+  "updated_at": "2026-06-10T15:34:23Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -252,5 +252,60 @@
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-17"
     }
-  ]
+  ],
+  "daily": {
+    "2026-06-10": {
+      "СЦ": {
+        "processed": 243,
+        "accepted": 237,
+        "messaged": 0,
+        "replied": 0,
+        "failed": 6
+      },
+      "ДВ": {
+        "processed": 345,
+        "accepted": 344,
+        "messaged": 28,
+        "replied": 2,
+        "failed": 1
+      },
+      "КС": {
+        "processed": 346,
+        "accepted": 344,
+        "messaged": 46,
+        "replied": 5,
+        "failed": 2
+      }
+    },
+    "2026-06-09": {
+      "СН": {
+        "processed": 163,
+        "accepted": 160,
+        "messaged": 13,
+        "replied": 1,
+        "failed": 3
+      },
+      "ДВ": {
+        "processed": 297,
+        "accepted": 296,
+        "messaged": 24,
+        "replied": 1,
+        "failed": 1
+      },
+      "КС": {
+        "processed": 298,
+        "accepted": 296,
+        "messaged": 41,
+        "replied": 5,
+        "failed": 2
+      },
+      "СЦ": {
+        "processed": 196,
+        "accepted": 191,
+        "messaged": 0,
+        "replied": 0,
+        "failed": 5
+      }
+    }
+  }
 }
