@@ -599,9 +599,7 @@ async function init(){
   }
 
   // Load dialogs
-  fetch(RD_WORKER + '/api/dialogs/latest', {
-    headers: {'x-dialogs-token': RD_TOKEN}
-  })
+  fetch(RD_WORKER + '/api/dialogs/latest')
   .then(r => r.json())
   .then(data => {
     rdDialogs = data.dialogs || [];
