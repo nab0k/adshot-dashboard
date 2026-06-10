@@ -142,6 +142,12 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 .rd-bubble-label{font-size:10px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em}
 .rd-status-select{font-size:11px;padding:3px 8px;border-radius:4px;border:0.5px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer}
 .rd-loading{color:var(--muted);font-size:13px;padding:1.5rem 0;text-align:center}
+
+.an-tabs{display:flex;gap:0;border-bottom:0.5px solid var(--border);margin-bottom:1.25rem}
+.an-tab{font-size:12px;padding:8px 16px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s}
+.an-tab.active{color:var(--text);border-bottom-color:var(--text)}
+.an-tab:hover{color:var(--text)}
+.an-panel{display:none}.an-panel.active{display:block}
 </style>
 </head>
 <body>
@@ -186,10 +192,18 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
   </div>
 
 
-  <div class="divider"></div>
 
-  <div class="section-title">Аналітика — тренд по днях (A)</div>
-  <div class="ta-section">
+  <div class="divider"></div>
+  <div class="section-title">Аналітика</div>
+
+  <div class="an-tabs" id="an-tabs">
+    <div class="an-tab active" data-tab="trend">Тренд по днях</div>
+    <div class="an-tab" data-tab="accounts">По акаунтах</div>
+    <div class="an-tab" data-tab="funnel">Воронка</div>
+    <div class="an-tab" data-tab="reply">Reply rate</div>
+  </div>
+
+  <div id="an-trend" class="an-panel active">
     <div class="ta-filters" id="ta-accs">
       <span class="ta-chip active" data-acc="all">Всі</span>
       <span class="ta-chip" data-acc="ДВ">Дмитро</span>
@@ -205,32 +219,45 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     </div>
     <div class="ta-chart-wrap">
       <div class="ta-legend" id="ta-legend-a"></div>
-      <div class="ta-chart"><canvas id="ta-chart-a" role="img" aria-label="Лінійний графік тренду по днях">Тренд метрик по днях.</canvas></div>
+      <div class="ta-chart" id="ta-chart-wrap-a">
+        <canvas id="ta-chart-a" role="img" aria-label="Лінійний графік тренду по днях">Тренд метрик по днях.</canvas>
+      </div>
+      <div id="ta-empty" style="display:none;text-align:center;padding:2rem 0;color:var(--muted);font-size:13px">
+        Графік з'явиться після 3+ днів даних. Зараз: <span id="ta-days">2</span> точки.
+      </div>
     </div>
   </div>
 
-  <div class="section-title">Порівняння periods (C)</div>
-  <div class="ta-section">
-    <div class="ta-range-row">
-      <label>Period A:</label>
-      <input type="date" id="ta-a1" value="2026-06-01">
-      <span style="color:var(--muted);font-size:12px">→</span>
-      <input type="date" id="ta-a2" value="2026-06-15">
-      <label style="margin-left:8px">Period B:</label>
-      <input type="date" id="ta-b1" value="2026-06-16">
-      <span style="color:var(--muted);font-size:12px">→</span>
-      <input type="date" id="ta-b2" value="2026-06-30">
-      <button onclick="renderCompare()" style="margin-left:4px">Порівняти ↗</button>
-    </div>
-    <div class="ta-compare" id="ta-compare"></div>
+  <div id="an-accounts" class="an-panel" style="display:none">
     <div class="ta-chart-wrap">
       <div class="ta-legend">
-        <span class="ta-leg"><span class="ta-leg-dot" style="background:#4a9eff"></span>Прийнято</span>
-        <span class="ta-leg"><span class="ta-leg-dot" style="background:#2ecc71"></span>Reply rate %</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#4a9eff"></span>Дмитро</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#2ecc71"></span>Катерина</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#b085f5"></span>Циганенко</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#ff4d00"></span>Набок</span>
       </div>
-      <div class="ta-chart"><canvas id="ta-chart-c" role="img" aria-label="Area chart тренду прийнятих і reply rate">Area chart тренд.</canvas></div>
+      <div class="ta-chart"><canvas id="ta-chart-acc" role="img" aria-label="Grouped bar chart прийнято по акаунтах по днях">По акаунтах.</canvas></div>
     </div>
   </div>
+
+  <div id="an-funnel" class="an-panel" style="display:none">
+    <div class="ta-chart-wrap">
+      <div class="ta-legend">
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:rgba(74,158,255,.4)"></span>Оброблено</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#4a9eff"></span>Прийнято</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#f5a623"></span>Повідомлень</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#2ecc71"></span>Відповідей</span>
+      </div>
+      <div style="position:relative;height:240px"><canvas id="ta-chart-funnel" role="img" aria-label="Horizontal bar chart воронки по акаунтах">Воронка.</canvas></div>
+    </div>
+  </div>
+
+  <div id="an-reply" class="an-panel" style="display:none">
+    <div class="ta-chart-wrap">
+      <div class="ta-chart"><canvas id="ta-chart-reply" role="img" aria-label="Bar chart reply rate по акаунтах">Reply rate.</canvas></div>
+    </div>
+  </div>
+
 
 
   <div class="divider"></div>
