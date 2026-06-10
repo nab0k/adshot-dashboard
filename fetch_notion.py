@@ -105,6 +105,7 @@ for page in query_db(crm_db):
         "next_steps":     txt("Next steps"),
         "notes":          txt("Notes"),
         "linkedin_url":   url("LinkedIn URL"),
+        "bitrix_url":    url("Bitrix URL"),
         "last_contact":   date("Last contact"),
         "next_steps_date": date("Next steps date"),
     })
