@@ -15,7 +15,6 @@ header{border-bottom:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;
 main{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 4rem}
 .page-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
 .section-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;margin-top:2.5rem}
-.section-title:first-of-type{margin-top:0}
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:2.5rem}
 .kpi{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem}
 .kpi-val{font-size:32px;font-weight:700;line-height:1;letter-spacing:-.02em}
@@ -27,7 +26,7 @@ main{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 4rem}
 .av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
 .av-dv{background:#1a2a3a;color:#4a9eff}.av-ks{background:#1a2e1a;color:#2ecc71}.av-st{background:#2a1e3a;color:#b085f5}.av-sn{background:#3a1a0a;color:var(--accent)}
 .card-name{font-size:14px;font-weight:600}.card-role{font-size:11px;color:var(--muted);margin-top:2px}
-.funnel{display:flex;gap:0}.funnel-step{flex:1;padding:0 8px 0 0}.funnel-step:first-child{padding-left:0}
+.funnel{display:flex}.funnel-step{flex:1;padding:0 8px 0 0}.funnel-step:first-child{padding-left:0}
 .funnel-num{font-size:20px;font-weight:700;letter-spacing:-.02em}.funnel-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
 .funnel-bar{height:3px;border-radius:2px;margin-top:8px}.bar-proc{background:#2a2a2a}.bar-acc{background:var(--blue)}.bar-msg{background:var(--amber)}.bar-rep{background:var(--green)}
 .rates{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
@@ -42,19 +41,31 @@ main{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 4rem}
 .filter-btn.active{border-color:var(--accent);color:var(--text)}
 .replies-table{width:100%;border-collapse:collapse;font-size:13px}
 .replies-table th{text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border);font-weight:500}
-.replies-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
-.replies-table tr:last-child td{border-bottom:none}
-.replies-table tr:hover td{background:rgba(255,255,255,.02)}
+.reply-row{cursor:pointer;transition:background .1s}
+.reply-row:hover td{background:rgba(255,255,255,.03)}
+.reply-row td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.reply-row.expanded td{border-bottom:none}
+.expand-row td{padding:0;border-bottom:1px solid var(--border)}
+.expand-inner{display:none;padding:0 12px 16px;animation:fadeIn .15s ease}
+.expand-row.open .expand-inner{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.convo{display:flex;flex-direction:column;gap:10px;max-height:340px;overflow-y:auto;padding-right:4px}
+.convo::-webkit-scrollbar{width:4px}.convo::-webkit-scrollbar-track{background:transparent}.convo::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.bubble{border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.6;max-width:88%}
+.bubble-us{background:#1a2a1a;color:#c8e6c9;align-self:flex-end;border-bottom-right-radius:2px}
+.bubble-them{background:#1e1e1e;color:var(--text);align-self:flex-start;border-bottom-left-radius:2px;border:1px solid var(--border)}
+.bubble-label{font-size:10px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em}
 .acc-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
 .tag-dv{background:#1a2a3a;color:var(--blue)}.tag-ks{background:#1a2e1a;color:var(--green)}.tag-st{background:#2a1e3a;color:var(--purple)}.tag-sn{background:#3a1a0a;color:var(--accent)}
 .status-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px}
 .s-new{background:#2a2a00;color:var(--amber)}.s-work{background:#0d1f35;color:var(--blue)}.s-meet{background:#0d2a1a;color:var(--green)}.s-no{background:#2a0d0d;color:#e05c5c}.s-irr{background:#1a1a1a;color:var(--muted)}
-.reply-text{color:var(--muted);font-size:12px;margin-top:3px;line-height:1.4}
 .name-cell a{color:var(--text);text-decoration:none}.name-cell a:hover{color:var(--accent)}
+.chevron{display:inline-block;transition:transform .2s;color:var(--muted);font-size:10px;margin-left:6px}
+.reply-row.expanded .chevron{transform:rotate(90deg)}
 .divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
 footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;font-size:11px;color:var(--muted);display:flex;justify-content:space-between}
 footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text)}
-@media(max-width:700px){.kpi-row,.replies-kpi{grid-template-columns:repeat(2,1fr)}.cards-grid{grid-template-columns:1fr}header{padding:1rem 1.25rem}main{padding:1.5rem 1.25rem 3rem}}
+@media(max-width:700px){.kpi-row,.replies-kpi{grid-template-columns:repeat(2,1fr)}.cards-grid{grid-template-columns:1fr}header{padding:1rem 1.25rem}main{padding:1.5rem 1.25rem 3rem}.bubble{max-width:100%}}
 </style>
 </head>
 <body>
@@ -96,7 +107,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     <table class="replies-table">
       <thead>
         <tr>
-          <th>Контакт</th>
+          <th style="width:40%">Контакт</th>
           <th>Акаунт</th>
           <th>Дата</th>
           <th>Статус</th>
@@ -123,47 +134,108 @@ const COLORS={'ДВ':'#4a9eff','КС':'#2ecc71','СЦ':'#b085f5','СН':'#ff4d00
 const STATUS_CLS={'Новий':'s-new','В роботі':'s-work','Зустріч':'s-meet','Відмова':'s-no','Не релевантний':'s-irr','New':'s-new'};
 
 let allReplies=[];
-let activeFilter='all';
 
 function renderReplies(filter){
   const tbody=document.getElementById('replies-tbody');
   const filtered=filter==='all'?allReplies:allReplies.filter(r=>r.account===filter);
-  if(!filtered.length){tbody.innerHTML='<tr><td colspan="4" style="color:var(--muted);padding:2rem;text-align:center">Відповідей поки немає</td></tr>';return;}
-  tbody.innerHTML=filtered.map(r=>{
+  if(!filtered.length){
+    tbody.innerHTML='<tr><td colspan="4" style="color:var(--muted);padding:2rem;text-align:center">Відповідей поки немає</td></tr>';
+    return;
+  }
+  tbody.innerHTML='';
+  filtered.forEach((r,i)=>{
     const info=ACCOUNTS[r.account]||{};
     const statusCls=STATUS_CLS[r.status]||'s-irr';
-    const date=r.reply_date?new Date(r.reply_date).toLocaleDateString('uk-UA'):'—';
-    const nameCell=r.profile_url
-      ?`<a href="${r.profile_url}" target="_blank">${r.name}</a>`
+    const date=r.reply_date?new Date(r.reply_date).toLocaleDateString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}):'—';
+    const nameHtml=r.profile_url
+      ?`<a href="${r.profile_url}" target="_blank" onclick="event.stopPropagation()">${r.name}</a>`
       :r.name;
-    return `<tr>
+    const companyHtml=r.company||r.position?`<div style="font-size:11px;color:var(--muted);margin-top:2px">${[r.position,r.company].filter(Boolean).join(' · ')}</div>`:'';
+    const hasConvo = r.their_reply || r.our_last_message;
+
+    const rowId = `row-${i}`;
+    const expandId = `expand-${i}`;
+
+    const mainRow = document.createElement('tr');
+    mainRow.className = 'reply-row';
+    mainRow.setAttribute('data-idx', i);
+    mainRow.innerHTML = `
       <td class="name-cell">
-        <div>${nameCell}</div>
-        ${r.company?`<div style="font-size:11px;color:var(--muted);margin-top:2px">${r.company}${r.position?' · '+r.position:''}</div>`:''}
-        ${r.their_reply?`<div class="reply-text">"${r.their_reply.slice(0,120)}${r.their_reply.length>120?'…':''}"</div>`:''}
+        <div>${nameHtml}${hasConvo?`<span class="chevron">▶</span>`:''}</div>
+        ${companyHtml}
       </td>
       <td><span class="acc-tag ${info.tag||''}">${r.account}</span></td>
       <td style="color:var(--muted);font-size:12px;white-space:nowrap">${date}</td>
       <td><span class="status-badge ${statusCls}">${r.status||'—'}</span></td>
-    </tr>`;
-  }).join('');
+    `;
+
+    const expandRow = document.createElement('tr');
+    expandRow.className = 'expand-row';
+    expandRow.id = expandId;
+
+    const expandTd = document.createElement('td');
+    expandTd.setAttribute('colspan', '4');
+
+    const inner = document.createElement('div');
+    inner.className = 'expand-inner';
+
+    if(hasConvo){
+      const convo = document.createElement('div');
+      convo.className = 'convo';
+
+      if(r.our_last_message){
+        convo.innerHTML += `<div style="align-self:flex-end;max-width:88%"><div class="bubble-label" style="text-align:right">Ми</div><div class="bubble bubble-us">${r.our_last_message}</div></div>`;
+      }
+      if(r.their_reply){
+        convo.innerHTML += `<div style="align-self:flex-start;max-width:88%"><div class="bubble-label">${r.name}</div><div class="bubble bubble-them">${r.their_reply}</div></div>`;
+      }
+      inner.appendChild(convo);
+    }
+
+    expandTd.appendChild(inner);
+    expandRow.appendChild(expandTd);
+
+    if(hasConvo){
+      mainRow.addEventListener('click', ()=>{
+        const isOpen = expandRow.classList.contains('open');
+        // Закрити всі
+        document.querySelectorAll('.expand-row.open').forEach(el=>{
+          el.classList.remove('open');
+          el.previousElementSibling?.classList.remove('expanded');
+        });
+        if(!isOpen){
+          expandRow.classList.add('open');
+          mainRow.classList.add('expanded');
+          // Скролл до розкритого рядка
+          setTimeout(()=>mainRow.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+        }
+      });
+    }
+
+    tbody.appendChild(mainRow);
+    tbody.appendChild(expandRow);
+  });
 }
 
 async function init(){
   const{updated_at,records,replies=[]}=await fetch('data.json?_='+Date.now()).then(r=>r.json());
   document.getElementById('updated-at').textContent=new Date(updated_at).toLocaleString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
 
-  // Outreach KPIs
   const baseline={},latest={};
-  records.forEach(r=>{if(r.is_baseline)baseline[r.account]=r;else if(!latest[r.account]||r.date>latest[r.account].date)latest[r.account]=r;});
+  records.forEach(r=>{
+    if(r.is_baseline)baseline[r.account]=r;
+    else if(!latest[r.account]||r.date>latest[r.account].date)latest[r.account]=r;
+  });
   const accs=Object.keys(ACCOUNTS),cur=accs.map(a=>latest[a]||baseline[a]||{});
-  const totAcc=cur.reduce((s,r)=>s+(r.accepted||0),0),totMsg=cur.reduce((s,r)=>s+(r.messaged||0),0),totRep=cur.reduce((s,r)=>s+(r.replied||0),0);
+
+  const totAcc=cur.reduce((s,r)=>s+(r.accepted||0),0);
+  const totMsg=cur.reduce((s,r)=>s+(r.messaged||0),0);
+  const totRep=cur.reduce((s,r)=>s+(r.replied||0),0);
   document.getElementById('kpi-accepted').textContent=totAcc;
   document.getElementById('kpi-messaged').textContent=totMsg;
   document.getElementById('kpi-replied').textContent=totRep;
   document.getElementById('kpi-reply-rate').textContent=totMsg>0?(totRep/totMsg*100).toFixed(1)+'%':'—';
 
-  // Cards
   const grid=document.getElementById('cards-grid');
   accs.forEach((acc,i)=>{
     const r=cur[i],info=ACCOUNTS[acc],mx=r.processed||1;
@@ -172,30 +244,35 @@ async function init(){
     grid.innerHTML+=`<div class="card"><div class="card-head"><div class="av ${info.cls}">${acc}</div><div><div class="card-name">${info.label}</div><div class="card-role">${info.role}</div></div></div><div class="funnel">${['processed','accepted','messaged','replied'].map((k,j)=>`<div class="funnel-step"><div class="funnel-num">${r[k]||0}</div><div class="funnel-lbl">${['Оброблено','Прийнято','Повідомлень','Відповідей'][j]}</div><div class="funnel-bar ${'bar-proc bar-acc bar-msg bar-rep'.split(' ')[j]}" style="width:${Math.round((r[k]||0)/mx*100)}%"></div></div>`).join('')}</div><div class="rates"><span class="pill pill-acc">Accept ${ar}%</span>${rr!==null?`<span class="pill pill-rep">Reply ${rr}%</span>`:`<span class="pill pill-warn">Messaging не запущено</span>`}</div></div>`;
   });
 
-  // Reply rate chart
-  new Chart(document.getElementById('replyChart'),{type:'bar',data:{labels:accs.map(a=>ACCOUNTS[a].label.split(' ')[0]),datasets:[{data:accs.map((a,i)=>{const r=cur[i];return r.messaged>0?parseFloat((r.replied/r.messaged*100).toFixed(1)):0;}),backgroundColor:accs.map(a=>COLORS[a]),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860',font:{size:12}}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860',callback:v=>v+'%'},max:16}}}});
+  new Chart(document.getElementById('replyChart'),{
+    type:'bar',
+    data:{
+      labels:accs.map(a=>ACCOUNTS[a].label.split(' ')[0]),
+      datasets:[{data:accs.map((a,i)=>{const r=cur[i];return r.messaged>0?parseFloat((r.replied/r.messaged*100).toFixed(1)):0;}),backgroundColor:accs.map(a=>COLORS[a]),borderRadius:4}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860',font:{size:12}}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860',callback:v=>v+'%'},max:16}}}
+  });
 
-  // Replies KPIs
   allReplies=replies;
   const total=replies.length;
   const meet=replies.filter(r=>r.status==='Зустріч').length;
   const work=replies.filter(r=>r.status==='В роботі').length;
-  const conv=total>0?(meet/total*100).toFixed(0)+'%':'—';
   document.getElementById('r-total').textContent=total;
   document.getElementById('r-meet').textContent=meet;
   document.getElementById('r-work').textContent=work;
-  document.getElementById('r-conv').textContent=conv;
+  document.getElementById('r-conv').textContent=total>0?(meet/total*100).toFixed(0)+'%':'—';
 
-  // Filters
   const filtersEl=document.getElementById('filters');
-  const filterOptions=[['all','Всі'],['ДВ','Дмитро'],['КС','Катерина'],['СЦ','Циганенко'],['СН','Набок']];
-  filtersEl.innerHTML=filterOptions.map(([val,lbl])=>`<button class="filter-btn${val==='all'?' active':''}" data-val="${val}">${lbl}</button>`).join('');
-  filtersEl.querySelectorAll('.filter-btn').forEach(btn=>{
+  [['all','Всі'],['ДВ','Дмитро'],['КС','Катерина'],['СЦ','Циганенко'],['СН','Набок']].forEach(([val,lbl])=>{
+    const btn=document.createElement('button');
+    btn.className='filter-btn'+(val==='all'?' active':'');
+    btn.textContent=lbl;
     btn.addEventListener('click',()=>{
       filtersEl.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
-      renderReplies(btn.dataset.val);
+      renderReplies(val);
     });
+    filtersEl.appendChild(btn);
   });
 
   renderReplies('all');
