@@ -86,6 +86,30 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 .overdue{color:#e05c5c}.today-date{color:var(--amber)}
 .bitrix-btn{display:inline-block;font-size:10px;padding:2px 7px;border-radius:4px;background:#1a2a1a;color:#2ecc71;text-decoration:none;margin-top:5px;border:1px solid #2ecc71;opacity:.8}
 .bitrix-btn:hover{opacity:1}
+
+.ta-section{margin-bottom:2.5rem}
+.ta-filters{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
+.ta-chip{font-size:11px;padding:4px 12px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);cursor:pointer;background:transparent;transition:all .15s}
+.ta-chip.active,.ta-chip:hover{background:var(--surface);color:var(--text);border-color:#444}
+.ta-metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem}
+.ta-metric{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem}
+.ta-val{font-size:26px;font-weight:700;letter-spacing:-.02em;color:var(--text)}
+.ta-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+.ta-delta{font-size:11px;margin-top:4px}
+.ta-delta.up{color:#2ecc71}.ta-delta.down{color:#e05c5c}.ta-delta.flat{color:#6b6860}
+.ta-chart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:1rem}
+.ta-chart{position:relative;height:220px}
+.ta-legend{display:flex;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.ta-leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.ta-leg-dot{width:8px;height:8px;border-radius:2px}
+.ta-range-row{display:flex;gap:8px;align-items:center;margin-bottom:1rem;flex-wrap:wrap}
+.ta-range-row label{font-size:12px;color:var(--muted)}
+.ta-range-row input[type=date]{font-size:12px;padding:5px 8px;border-radius:6px;border:0.5px solid var(--border);background:var(--surface);color:var(--text)}
+.ta-compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.ta-compare-col{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem}
+.ta-compare-title{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px}
+.ta-funnel-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px}
+.ta-funnel-bar{height:4px;border-radius:2px;margin-top:3px;transition:width .3s}
 </style>
 </head>
 <body>
@@ -151,6 +175,53 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     <table class="fu-table"><thead><tr>
       <th>Контакт</th><th>Компанія</th><th>Stage</th><th>Дата</th><th>Що робити</th><th></th>
     </tr></thead><tbody id="c-tbody"></tbody></table>
+  </div>
+
+
+  <div class="divider"></div>
+
+  <div class="section-title">Аналітика — тренд по днях (A)</div>
+  <div class="ta-section">
+    <div class="ta-filters" id="ta-accs">
+      <span class="ta-chip active" data-acc="all">Всі</span>
+      <span class="ta-chip" data-acc="ДВ">Дмитро</span>
+      <span class="ta-chip" data-acc="КС">Катерина</span>
+      <span class="ta-chip" data-acc="СЦ">Циганенко</span>
+      <span class="ta-chip" data-acc="СН">Набок</span>
+    </div>
+    <div class="ta-metric-row">
+      <div class="ta-metric"><div class="ta-val" id="ta-acc">—</div><div class="ta-lbl">Прийнято</div><div class="ta-delta flat" id="ta-acc-d">—</div></div>
+      <div class="ta-metric"><div class="ta-val" id="ta-msg">—</div><div class="ta-lbl">Повідомлень</div><div class="ta-delta flat" id="ta-msg-d">—</div></div>
+      <div class="ta-metric"><div class="ta-val" id="ta-rep">—</div><div class="ta-lbl">Відповідей</div><div class="ta-delta flat" id="ta-rep-d">—</div></div>
+      <div class="ta-metric"><div class="ta-val" id="ta-rr">—</div><div class="ta-lbl">Reply rate</div><div class="ta-delta flat" id="ta-rr-d">—</div></div>
+    </div>
+    <div class="ta-chart-wrap">
+      <div class="ta-legend" id="ta-legend-a"></div>
+      <div class="ta-chart"><canvas id="ta-chart-a" role="img" aria-label="Лінійний графік тренду по днях">Тренд метрик по днях.</canvas></div>
+    </div>
+  </div>
+
+  <div class="section-title">Порівняння periods (C)</div>
+  <div class="ta-section">
+    <div class="ta-range-row">
+      <label>Period A:</label>
+      <input type="date" id="ta-a1" value="2026-06-01">
+      <span style="color:var(--muted);font-size:12px">→</span>
+      <input type="date" id="ta-a2" value="2026-06-15">
+      <label style="margin-left:8px">Period B:</label>
+      <input type="date" id="ta-b1" value="2026-06-16">
+      <span style="color:var(--muted);font-size:12px">→</span>
+      <input type="date" id="ta-b2" value="2026-06-30">
+      <button onclick="renderCompare()" style="margin-left:4px">Порівняти ↗</button>
+    </div>
+    <div class="ta-compare" id="ta-compare"></div>
+    <div class="ta-chart-wrap">
+      <div class="ta-legend">
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#4a9eff"></span>Прийнято</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#2ecc71"></span>Reply rate %</span>
+      </div>
+      <div class="ta-chart"><canvas id="ta-chart-c" role="img" aria-label="Area chart тренду прийнятих і reply rate">Area chart тренд.</canvas></div>
+    </div>
   </div>
 
 </main>
