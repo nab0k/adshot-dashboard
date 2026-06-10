@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T09:39:06Z",
+  "updated_at": "2026-06-10T10:09:42Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -60,33 +60,11 @@
       "name": "ДВ — 2026-06-10",
       "account": "ДВ",
       "date": "2026-06-10",
-      "processed": 0,
-      "accepted": 0,
-      "messaged": 0,
-      "replied": 0,
-      "failed": 0,
-      "is_baseline": false
-    },
-    {
-      "name": "КС — 2026-06-10",
-      "account": "КС",
-      "date": "2026-06-10",
-      "processed": 0,
-      "accepted": 0,
-      "messaged": 0,
-      "replied": 0,
-      "failed": 0,
-      "is_baseline": false
-    },
-    {
-      "name": "СЦ — 2026-06-10",
-      "account": "СЦ",
-      "date": "2026-06-10",
-      "processed": 243,
-      "accepted": 237,
-      "messaged": 0,
-      "replied": 0,
-      "failed": 6,
+      "processed": 345,
+      "accepted": 344,
+      "messaged": 28,
+      "replied": 2,
+      "failed": 1,
       "is_baseline": false
     },
     {
@@ -99,17 +77,6 @@
       "replied": 5,
       "failed": 2,
       "is_baseline": false
-    },
-    {
-      "name": "ДВ — 2026-06-10",
-      "account": "ДВ",
-      "date": "2026-06-10",
-      "processed": 345,
-      "accepted": 344,
-      "messaged": 28,
-      "replied": 2,
-      "failed": 1,
-      "is_baseline": false
     }
   ],
   "replies": [
@@ -120,6 +87,7 @@
       "position": "",
       "profile_url": "https://www.linkedin.com/in/philippe-fr-legrand/",
       "their_reply": "no sorry",
+      "our_last_message": "Philippe, hi, thanks for connecting - quick question: are you using video in product marketing right now?",
       "status": "Відмова",
       "reply_date": "2026-06-08"
     },
@@ -130,6 +98,7 @@
       "position": "Project e Key Account Manager ECM",
       "profile_url": "https://www.linkedin.com/in/loredana-iorio-01a6712a/",
       "their_reply": "good morning Kateryna, in my previous role as head of global mkt yes but actually i'm a KAM for a provider society so at the moment i don't have the possibility.",
+      "our_last_message": "Loredana, hi, thanks for connecting - quick question: are you using video in product marketing right now?",
       "status": "Новий",
       "reply_date": "2026-06-05"
     },
@@ -140,6 +109,7 @@
       "position": "Chef de produit senior",
       "profile_url": "https://www.linkedin.com/in/katia-laldji-76232a353/",
       "their_reply": "Hi Kateryna, Welcome to the network! To be honest; not at the moment but I would be interested if you share some of your creations with me.",
+      "our_last_message": "Hi Katia, Just wanted to check in 🙂 Did you happen to find anything interesting while looking through the website?",
       "status": "Новий",
       "reply_date": "2026-06-03"
     },
@@ -150,6 +120,7 @@
       "position": "Chemist",
       "profile_url": "https://www.linkedin.com/in/steffen-b-mogensen/",
       "their_reply": "Hi Kateryna, i am unfortunately not employed at ALK at the moment.",
+      "our_last_message": "Hi Steffen, Thanks for letting me know. Do you happen to know who took over your responsibilities at ALK?",
       "status": "Новий",
       "reply_date": "2026-06-02"
     },
@@ -160,6 +131,7 @@
       "position": "Product Manager",
       "profile_url": "https://www.linkedin.com/in/mireyarullorodriguez/",
       "their_reply": "Hello Kateryna! Thank you for your interest :) We'll keep you in mind for future partnerships",
+      "our_last_message": "Hi Mireya, Thank you, I appreciate that 🙂 Just out of curiosity, when you think about future partnerships, what would typically trigger that conversation on your side?",
       "status": "Новий",
       "reply_date": "2026-06-02"
     },
@@ -170,6 +142,7 @@
       "position": "Brand Manager",
       "profile_url": "https://www.linkedin.com/in/joão-jesus/",
       "their_reply": "Hi, Serhii. Thanks for reaching out. For our brand, AI content is a no go for now, but best of wishes and good luck to you. Cheers, João",
+      "our_last_message": "Muito obrigado! Thanks, João! I'm a partner at a Ukrainian video production + creative company. If you're open to it, let's meet for a cafezinho sometime — I'd love to share what we do and learn more about your needs. We handle both production and post-production, and because our core team is in Ukraine, we're able to keep things very cost-efficient. Let me know when you might be free.",
       "status": "Відмова",
       "reply_date": "2026-06-02"
     }
