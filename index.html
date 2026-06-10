@@ -735,5 +735,24 @@ async function init(){
 
 init().catch(e=>{document.querySelector('main').innerHTML=`<p style="color:var(--muted);padding:2rem">Помилка: ${e.message}</p>`;});
 </script>
-</body>
+
+<script id="hide-apollo-replied-email-sausage">
+document.addEventListener('DOMContentLoaded', () => {
+  const blocks = [...document.querySelectorAll('section, .section, .panel, .card, .block')];
+
+  for (const el of blocks) {
+    const text = (el.innerText || '').trim();
+
+    const looksLikeApolloReplies =
+      /Apollo\.io|Apollo/i.test(text) &&
+      /Replied emails|Email replies|replied_contacts|відпові.*email|листи/i.test(text) &&
+      !/Replied Dialogs|LinkedHelper|LinkedIn/i.test(text);
+
+    if (looksLikeApolloReplies) {
+      el.remove();
+    }
+  }
+});
+</script>
+\n</body>
 </html>
