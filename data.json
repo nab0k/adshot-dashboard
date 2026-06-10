@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T15:53:12Z",
+  "updated_at": "2026-06-10T16:54:44Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -212,15 +212,15 @@
       "next_steps_date": "2026-06-12"
     },
     {
-      "name": "Spraga Lisbon",
-      "company": "Spraga Lisbon",
-      "contact": "",
+      "name": "Francisco Rodrigues — Spraga Kombucha",
+      "company": "Spraga Kombucha",
+      "contact": "Francisco Rodrigues",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Продовжувати діалог.",
-      "notes": "",
+      "next_steps": "Очікуємо відповіді від Francisco або прийняття в LinkedIn від Filipa/Evgeny.",
+      "notes": "Особиста зустріч з Francisco Rodrigues (Operations). Попросив познайомити з маркетингом.\n\nТри канали виходу:\n1. Francisco Rodrigues — особисто попросив вивести на Filipa Roque (Marketing)\n2. Filipa Roque — додана в LinkedIn, чекаємо прийняття\n3. Ӏвген Шевченко — Board Member, доданий в LinkedIn. Email: ",
       "linkedin_url": "",
-      "bitrix_url": "",
+      "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30626/",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-16"
     },
