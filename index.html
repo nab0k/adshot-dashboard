@@ -413,13 +413,13 @@ async function init(){
   if (apollo && apollo.sequences && apollo.sequences.length) {
     const seqs = apollo.sequences.filter(s => ['Creative Heads','Allegro'].some(n => s.name.trim().toLowerCase().startsWith(n.toLowerCase())));
     const activeSeqs = seqs.filter(s => s.active);
-    const totActive = seqs.reduce((s,q)=>s+(q.stats.num_active||0),0);
+    const totContacts = seqs.reduce((s,q)=>s+(q.stats.num_active||0),0);
     const totReplied = seqs.reduce((s,q)=>s+(q.stats.emails_replied||0),0);
     const totSent = seqs.reduce((s,q)=>s+(q.stats.emails_sent||0),0);
     const rr = totSent > 0 ? (totReplied/totSent*100).toFixed(1)+'%' : '—';
 
-    document.getElementById('ap-total').textContent = activeSeqs.length;
-    document.getElementById('ap-contacts').textContent = totActive;
+    document.getElementById('ap-total').textContent = activeSeqs.length || seqs.length;
+    document.getElementById('ap-contacts').textContent = totContacts;
     document.getElementById('ap-replied').textContent = totReplied;
     document.getElementById('ap-rr').textContent = rr;
 
