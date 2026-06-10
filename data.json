@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T17:51:57Z",
+  "updated_at": "2026-06-10T17:52:11Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -338,66 +338,5 @@
         "failed": 5
       }
     }
-  },
-  "apollo": {
-    "updated_at": "2026-06-10T17:51:57Z",
-    "sequences": [
-      {
-        "id": "6a272dc179965a000c3b68c0",
-        "name": "Allegro ",
-        "active": true,
-        "stats": {
-          "num_active": 0,
-          "num_paused": 0,
-          "num_finished": 0,
-          "num_bounced": 0,
-          "emails_sent": 0,
-          "emails_opened": 0,
-          "emails_replied": 0
-        }
-      },
-      {
-        "id": "6a180b564867f6002047d9de",
-        "name": "Creative Heads",
-        "active": true,
-        "stats": {
-          "num_active": 0,
-          "num_paused": 0,
-          "num_finished": 0,
-          "num_bounced": 0,
-          "emails_sent": 0,
-          "emails_opened": 0,
-          "emails_replied": 0
-        }
-      },
-      {
-        "id": "6a05bac4ca776c001d70977e",
-        "name": "LinkedIn Outreach - Direct Clients",
-        "active": false,
-        "stats": {
-          "num_active": 0,
-          "num_paused": 0,
-          "num_finished": 0,
-          "num_bounced": 0,
-          "emails_sent": 0,
-          "emails_opened": 0,
-          "emails_replied": 0
-        }
-      },
-      {
-        "id": "6a04a4d07a38ee00117bef66",
-        "name": "SaaS, Fintech, iGaming, E-commerce",
-        "active": false,
-        "stats": {
-          "num_active": 0,
-          "num_paused": 0,
-          "num_finished": 0,
-          "num_bounced": 0,
-          "emails_sent": 0,
-          "emails_opened": 0,
-          "emails_replied": 0
-        }
-      }
-    ]
   }
 }
