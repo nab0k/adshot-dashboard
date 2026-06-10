@@ -1,0 +1,43 @@
+{
+  "updated_at": "2026-06-10T19:00:00Z",
+  "sequences": [
+    {
+      "id": "6a272dc179965a000c3b68c0",
+      "name": "Allegro",
+      "active": true,
+      "stats": {
+        "num_active": 19,
+        "num_paused": 0,
+        "num_finished": 0,
+        "num_bounced": 0,
+        "num_not_sent": 0,
+        "unique_scheduled": 19,
+        "emails_sent": 0,
+        "emails_opened": 0,
+        "emails_clicked": 0,
+        "emails_replied": 0,
+        "open_rate": 0.0,
+        "reply_rate": 0.0
+      }
+    },
+    {
+      "id": "6a180b564867f6002047d9de",
+      "name": "Creative Heads",
+      "active": true,
+      "stats": {
+        "num_active": 733,
+        "num_paused": 4,
+        "num_finished": 8,
+        "num_bounced": 1,
+        "num_not_sent": 4,
+        "unique_scheduled": 672,
+        "emails_sent": 295,
+        "emails_opened": 66,
+        "emails_clicked": 0,
+        "emails_replied": 8,
+        "open_rate": 22.4,
+        "reply_rate": 2.7
+      }
+    }
+  ]
+}
