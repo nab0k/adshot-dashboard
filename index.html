@@ -411,7 +411,7 @@ async function init(){
   // ── Apollo ────────────────────────────────────────────────────────────────
   const apollo = data.apollo || null;
   if (apollo && apollo.sequences && apollo.sequences.length) {
-    const seqs = apollo.sequences;
+    const seqs = apollo.sequences.filter(s => ['Creative Heads','Allegro'].includes(s.name.trim()));
     const activeSeqs = seqs.filter(s => s.active);
     const totActive = seqs.reduce((s,q)=>s+(q.stats.num_active||0),0);
     const totReplied = seqs.reduce((s,q)=>s+(q.stats.emails_replied||0),0);
