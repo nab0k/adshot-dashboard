@@ -155,7 +155,7 @@ async function init(){
 
   // Outreach KPIs
   const baseline={},latest={};
-  records.forEach(r=>{if(r.is_baseline)baseline[r.account]=r;if(!latest[r.account]||r.date>latest[r.account].date)latest[r.account]=r;});
+  records.forEach(r=>{if(r.is_baseline)baseline[r.account]=r;else if(!latest[r.account]||r.date>latest[r.account].date)latest[r.account]=r;});
   const accs=Object.keys(ACCOUNTS),cur=accs.map(a=>latest[a]||baseline[a]||{});
   const totAcc=cur.reduce((s,r)=>s+(r.accepted||0),0),totMsg=cur.reduce((s,r)=>s+(r.messaged||0),0),totRep=cur.reduce((s,r)=>s+(r.replied||0),0);
   document.getElementById('kpi-accepted').textContent=totAcc;
