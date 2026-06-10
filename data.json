@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T10:09:42Z",
+  "updated_at": "2026-06-10T10:32:58Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -145,6 +145,104 @@
       "our_last_message": "Muito obrigado! Thanks, João! I'm a partner at a Ukrainian video production + creative company. If you're open to it, let's meet for a cafezinho sometime — I'd love to share what we do and learn more about your needs. We handle both production and post-production, and because our core team is in Ukraine, we're able to keep things very cost-efficient. Let me know when you might be free.",
       "status": "Відмова",
       "reply_date": "2026-06-02"
+    }
+  ],
+  "crm": [
+    {
+      "name": "Ankit Ruia — Sempre Fixe",
+      "company": "Sempre Fixe / Campo de Ourique",
+      "contact": "Ankit Ruia",
+      "stage": "Meeting scheduled",
+      "deal_size": 8000,
+      "next_steps": "Запропонувати strategic session цього або наступного тижня.",
+      "notes": "Особисто знайомі. Офф-план розробка Campo de Ourique. Фреймінг: “one video, two audiences, one budget” — банківська комунікація + продажний контент. Особистий бренд Ankit + продаж нерухомості. Strategic session як friendly gesture — окремо від комерційного обговорення.",
+      "linkedin_url": "",
+      "last_contact": "2026-06-10",
+      "next_steps_date": "2026-06-17"
+    },
+    {
+      "name": "Miguel Duarte Silva — Wells/Sonae MC",
+      "company": "Wells / Sonae MC",
+      "contact": "Miguel Duarte Silva",
+      "stage": "Meeting scheduled",
+      "deal_size": 12000,
+      "next_steps": "Зустріч наступного тижня. Дізнатись про болі і тип відео. Wells pharmacy retail.",
+      "notes": "Теплий контакт — ходимо в один зал, познайомились на івенті Better Marketing. Канал: WhatsApp + особиста зустріч. Бренд: Wells (pharmacy retail, Sonae MC). Тип відео ще не обговорювали.",
+      "linkedin_url": "",
+      "last_contact": "2026-06-09",
+      "next_steps_date": "2026-06-17"
+    },
+    {
+      "name": "Nuno Calado — WPP Production",
+      "company": "WPP Production Portugal",
+      "contact": "Nuno Calado",
+      "stage": "Meeting scheduled",
+      "deal_size": 25000,
+      "next_steps": "Follow-up наприкінця червня. Зустріч у липні.",
+      "notes": "Email: ",
+      "linkedin_url": "",
+      "last_contact": "2026-06-02",
+      "next_steps_date": "2026-06-25"
+    },
+    {
+      "name": "Spraga Lisbon",
+      "company": "Spraga Lisbon",
+      "contact": "",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Продовжувати діалог.",
+      "notes": "",
+      "linkedin_url": "",
+      "last_contact": "2026-06-09",
+      "next_steps_date": "2026-06-16"
+    },
+    {
+      "name": "João Bernardo — TotalEnergies",
+      "company": "TotalEnergies Renewables Portugal",
+      "contact": "João Bernardo",
+      "stage": "Contacted",
+      "deal_size": 8000,
+      "next_steps": "Чекаємо коли João зустрінеться з director of Safety. Презентація вже готова. Follow-up ~16 червня якщо немає новин.",
+      "notes": "Head of Communication & Image, TotalEnergies Renewables Portugal. Email: ",
+      "linkedin_url": "https://www.linkedin.com/in/joao-bernardo/",
+      "last_contact": "2026-06-09",
+      "next_steps_date": "2026-06-16"
+    },
+    {
+      "name": "Giuseppe Panarese — Allegro",
+      "company": "Allegro",
+      "contact": "Giuseppe Panarese",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Очікуємо відповідь ~5-7 днів. Далі паралельний outreach до Michał Marcińczyk, Matthias Frechen.",
+      "notes": "Allegro входить на ринок України. Значний дослідницький бекграунд зроблено.",
+      "linkedin_url": "",
+      "last_contact": "2026-06-09",
+      "next_steps_date": "2026-06-16"
+    },
+    {
+      "name": "Zendesk Lisbon",
+      "company": "Zendesk",
+      "contact": "",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Продовжувати діалог, запросити інтро до marketing team.",
+      "notes": "",
+      "linkedin_url": "",
+      "last_contact": "2026-06-09",
+      "next_steps_date": "2026-06-16"
+    },
+    {
+      "name": "Frederico Almeida de Carvalho — Co.op Homes",
+      "company": "Co.op Homes",
+      "contact": "Frederico Almeida de Carvalho",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Запропонувати неформальну зустріч.",
+      "notes": "Особистий контакт з залу. Теплий.",
+      "linkedin_url": "",
+      "last_contact": "2026-06-09",
+      "next_steps_date": "2026-06-17"
     }
   ]
 }
