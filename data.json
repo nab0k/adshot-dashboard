@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T09:11:42Z",
+  "updated_at": "2026-06-10T09:22:33Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -57,6 +57,39 @@
       "is_baseline": false
     },
     {
+      "name": "ДВ — 2026-06-10",
+      "account": "ДВ",
+      "date": "2026-06-10",
+      "processed": 345,
+      "accepted": 344,
+      "messaged": 28,
+      "replied": 2,
+      "failed": 1,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-10",
+      "account": "КС",
+      "date": "2026-06-10",
+      "processed": 346,
+      "accepted": 344,
+      "messaged": 46,
+      "replied": 5,
+      "failed": 2,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-10",
+      "account": "СЦ",
+      "date": "2026-06-10",
+      "processed": 243,
+      "accepted": 237,
+      "messaged": 0,
+      "replied": 0,
+      "failed": 6,
+      "is_baseline": false
+    },
+    {
       "name": "КС — 2026-06-10",
       "account": "КС",
       "date": "2026-06-10",
@@ -80,6 +113,56 @@
     }
   ],
   "replies": [
+    {
+      "name": "Philippe Legrand",
+      "account": "КС",
+      "company": "",
+      "position": "",
+      "profile_url": "https://www.linkedin.com/in/philippe-fr-legrand/",
+      "their_reply": "no sorry",
+      "status": "Відмова",
+      "reply_date": "2026-06-08"
+    },
+    {
+      "name": "Loredana Iorio",
+      "account": "КС",
+      "company": "Formedica ECM",
+      "position": "Project e Key Account Manager ECM",
+      "profile_url": "https://www.linkedin.com/in/loredana-iorio-01a6712a/",
+      "their_reply": "good morning Kateryna, in my previous role as head of global mkt yes but actually i'm a KAM for a provider society so at the moment i don't have the possibility.",
+      "status": "Новий",
+      "reply_date": "2026-06-05"
+    },
+    {
+      "name": "Katia Laldji",
+      "account": "КС",
+      "company": "Laboratoires Théa",
+      "position": "Chef de produit senior",
+      "profile_url": "https://www.linkedin.com/in/katia-laldji-76232a353/",
+      "their_reply": "Hi Kateryna, Welcome to the network! To be honest; not at the moment but I would be interested if you share some of your creations with me.",
+      "status": "Новий",
+      "reply_date": "2026-06-03"
+    },
+    {
+      "name": "Steffen Mogensen",
+      "account": "КС",
+      "company": "ALK",
+      "position": "Chemist",
+      "profile_url": "https://www.linkedin.com/in/steffen-b-mogensen/",
+      "their_reply": "Hi Kateryna, i am unfortunately not employed at ALK at the moment.",
+      "status": "Новий",
+      "reply_date": "2026-06-02"
+    },
+    {
+      "name": "Mireya Rodríguez",
+      "account": "КС",
+      "company": "Dr. Falk Pharma",
+      "position": "Product Manager",
+      "profile_url": "https://www.linkedin.com/in/mireyarullorodriguez/",
+      "their_reply": "Hello Kateryna! Thank you for your interest :) We'll keep you in mind for future partnerships",
+      "status": "Новий",
+      "reply_date": "2026-06-02"
+    },
     {
       "name": "João Jesus",
       "account": "СН",
