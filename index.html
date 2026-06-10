@@ -474,10 +474,12 @@ async function init(){
   let rdFilter = 'all';
 
   function rdAccTag(accName) {
-    const short = Object.entries(ACC_MAP).find(([k,v]) => accName && accName.toLowerCase().includes(v.toLowerCase()))?.[0]
-      || (accName||'').slice(0,2).toUpperCase();
-    const tag = {'ДВ':'tag-dv','КС':'tag-ks','СЦ':'tag-st','СН':'tag-sn'}[short] || 'tag-sn';
-    return `<span class="acc-tag ${tag}">${short}</span>`;
+    const name = (accName || '').toLowerCase();
+    if (name.includes('dmytro') || name.includes('vasylchenko')) return '<span class="acc-tag tag-dv">Дмитро</span>';
+    if (name.includes('kateryna') || name.includes('skybyliak')) return '<span class="acc-tag tag-ks">Катерина</span>';
+    if (name.includes('serhii tsyhanenko') || name.includes('tsyganenko') || name.includes('tsyhanenko')) return '<span class="acc-tag tag-st">Циганенко</span>';
+    if (name.includes('serhii nabok') || name.includes('nabok')) return '<span class="acc-tag tag-sn">Набок</span>';
+    return `<span class="acc-tag tag-sn">${accName||'—'}</span>`;
   }
 
   async function rdUpdateStatus(personId, accountId, status, selectEl) {
