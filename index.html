@@ -121,6 +121,27 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 .ap-bar{height:3px;border-radius:2px;margin-top:3px;margin-bottom:8px}
 .ap-rate{font-size:11px;padding:2px 8px;border-radius:20px;margin-top:8px;display:inline-block}
 .ap-no-data{color:var(--muted);font-size:13px;padding:1rem 0}
+
+.rd-filters{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
+.rd-chip{font-size:11px;padding:4px 12px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);cursor:pointer;background:transparent;transition:all .15s}
+.rd-chip.active{background:var(--surface);color:var(--text);border-color:#444}
+.rd-table{width:100%;border-collapse:collapse;font-size:13px}
+.rd-table th{text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border);font-weight:500}
+.rd-row{cursor:pointer;transition:background .1s}
+.rd-row:hover td{background:rgba(255,255,255,.03)}
+.rd-row td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.rd-row.expanded td{border-bottom:none}
+.rd-expand-row td{padding:0;border-bottom:1px solid var(--border)}
+.rd-expand-inner{display:none;padding:0 12px 16px;animation:fadeIn .15s ease}
+.rd-expand-row.open .rd-expand-inner{display:block}
+.rd-convo{display:flex;flex-direction:column;gap:10px;max-height:360px;overflow-y:auto;padding-right:4px}
+.rd-convo::-webkit-scrollbar{width:4px}.rd-convo::-webkit-scrollbar-track{background:transparent}.rd-convo::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.rd-bubble{border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.6;max-width:88%}
+.rd-bubble-us{background:#1a2a1a;color:#c8e6c9;align-self:flex-end;border-bottom-right-radius:2px}
+.rd-bubble-them{background:#1e1e1e;color:var(--text);align-self:flex-start;border-bottom-left-radius:2px;border:1px solid var(--border)}
+.rd-bubble-label{font-size:10px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em}
+.rd-status-select{font-size:11px;padding:3px 8px;border-radius:4px;border:0.5px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer}
+.rd-loading{color:var(--muted);font-size:13px;padding:1.5rem 0;text-align:center}
 </style>
 </head>
 <body>
@@ -246,6 +267,35 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     <div class="kpi"><div class="kpi-val accent" id="ap-rr">—</div><div class="kpi-lbl">Reply rate</div></div>
   </div>
   <div class="ap-grid" id="ap-sequences"></div>
+
+
+  <div class="divider"></div>
+  <div class="section-title">Replied Dialogs — переписки з LinkedIn</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val" id="rd-total">—</div><div class="kpi-lbl">Всього діалогів</div></div>
+    <div class="kpi"><div class="kpi-val green" id="rd-positive">—</div><div class="kpi-lbl">Позитивних</div></div>
+    <div class="kpi"><div class="kpi-val blue" id="rd-followup">—</div><div class="kpi-lbl">Follow-up</div></div>
+    <div class="kpi"><div class="kpi-val accent" id="rd-new">—</div><div class="kpi-lbl">Нових</div></div>
+  </div>
+  <div class="rd-filters" id="rd-filters">
+    <span class="rd-chip active" data-acc="all">Всі</span>
+    <span class="rd-chip" data-acc="ДВ">Дмитро</span>
+    <span class="rd-chip" data-acc="КС">Катерина</span>
+    <span class="rd-chip" data-acc="СЦ">Циганенко</span>
+    <span class="rd-chip" data-acc="СН">Набок</span>
+  </div>
+  <div class="chart-wrap" style="padding:0;overflow:hidden">
+    <table class="rd-table">
+      <thead><tr>
+        <th style="width:35%">Контакт</th>
+        <th>Акаунт</th>
+        <th>Кампанія</th>
+        <th>Дата</th>
+        <th>Статус</th>
+      </tr></thead>
+      <tbody id="rd-tbody"><tr><td colspan="5" class="rd-loading">Завантаження...</td></tr></tbody>
+    </table>
+  </div>
 
 </main>
 <footer>
@@ -411,6 +461,165 @@ async function init(){
 
   renderReplies('all');
 
+
+
+  // ── Replied Dialogs ───────────────────────────────────────────────────────
+  const RD_WORKER = 'https://adshot-eu-dashboard-bot.nabokmanberstein.workers.dev';
+  const RD_TOKEN  = '7cc0819dcf254231c0f258661e8835fed6c9d0191de949bc2ed42ce007af2899';
+  const RD_STATUSES = ['Новий','Позитивний','Follow-up','Відмова','Нецільовий','Архів'];
+  const RD_STATUS_CLS = {'Новий':'s-new','Позитивний':'s-meet','Follow-up':'s-work','Відмова':'s-no','Нецільовий':'s-irr','Архів':'s-irr'};
+  const ACC_MAP = {'ДВ':'Дмитро','КС':'Катерина','СЦ':'Циганенко','СН':'Набок'};
+
+  let rdDialogs = [];
+  let rdFilter = 'all';
+
+  function rdAccTag(accName) {
+    const short = Object.entries(ACC_MAP).find(([k,v]) => accName && accName.toLowerCase().includes(v.toLowerCase()))?.[0]
+      || (accName||'').slice(0,2).toUpperCase();
+    const tag = {'ДВ':'tag-dv','КС':'tag-ks','СЦ':'tag-st','СН':'tag-sn'}[short] || 'tag-sn';
+    return `<span class="acc-tag ${tag}">${short}</span>`;
+  }
+
+  async function rdUpdateStatus(personId, accountId, status, selectEl) {
+    selectEl.disabled = true;
+    try {
+      await fetch(RD_WORKER + '/api/dialogs/status', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','x-dialogs-token':RD_TOKEN},
+        body: JSON.stringify({person_id: personId, account_id: accountId, status})
+      });
+      // Update badge in row
+      const badge = selectEl.closest('tr').previousElementSibling?.querySelector('.status-badge');
+      if (badge) {
+        badge.className = 'status-badge ' + (RD_STATUS_CLS[status]||'s-irr');
+        badge.textContent = status;
+      }
+      // Update KPIs
+      const d = rdDialogs.find(x => (x.contact?.person_id || x.contact?.name) === personId);
+      if (d) d.ui_status = status;
+      rdUpdateKPIs();
+    } catch(e) { console.error('Status update failed', e); }
+    finally { selectEl.disabled = false; }
+  }
+
+  function rdUpdateKPIs() {
+    const active = rdDialogs;
+    document.getElementById('rd-total').textContent = active.length;
+    document.getElementById('rd-positive').textContent = active.filter(d=>d.ui_status==='Позитивний').length;
+    document.getElementById('rd-followup').textContent = active.filter(d=>d.ui_status==='Follow-up').length;
+    document.getElementById('rd-new').textContent = active.filter(d=>d.ui_status==='Новий').length;
+  }
+
+  function rdRender(filter) {
+    const tbody = document.getElementById('rd-tbody');
+    const filtered = filter === 'all' ? rdDialogs
+      : rdDialogs.filter(d => {
+          const name = d.account?.name || '';
+          const short = Object.entries(ACC_MAP).find(([k,v]) => name.toLowerCase().includes(v.toLowerCase()))?.[0];
+          return short === filter;
+        });
+
+    if (!filtered.length) {
+      tbody.innerHTML = '<tr><td colspan="5" style="color:var(--muted);padding:1.5rem;text-align:center">Діалогів не знайдено</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = '';
+    filtered.forEach((d, i) => {
+      const contact = d.contact || {};
+      const account = d.account || {};
+      const campaign = d.campaign || {};
+      const messages = d.messages || [];
+      const pid = contact.person_id || contact.name || i;
+      const aid = account.external_id || '';
+      const status = d.ui_status || 'Новий';
+      const statusCls = RD_STATUS_CLS[status] || 's-irr';
+      const date = d.reply?.detected_at ? new Date(d.reply.detected_at).toLocaleDateString('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—';
+
+      const mainRow = document.createElement('tr');
+      mainRow.className = 'rd-row';
+      mainRow.innerHTML = `
+        <td>
+          <div style="font-weight:500">${contact.name||'—'}<span class="chevron">▶</span></div>
+          ${contact.headline ? `<div style="font-size:11px;color:var(--muted);margin-top:2px">${contact.headline}</div>` : ''}
+        </td>
+        <td>${rdAccTag(account.name)}</td>
+        <td style="font-size:11px;color:var(--muted)">${campaign.name||'—'}</td>
+        <td style="font-size:12px;color:var(--muted);white-space:nowrap">${date}</td>
+        <td><span class="status-badge ${statusCls}">${status}</span></td>
+      `;
+
+      const expandRow = document.createElement('tr');
+      expandRow.className = 'rd-expand-row';
+      const expandTd = document.createElement('td');
+      expandTd.setAttribute('colspan','5');
+      const inner = document.createElement('div');
+      inner.className = 'rd-expand-inner';
+
+      // Messages bubbles
+      const convo = document.createElement('div');
+      convo.className = 'rd-convo';
+      messages.forEach(m => {
+        const isSent = m.direction === 'sent';
+        convo.innerHTML += `<div style="align-self:${isSent?'flex-end':'flex-start'};max-width:88%">
+          <div class="rd-bubble-label" style="${isSent?'text-align:right':''}">${isSent?'Ми':contact.name||'Контакт'}</div>
+          <div class="rd-bubble ${isSent?'rd-bubble-us':'rd-bubble-them'}">${m.text||''}</div>
+        </div>`;
+      });
+      inner.appendChild(convo);
+
+      // Status selector
+      const statusRow = document.createElement('div');
+      statusRow.style.cssText = 'display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:10px;border-top:1px solid var(--border)';
+      statusRow.innerHTML = `<span style="font-size:11px;color:var(--muted)">Статус:</span>
+        <select class="rd-status-select" onchange="rdUpdateStatus('${pid}','${aid}',this.value,this)">
+          ${RD_STATUSES.map(s=>`<option value="${s}" ${s===status?'selected':''}>${s}</option>`).join('')}
+        </select>`;
+      inner.appendChild(statusRow);
+
+      expandTd.appendChild(inner);
+      expandRow.appendChild(expandTd);
+
+      mainRow.addEventListener('click', () => {
+        const isOpen = expandRow.classList.contains('open');
+        document.querySelectorAll('.rd-expand-row.open').forEach(el => {
+          el.classList.remove('open');
+          el.previousElementSibling?.classList.remove('expanded');
+        });
+        if (!isOpen) {
+          expandRow.classList.add('open');
+          mainRow.classList.add('expanded');
+          setTimeout(()=>mainRow.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+        }
+      });
+
+      tbody.appendChild(mainRow);
+      tbody.appendChild(expandRow);
+    });
+  }
+
+  // Load dialogs
+  fetch(RD_WORKER + '/api/dialogs/latest', {
+    headers: {'x-dialogs-token': RD_TOKEN}
+  })
+  .then(r => r.json())
+  .then(data => {
+    rdDialogs = data.dialogs || [];
+    rdUpdateKPIs();
+    rdRender('all');
+
+    document.getElementById('rd-filters').querySelectorAll('.rd-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('rd-filters').querySelectorAll('.rd-chip').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        rdFilter = btn.dataset.acc;
+        rdRender(rdFilter);
+      });
+    });
+  })
+  .catch(e => {
+    document.getElementById('rd-tbody').innerHTML = `<tr><td colspan="5" style="color:var(--muted);padding:1.5rem;text-align:center">Помилка завантаження: ${e.message}</td></tr>`;
+  });
 
   // ── Apollo ────────────────────────────────────────────────────────────────
   const apollo = apolloData || data.apollo || null;
