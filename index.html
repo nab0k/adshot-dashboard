@@ -736,59 +736,88 @@ async function init(){
 init().catch(e=>{document.querySelector('main').innerHTML=`<p style="color:var(--muted);padding:2rem">Помилка: ${e.message}</p>`;});
 </script>
 
-\n
-<script id="kill-apollo-replied-email-sausage">
+
+<script id="hide-apollo-replied-emails-safe-v2">
 (() => {
-  function looksLikeApolloReplies(el) {
-    const text = (el.innerText || el.textContent || '').trim();
-    return /APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i.test(text)
-      || (/Apollo/i.test(text) && /Replied Emails/i.test(text) && !/Replied Dialogs|LinkedHelper|LinkedIn/i.test(text));
+  const TITLE_RE = /APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i;
+
+  function norm(x) {
+    return (x || '').replace(/\s+/g, ' ').trim();
   }
 
-  function findKillBox(el) {
-    let node = el;
-    for (let i = 0; i < 8 && node && node !== document.body; i++) {
-      const text = (node.innerText || node.textContent || '').trim();
-      const hasApolloTitle = /APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i.test(text);
-      const hasTable = !!node.querySelector?.('table, thead, tbody');
-      const isBigEnough = text.length > 80;
+  function isDangerousBox(el) {
+    if (!el || el === document.body || el === document.documentElement) return true;
+    if (el.tagName === 'MAIN' || el.tagName === 'HEADER') return true;
+    if (el.querySelector && el.querySelector('header')) return true;
+    return false;
+  }
 
-      if (hasApolloTitle && (hasTable || isBigEnough)) {
+  function findSmallBox(titleEl) {
+    let node = titleEl.parentElement;
+
+    while (node && node !== document.body) {
+      const text = norm(node.innerText || node.textContent || '');
+      const hasTitle = TITLE_RE.test(text);
+      const hasApolloOnly = hasTitle && !/Replied Dialogs|LinkedHelper|LinkedIn/i.test(text);
+      const hasTable = !!node.querySelector?.('table, thead, tbody');
+      const headingCount = node.querySelectorAll?.('h1,h2,h3,h4')?.length || 0;
+
+      // Беремо найменший контейнер з цим заголовком і таблицею,
+      // але не весь main/dashboard.
+      if (
+        hasApolloOnly &&
+        hasTable &&
+        headingCount <= 2 &&
+        text.length < 30000 &&
+        !isDangerousBox(node)
+      ) {
         return node;
       }
 
       node = node.parentElement;
     }
+
     return null;
   }
 
-  function killApolloSausage() {
-    const nodes = [...document.querySelectorAll('h1,h2,h3,h4,section,article,div')];
+  function hideApolloReplies() {
+    const headings = [...document.querySelectorAll('h1,h2,h3,h4')];
 
-    for (const el of nodes) {
-      if (!looksLikeApolloReplies(el)) continue;
+    for (const h of headings) {
+      const title = norm(h.innerText || h.textContent || '');
+      if (!TITLE_RE.test(title)) continue;
 
-      const box = findKillBox(el);
+      const box = findSmallBox(h);
+
       if (box) {
-        box.remove();
-        return true;
+        box.style.display = 'none';
+        box.setAttribute('data-hidden-reason', 'apollo-replied-emails-without-real-text');
+      } else {
+        // fallback: ховаємо тільки сам заголовок і кілька наступних sibling-елементів,
+        // але не чіпаємо батьківський main.
+        h.style.display = 'none';
+        let sib = h.nextElementSibling;
+        for (let i = 0; sib && i < 4; i++) {
+          const next = sib.nextElementSibling;
+          sib.style.display = 'none';
+          sib = next;
+        }
       }
     }
-
-    return false;
   }
 
-  killApolloSausage();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideApolloReplies);
+  } else {
+    hideApolloReplies();
+  }
 
-  const observer = new MutationObserver(() => {
-    killApolloSausage();
-  });
-
-  observer.observe(document.documentElement, {
+  new MutationObserver(hideApolloReplies).observe(document.documentElement, {
     childList: true,
     subtree: true,
   });
 })();
 </script>
-\n</body>
+
+</body>
 </html>
