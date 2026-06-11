@@ -598,12 +598,12 @@ async function init(){
 
   function renderTrendTab(acc){
     const dates=getDates(),lbls=dates.map(d=>d.slice(5)),vals=aggByDate(dates,acc);
-    const tot=vals.reduce((s,v)=>({accepted:s.accepted+(v.accepted||0),messaged:s.messaged+(v.messaged||0),replied:s.replied+(v.replied||0)}),{accepted:0,messaged:0,replied:0});
     const last=vals[vals.length-1]||{},prev=vals[vals.length-2]||{};
-    document.getElementById('ta-acc').textContent=tot.accepted;
-    document.getElementById('ta-msg').textContent=tot.messaged;
-    document.getElementById('ta-rep').textContent=tot.replied;
-    document.getElementById('ta-rr').textContent=tot.messaged>0?(tot.replied/tot.messaged*100).toFixed(1)+'%':'—';
+    const cur={accepted:last.accepted||0,messaged:last.messaged||0,replied:last.replied||0};
+    document.getElementById('ta-acc').textContent=cur.accepted;
+    document.getElementById('ta-msg').textContent=cur.messaged;
+    document.getElementById('ta-rep').textContent=cur.replied;
+    document.getElementById('ta-rr').textContent=cur.messaged>0?(cur.replied/cur.messaged*100).toFixed(1)+'%':'—';
     const fmt=(n,l)=>n===0?'—':(n>0?'+':'')+n+' '+l;
     const cls=n=>n>0?'up':n<0?'down':'flat';
     const da=(last.accepted||0)-(prev.accepted||0),dm=(last.messaged||0)-(prev.messaged||0),dr=(last.replied||0)-(prev.replied||0);
