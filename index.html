@@ -184,7 +184,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 
   <div class="section-title">Outreach — воронка</div>
   <div class="kpi-row">
-    <div class="kpi"><div class="kpi-val blue" id="kpi-accepted">—</div><div class="kpi-lbl">Прийнято запрошень</div></div>
+    <div class="kpi"><div class="kpi-val blue" id="kpi-accepted">—</div><div class="kpi-lbl">Надіслано конектів</div></div>
     <div class="kpi"><div class="kpi-val" id="kpi-messaged">—</div><div class="kpi-lbl">Повідомлень надіслано</div></div>
     <div class="kpi"><div class="kpi-val green" id="kpi-replied">—</div><div class="kpi-lbl">Відповідей отримано</div></div>
     <div class="kpi"><div class="kpi-val accent" id="kpi-reply-rate">—</div><div class="kpi-lbl">Reply rate</div></div>
@@ -251,7 +251,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
       <span class="ta-chip" data-acc="СН">Набок</span>
     </div>
     <div class="ta-metric-row">
-      <div class="ta-metric"><div class="ta-val" id="ta-acc">—</div><div class="ta-lbl">Прийнято</div><div class="ta-delta flat" id="ta-acc-d">—</div></div>
+      <div class="ta-metric"><div class="ta-val" id="ta-acc">—</div><div class="ta-lbl">Надіслано конект</div><div class="ta-delta flat" id="ta-acc-d">—</div></div>
       <div class="ta-metric"><div class="ta-val" id="ta-msg">—</div><div class="ta-lbl">Повідомлень</div><div class="ta-delta flat" id="ta-msg-d">—</div></div>
       <div class="ta-metric"><div class="ta-val" id="ta-rep">—</div><div class="ta-lbl">Відповідей</div><div class="ta-delta flat" id="ta-rep-d">—</div></div>
       <div class="ta-metric"><div class="ta-val" id="ta-rr">—</div><div class="ta-lbl">Reply rate</div><div class="ta-delta flat" id="ta-rr-d">—</div></div>
@@ -616,10 +616,10 @@ async function init(){
     if(dates.length<3){wrap.style.display='none';empty.style.display='block';return;}
     wrap.style.display='block';empty.style.display='none';
     const ds=acc==='all'
-      ?[{label:'Прийнято',data:vals.map(v=>v.accepted),borderColor:'#4a9eff',backgroundColor:'rgba(74,158,255,.07)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#4a9eff'},
+      ?[{label:'Надіслано конект',data:vals.map(v=>v.accepted),borderColor:'#4a9eff',backgroundColor:'rgba(74,158,255,.07)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#4a9eff'},
         {label:'Повідомлень',data:vals.map(v=>v.messaged),borderColor:'#f5a623',backgroundColor:'rgba(245,166,35,.05)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#f5a623'},
         {label:'Відповідей',data:vals.map(v=>v.replied),borderColor:'#2ecc71',backgroundColor:'rgba(46,204,113,.05)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#2ecc71'}]
-      :[{label:'Прийнято',data:vals.map(v=>v.accepted),borderColor:ACC_COLORS4[acc]||'#4a9eff',backgroundColor:'rgba(74,158,255,.07)',fill:true,tension:.4,pointRadius:4},
+      :[{label:'Надіслано конект',data:vals.map(v=>v.accepted),borderColor:ACC_COLORS4[acc]||'#4a9eff',backgroundColor:'rgba(74,158,255,.07)',fill:true,tension:.4,pointRadius:4},
         {label:'Повідомлень',data:vals.map(v=>v.messaged),borderColor:'#f5a623',fill:true,tension:.4,pointRadius:4},
         {label:'Відповідей',data:vals.map(v=>v.replied),borderColor:'#2ecc71',fill:true,tension:.4,pointRadius:4}];
     document.getElementById('ta-legend-a').innerHTML=ds.map(x=>`<span class="ta-leg"><span class="ta-leg-dot" style="background:${x.borderColor}"></span>${x.label}</span>`).join('');
@@ -636,7 +636,7 @@ async function init(){
   function renderFunnelTab(){
     if(chartFunnel)chartFunnel.destroy();
     const latest=records.filter(r=>!r.is_baseline).reduce((m,r)=>{if(!m[r.account]||r.date>m[r.account].date)m[r.account]=r;return m},{});
-    chartFunnel=new Chart(document.getElementById('ta-chart-funnel'),{type:'bar',data:{labels:ACCS4.map(a=>ACC_LABELS4[a]),datasets:[{label:'В базі',data:ACCS4.map(a=>latest[a]?.processed||0),backgroundColor:'rgba(74,158,255,.35)',borderRadius:3},{label:'Прийнято',data:ACCS4.map(a=>latest[a]?.accepted||0),backgroundColor:'#4a9eff',borderRadius:3},{label:'Повідомлень',data:ACCS4.map(a=>latest[a]?.messaged||0),backgroundColor:'#f5a623',borderRadius:3},{label:'Відповідей',data:ACCS4.map(a=>latest[a]?.replied||0),backgroundColor:'#2ecc71',borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}},y:{grid:{display:false},ticks:{color:'#6b6860'}}}}});
+    chartFunnel=new Chart(document.getElementById('ta-chart-funnel'),{type:'bar',data:{labels:ACCS4.map(a=>ACC_LABELS4[a]),datasets:[{label:'В базі',data:ACCS4.map(a=>latest[a]?.processed||0),backgroundColor:'rgba(74,158,255,.35)',borderRadius:3},{label:'Надіслано конект',data:ACCS4.map(a=>latest[a]?.accepted||0),backgroundColor:'#4a9eff',borderRadius:3},{label:'Повідомлень',data:ACCS4.map(a=>latest[a]?.messaged||0),backgroundColor:'#f5a623',borderRadius:3},{label:'Відповідей',data:ACCS4.map(a=>latest[a]?.replied||0),backgroundColor:'#2ecc71',borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}},y:{grid:{display:false},ticks:{color:'#6b6860'}}}}});
   }
 
   function renderReplyTab(){
