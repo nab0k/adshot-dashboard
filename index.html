@@ -156,7 +156,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 .er-table tr:hover td{background:rgba(255,255,255,.02)}
 .er-seq{font-size:11px;padding:2px 8px;border-radius:4px;background:#1a2a3a;color:#4a9eff;white-space:nowrap}
 </style>
-  <link rel="stylesheet" href="apollo_email_replies.css">
+  <link rel="stylesheet" href="apollo_email_replies.css?v=20260611">
 </head>
 <body>
 <header>
@@ -322,10 +322,10 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     <div class="aer-kpi"><div class="aer-kpi-val" id="aer-kpi-unr" style="color:#ff4d00">—</div><div class="aer-kpi-lbl">Не відповіли ми</div></div>
   </div>
   <div class="aer-chips">
-    <span class="aer-chip active" data-f="all">Всі</span>
-    <span class="aer-chip" data-f="positive">Позитивні</span>
-    <span class="aer-chip" data-f="attention">Питання</span>
-    <span class="aer-chip" data-f="negative">Відмови</span>
+    <button type="button" class="aer-chip active" data-f="all">Всі</button>
+    <button type="button" class="aer-chip" data-f="positive">Позитивні</button>
+    <button type="button" class="aer-chip" data-f="attention">Питання</button>
+    <button type="button" class="aer-chip" data-f="negative">Відмови</button>
   </div>
   <div id="aer-list">
     <div class="aer-empty">Завантаження...</div>
@@ -857,6 +857,6 @@ init().catch(e=>{document.querySelector('main').innerHTML=`<p style="color:var(-
   });
 })();
 </script>
-\n  <script src="apollo_email_replies.js" defer></script>
+\n  <script src="apollo_email_replies.js?v=20260611" defer></script>
 </body>
 </html>

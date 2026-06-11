@@ -20,8 +20,9 @@
 
   function signalFor(rc) {
     var red   = ["not_interested","unsubscribe","already_left_company_or_not_right_person"];
-    var green = ["willing_to_meet","follow_up_question","person_referral"];
+    var green = ["willing_to_meet","person_referral"];
     if (red.indexOf(rc) !== -1)   return { color:"red",    label:"відмова" };
+    if (rc === "follow_up_question") return { color:"yellow", label:"питання" };
     if (green.indexOf(rc) !== -1) return { color:"green",  label: rc === "willing_to_meet" ? "готовий" : "питання" };
     return { color:"yellow", label:"увага" };
   }

@@ -8,7 +8,7 @@
 .aer-kpi-lbl { font-size: 11px; color: var(--muted, #6b6860); text-transform: uppercase; letter-spacing: .06em; margin-top: 3px; }
 
 .aer-chips { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; }
-.aer-chip { font-size: 11px; padding: 4px 12px; border-radius: 20px; border: 0.5px solid var(--border, #2a2a2a); color: var(--muted, #6b6860); cursor: pointer; background: transparent; transition: all .15s; }
+.aer-chip { font: inherit; font-size: 11px; padding: 4px 12px; border-radius: 20px; border: 0.5px solid var(--border, #2a2a2a); color: var(--muted, #6b6860); cursor: pointer; background: transparent; transition: all .15s; }
 .aer-chip.active, .aer-chip:hover { background: var(--surface, #1a1a1a); color: var(--text, #f0ede8); border-color: #444; }
 
 .aer-table-wrap { background: var(--bg, #111); border: 0.5px solid var(--border, #2a2a2a); border-radius: 8px; overflow: hidden; }
