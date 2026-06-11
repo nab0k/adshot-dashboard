@@ -354,7 +354,7 @@ async function init(){
   const grid=document.getElementById('cards-grid');
   accs.forEach((acc,i)=>{
     const r=cur[i],info=ACCOUNTS[acc],mx=r.processed||1;
-    const ar=r.processed>0?(r.accepted/r.processed*100).toFixed(1):0;
+    const ar=r.accepted>0?(r.messaged/r.accepted*100).toFixed(1):0;
     const rr=r.messaged>0?(r.replied/r.messaged*100).toFixed(1):null;
     grid.innerHTML+=`<div class="card"><div class="card-head"><div class="av ${info.cls}">${acc}</div><div><div class="card-name">${info.label}</div><div class="card-role">${info.role}</div></div></div><div class="funnel">${['processed','accepted','messaged','replied'].map((k,j)=>`<div class="funnel-step"><div class="funnel-num">${r[k]||0}</div><div class="funnel-lbl">${['В базі','Надіслано конект','Надіслано msg','Відповідей'][j]}</div><div class="funnel-bar ${'bar-proc bar-acc bar-msg bar-rep'.split(' ')[j]}" style="width:${Math.round((r[k]||0)/mx*100)}%"></div></div>`).join('')}</div><div class="rates"><span class="pill pill-acc">Accept ${ar}%</span>${rr!==null?`<span class="pill pill-rep">Reply ${rr}%</span>`:`<span class="pill ${rr!==null?'pill-rep':'pill-warn'}">${rr!==null?'Reply '+rr+'%':'Повідомлень: '+r.messaged}</span>`}</div></div>`;
   });
