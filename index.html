@@ -163,6 +163,23 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
   <div class="header-meta">Оновлено: <span id="updated-at">—</span></div>
 </header>
 <main>
+  <div class="section-title">CRM — Pipeline</div>
+  <div class="crm-kpi">
+    <div class="kpi"><div class="kpi-val" id="c-total">—</div><div class="kpi-lbl">Активних deals</div></div>
+    <div class="kpi"><div class="kpi-val accent" id="c-pipe">—</div><div class="kpi-lbl">Pipeline €</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:var(--amber)" id="c-meet">—</div><div class="kpi-lbl">Зустрічей</div></div>
+    <div class="kpi"><div class="kpi-val" id="c-fu">—</div><div class="kpi-lbl">Follow-ups цього тижня</div></div>
+  </div>
+  <div class="pipeline" id="c-board"></div>
+  <div class="chart-wrap" style="padding:0;overflow:hidden">
+    <table class="fu-table"><thead><tr>
+      <th>Контакт</th><th>Компанія</th><th>Stage</th><th>Дата</th><th>Що робити</th><th></th>
+    </tr></thead><tbody id="c-tbody"></tbody></table>
+  </div>
+
+
+
+  <div class="divider"></div>
   <p class="page-title">LinkedIn Outreach — статистика кампаній</p>
 
   <div class="section-title">Outreach — воронка</div>
@@ -180,23 +197,6 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     <div class="chart-canvas-wrap"><canvas id="replyChart"></canvas></div>
   </div>
 
-
-
-
-  <div class="divider"></div>
-  <div class="section-title">CRM — Pipeline</div>
-  <div class="crm-kpi">
-    <div class="kpi"><div class="kpi-val" id="c-total">—</div><div class="kpi-lbl">Активних deals</div></div>
-    <div class="kpi"><div class="kpi-val accent" id="c-pipe">—</div><div class="kpi-lbl">Pipeline €</div></div>
-    <div class="kpi"><div class="kpi-val" style="color:var(--amber)" id="c-meet">—</div><div class="kpi-lbl">Зустрічей</div></div>
-    <div class="kpi"><div class="kpi-val" id="c-fu">—</div><div class="kpi-lbl">Follow-ups цього тижня</div></div>
-  </div>
-  <div class="pipeline" id="c-board"></div>
-  <div class="chart-wrap" style="padding:0;overflow:hidden">
-    <table class="fu-table"><thead><tr>
-      <th>Контакт</th><th>Компанія</th><th>Stage</th><th>Дата</th><th>Що робити</th><th></th>
-    </tr></thead><tbody id="c-tbody"></tbody></table>
-  </div>
 
 
 
