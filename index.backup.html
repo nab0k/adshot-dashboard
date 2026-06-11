@@ -142,6 +142,19 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 .rd-bubble-label{font-size:10px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em}
 .rd-status-select{font-size:11px;padding:3px 8px;border-radius:4px;border:0.5px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer}
 .rd-loading{color:var(--muted);font-size:13px;padding:1.5rem 0;text-align:center}
+
+.an-tabs{display:flex;gap:0;border-bottom:0.5px solid var(--border);margin-bottom:1.25rem}
+.an-tab{font-size:12px;padding:8px 16px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s}
+.an-tab.active{color:var(--text);border-bottom-color:var(--text)}
+.an-tab:hover{color:var(--text)}
+.an-panel{display:none}.an-panel.active{display:block}
+
+.er-table{width:100%;border-collapse:collapse;font-size:13px}
+.er-table th{text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border);font-weight:500}
+.er-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.er-table tr:last-child td{border-bottom:none}
+.er-table tr:hover td{background:rgba(255,255,255,.02)}
+.er-seq{font-size:11px;padding:2px 8px;border-radius:4px;background:#1a2a3a;color:#4a9eff;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -186,10 +199,18 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
   </div>
 
 
-  <div class="divider"></div>
 
-  <div class="section-title">Аналітика — тренд по днях (A)</div>
-  <div class="ta-section">
+  <div class="divider"></div>
+  <div class="section-title">Аналітика</div>
+
+  <div class="an-tabs" id="an-tabs">
+    <div class="an-tab active" data-tab="trend">Тренд по днях</div>
+    <div class="an-tab" data-tab="accounts">По акаунтах</div>
+    <div class="an-tab" data-tab="funnel">Воронка</div>
+    <div class="an-tab" data-tab="reply">Reply rate</div>
+  </div>
+
+  <div id="an-trend" class="an-panel active">
     <div class="ta-filters" id="ta-accs">
       <span class="ta-chip active" data-acc="all">Всі</span>
       <span class="ta-chip" data-acc="ДВ">Дмитро</span>
@@ -205,32 +226,45 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     </div>
     <div class="ta-chart-wrap">
       <div class="ta-legend" id="ta-legend-a"></div>
-      <div class="ta-chart"><canvas id="ta-chart-a" role="img" aria-label="Лінійний графік тренду по днях">Тренд метрик по днях.</canvas></div>
+      <div class="ta-chart" id="ta-chart-wrap-a">
+        <canvas id="ta-chart-a" role="img" aria-label="Лінійний графік тренду по днях">Тренд метрик по днях.</canvas>
+      </div>
+      <div id="ta-empty" style="display:none;text-align:center;padding:2rem 0;color:var(--muted);font-size:13px">
+        Графік з'явиться після 3+ днів даних. Зараз: <span id="ta-days">2</span> точки.
+      </div>
     </div>
   </div>
 
-  <div class="section-title">Порівняння periods (C)</div>
-  <div class="ta-section">
-    <div class="ta-range-row">
-      <label>Period A:</label>
-      <input type="date" id="ta-a1" value="2026-06-01">
-      <span style="color:var(--muted);font-size:12px">→</span>
-      <input type="date" id="ta-a2" value="2026-06-15">
-      <label style="margin-left:8px">Period B:</label>
-      <input type="date" id="ta-b1" value="2026-06-16">
-      <span style="color:var(--muted);font-size:12px">→</span>
-      <input type="date" id="ta-b2" value="2026-06-30">
-      <button onclick="renderCompare()" style="margin-left:4px">Порівняти ↗</button>
-    </div>
-    <div class="ta-compare" id="ta-compare"></div>
+  <div id="an-accounts" class="an-panel" style="display:none">
     <div class="ta-chart-wrap">
       <div class="ta-legend">
-        <span class="ta-leg"><span class="ta-leg-dot" style="background:#4a9eff"></span>Прийнято</span>
-        <span class="ta-leg"><span class="ta-leg-dot" style="background:#2ecc71"></span>Reply rate %</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#4a9eff"></span>Дмитро</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#2ecc71"></span>Катерина</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#b085f5"></span>Циганенко</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#ff4d00"></span>Набок</span>
       </div>
-      <div class="ta-chart"><canvas id="ta-chart-c" role="img" aria-label="Area chart тренду прийнятих і reply rate">Area chart тренд.</canvas></div>
+      <div class="ta-chart"><canvas id="ta-chart-acc" role="img" aria-label="Grouped bar chart прийнято по акаунтах по днях">По акаунтах.</canvas></div>
     </div>
   </div>
+
+  <div id="an-funnel" class="an-panel" style="display:none">
+    <div class="ta-chart-wrap">
+      <div class="ta-legend">
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:rgba(74,158,255,.4)"></span>Оброблено</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#4a9eff"></span>Прийнято</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#f5a623"></span>Повідомлень</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:#2ecc71"></span>Відповідей</span>
+      </div>
+      <div style="position:relative;height:240px"><canvas id="ta-chart-funnel" role="img" aria-label="Horizontal bar chart воронки по акаунтах">Воронка.</canvas></div>
+    </div>
+  </div>
+
+  <div id="an-reply" class="an-panel" style="display:none">
+    <div class="ta-chart-wrap">
+      <div class="ta-chart"><canvas id="ta-chart-reply" role="img" aria-label="Bar chart reply rate по акаунтах">Reply rate.</canvas></div>
+    </div>
+  </div>
+
 
 
   <div class="divider"></div>
@@ -272,6 +306,8 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
       <tbody id="rd-tbody"><tr><td colspan="5" class="rd-loading">Завантаження...</td></tr></tbody>
     </table>
   </div>
+
+
 
 </main>
 <footer>
@@ -335,6 +371,10 @@ async function init(){
 
 
 
+
+
+  
+  // Apollo Replied Emails renderer removed: no real inbound reply text yet.
 
   // ── Replied Dialogs ───────────────────────────────────────────────────────
   const RD_WORKER = 'https://adshot-eu-dashboard-bot.nabokmanberstein.workers.dev';
@@ -542,6 +582,92 @@ async function init(){
     document.getElementById('ap-sequences').innerHTML = '<div class="ap-no-data">Даних ще немає. Запусти fetch_apollo_local.py щоб підтягнути дані з Apollo.</div>';
   }
 
+
+  // ── Analytics tabs ────────────────────────────────────────────────────────
+  const daily = data.daily || {};
+  const ACCS4 = ['ДВ','КС','СЦ','СН'];
+  const ACC_COLORS4 = {'ДВ':'#4a9eff','КС':'#2ecc71','СЦ':'#b085f5','СН':'#ff4d00'};
+  const ACC_LABELS4 = {'ДВ':'Дмитро','КС':'Катерина','СЦ':'Циганенко','СН':'Набок'};
+  let chartTrend=null, chartAcc=null, chartFunnel=null, chartReply=null;
+  let taFilter='all';
+
+  function getDates(){return Object.keys(daily).sort();}
+  function aggByDate(dates,acc){return dates.map(d=>{const day=daily[d]||{};if(acc==='all')return{accepted:ACCS4.reduce((s,a)=>s+(day[a]?.accepted||0),0),messaged:ACCS4.reduce((s,a)=>s+(day[a]?.messaged||0),0),replied:ACCS4.reduce((s,a)=>s+(day[a]?.replied||0),0)};return day[acc]||{accepted:0,messaged:0,replied:0};});}
+
+  function renderTrendTab(acc){
+    const dates=getDates(),lbls=dates.map(d=>d.slice(5)),vals=aggByDate(dates,acc);
+    const tot=vals.reduce((s,v)=>({accepted:s.accepted+(v.accepted||0),messaged:s.messaged+(v.messaged||0),replied:s.replied+(v.replied||0)}),{accepted:0,messaged:0,replied:0});
+    const last=vals[vals.length-1]||{},prev=vals[vals.length-2]||{};
+    document.getElementById('ta-acc').textContent=tot.accepted;
+    document.getElementById('ta-msg').textContent=tot.messaged;
+    document.getElementById('ta-rep').textContent=tot.replied;
+    document.getElementById('ta-rr').textContent=tot.messaged>0?(tot.replied/tot.messaged*100).toFixed(1)+'%':'—';
+    const fmt=(n,l)=>n===0?'—':(n>0?'+':'')+n+' '+l;
+    const cls=n=>n>0?'up':n<0?'down':'flat';
+    const da=(last.accepted||0)-(prev.accepted||0),dm=(last.messaged||0)-(prev.messaged||0),dr=(last.replied||0)-(prev.replied||0);
+    document.getElementById('ta-acc-d').textContent=fmt(da,'вчора');document.getElementById('ta-acc-d').className='ta-delta '+cls(da);
+    document.getElementById('ta-msg-d').textContent=fmt(dm,'вчора');document.getElementById('ta-msg-d').className='ta-delta '+cls(dm);
+    document.getElementById('ta-rep-d').textContent=fmt(dr,'вчора');document.getElementById('ta-rep-d').className='ta-delta '+cls(dr);
+    document.getElementById('ta-rr-d').textContent='—';
+    const wrap=document.getElementById('ta-chart-wrap-a'),empty=document.getElementById('ta-empty');
+    document.getElementById('ta-days').textContent=dates.length;
+    if(dates.length<3){wrap.style.display='none';empty.style.display='block';return;}
+    wrap.style.display='block';empty.style.display='none';
+    const ds=acc==='all'
+      ?[{label:'Прийнято',data:vals.map(v=>v.accepted),borderColor:'#4a9eff',backgroundColor:'rgba(74,158,255,.07)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#4a9eff'},
+        {label:'Повідомлень',data:vals.map(v=>v.messaged),borderColor:'#f5a623',backgroundColor:'rgba(245,166,35,.05)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#f5a623'},
+        {label:'Відповідей',data:vals.map(v=>v.replied),borderColor:'#2ecc71',backgroundColor:'rgba(46,204,113,.05)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#2ecc71'}]
+      :[{label:'Прийнято',data:vals.map(v=>v.accepted),borderColor:ACC_COLORS4[acc]||'#4a9eff',backgroundColor:'rgba(74,158,255,.07)',fill:true,tension:.4,pointRadius:4},
+        {label:'Повідомлень',data:vals.map(v=>v.messaged),borderColor:'#f5a623',fill:true,tension:.4,pointRadius:4},
+        {label:'Відповідей',data:vals.map(v=>v.replied),borderColor:'#2ecc71',fill:true,tension:.4,pointRadius:4}];
+    document.getElementById('ta-legend-a').innerHTML=ds.map(x=>`<span class="ta-leg"><span class="ta-leg-dot" style="background:${x.borderColor}"></span>${x.label}</span>`).join('');
+    if(chartTrend)chartTrend.destroy();
+    chartTrend=new Chart(document.getElementById('ta-chart-a'),{type:'line',data:{labels:lbls,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860',font:{size:11}}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}}}}});
+  }
+
+  function renderAccountsTab(){
+    if(chartAcc)chartAcc.destroy();
+    const dates=getDates(),lbls=dates.map(d=>d.slice(5));
+    chartAcc=new Chart(document.getElementById('ta-chart-acc'),{type:'bar',data:{labels:lbls,datasets:ACCS4.map(acc=>({label:ACC_LABELS4[acc],data:dates.map(d=>(daily[d]?.[acc]?.accepted||0)),backgroundColor:ACC_COLORS4[acc],borderRadius:3}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860'}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}}}}});
+  }
+
+  function renderFunnelTab(){
+    if(chartFunnel)chartFunnel.destroy();
+    const latest=records.filter(r=>!r.is_baseline).reduce((m,r)=>{if(!m[r.account]||r.date>m[r.account].date)m[r.account]=r;return m},{});
+    chartFunnel=new Chart(document.getElementById('ta-chart-funnel'),{type:'bar',data:{labels:ACCS4.map(a=>ACC_LABELS4[a]),datasets:[{label:'Оброблено',data:ACCS4.map(a=>latest[a]?.processed||0),backgroundColor:'rgba(74,158,255,.35)',borderRadius:3},{label:'Прийнято',data:ACCS4.map(a=>latest[a]?.accepted||0),backgroundColor:'#4a9eff',borderRadius:3},{label:'Повідомлень',data:ACCS4.map(a=>latest[a]?.messaged||0),backgroundColor:'#f5a623',borderRadius:3},{label:'Відповідей',data:ACCS4.map(a=>latest[a]?.replied||0),backgroundColor:'#2ecc71',borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}},y:{grid:{display:false},ticks:{color:'#6b6860'}}}}});
+  }
+
+  function renderReplyTab(){
+    if(chartReply)chartReply.destroy();
+    const latest=records.filter(r=>!r.is_baseline).reduce((m,r)=>{if(!m[r.account]||r.date>m[r.account].date)m[r.account]=r;return m},{});
+    const accsWithMsg=ACCS4.filter(a=>(latest[a]?.messaged||0)>0);
+    chartReply=new Chart(document.getElementById('ta-chart-reply'),{type:'bar',data:{labels:accsWithMsg.map(a=>ACC_LABELS4[a]),datasets:[{data:accsWithMsg.map(a=>{const r=latest[a];return r.messaged>0?parseFloat((r.replied/r.messaged*100).toFixed(1)):0;}),backgroundColor:accsWithMsg.map(a=>ACC_COLORS4[a]),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860'}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860',callback:v=>v+'%'},max:20}}}});
+  }
+
+  document.getElementById('an-tabs').querySelectorAll('.an-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.getElementById('an-tabs').querySelectorAll('.an-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.an-panel').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+      tab.classList.add('active');
+      const panel=document.getElementById('an-'+tab.dataset.tab);
+      panel.classList.add('active');panel.style.display='block';
+      if(tab.dataset.tab==='accounts'&&!chartAcc)renderAccountsTab();
+      if(tab.dataset.tab==='funnel'&&!chartFunnel)renderFunnelTab();
+      if(tab.dataset.tab==='reply'&&!chartReply)renderReplyTab();
+    });
+  });
+
+  document.getElementById('ta-accs').querySelectorAll('.ta-chip').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.getElementById('ta-accs').querySelectorAll('.ta-chip').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      taFilter=btn.dataset.acc;
+      renderTrendTab(taFilter);
+    });
+  });
+
+  renderTrendTab('all');
+
   // CRM
   const SC={'Lead':'#6b6860','Contacted':'#4a9eff','Meeting scheduled':'#f5a623','Proposal sent':'#ff7043','Negotiation':'#b085f5','Won':'#2ecc71'};
   const crmDeals=(data.crm||[]).filter(d=>!['Won','Lost'].includes(d.stage));
@@ -579,5 +705,132 @@ async function init(){
 
 init().catch(e=>{document.querySelector('main').innerHTML=`<p style="color:var(--muted);padding:2rem">Помилка: ${e.message}</p>`;});
 </script>
-</body>
+
+
+<script id="hide-apollo-replied-emails-safe-v2">
+(() => {
+  const TITLE_RE = /APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i;
+
+  function norm(x) {
+    return (x || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function isDangerousBox(el) {
+    if (!el || el === document.body || el === document.documentElement) return true;
+    if (el.tagName === 'MAIN' || el.tagName === 'HEADER') return true;
+    if (el.querySelector && el.querySelector('header')) return true;
+    return false;
+  }
+
+  function findSmallBox(titleEl) {
+    let node = titleEl.parentElement;
+
+    while (node && node !== document.body) {
+      const text = norm(node.innerText || node.textContent || '');
+      const hasTitle = TITLE_RE.test(text);
+      const hasApolloOnly = hasTitle && !/Replied Dialogs|LinkedHelper|LinkedIn/i.test(text);
+      const hasTable = !!node.querySelector?.('table, thead, tbody');
+      const headingCount = node.querySelectorAll?.('h1,h2,h3,h4')?.length || 0;
+
+      // Беремо найменший контейнер з цим заголовком і таблицею,
+      // але не весь main/dashboard.
+      if (
+        hasApolloOnly &&
+        hasTable &&
+        headingCount <= 2 &&
+        text.length < 30000 &&
+        !isDangerousBox(node)
+      ) {
+        return node;
+      }
+
+      node = node.parentElement;
+    }
+
+    return null;
+  }
+
+  function hideApolloReplies() {
+    const headings = [...document.querySelectorAll('h1,h2,h3,h4')];
+
+    for (const h of headings) {
+      const title = norm(h.innerText || h.textContent || '');
+      if (!TITLE_RE.test(title)) continue;
+
+      const box = findSmallBox(h);
+
+      if (box) {
+        box.style.display = 'none';
+        box.setAttribute('data-hidden-reason', 'apollo-replied-emails-without-real-text');
+      } else {
+        // fallback: ховаємо тільки сам заголовок і кілька наступних sibling-елементів,
+        // але не чіпаємо батьківський main.
+        h.style.display = 'none';
+        let sib = h.nextElementSibling;
+        for (let i = 0; sib && i < 4; i++) {
+          const next = sib.nextElementSibling;
+          sib.style.display = 'none';
+          sib = next;
+        }
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideApolloReplies);
+  } else {
+    hideApolloReplies();
+  }
+
+  new MutationObserver(hideApolloReplies).observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
+})();
+</script>
+
+
+<script id="disable-apollo-ghost-replies">
+(() => {
+  window.shouldShowApolloEmailReplies = function(apolloData) {
+    const rows = apolloData?.email_replies || apolloData?.replied_contacts || [];
+    return Array.isArray(rows) && rows.some(r => {
+      const text = (r.reply_text || r.body || r.inbound_text || '').trim();
+      return text.length > 0;
+    });
+  };
+
+  window.addEventListener('load', () => {
+    fetch('apollo.json?no_ghosts=' + Date.now(), { cache: 'no-store' })
+      .then(r => r.json())
+      .then(data => {
+        if (window.shouldShowApolloEmailReplies(data)) return;
+
+        const headings = [...document.querySelectorAll('h1,h2,h3,h4')];
+        for (const h of headings) {
+          const title = (h.textContent || '').trim();
+          if (!/APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i.test(title)) continue;
+
+          let box = h.parentElement;
+          while (box && box !== document.body) {
+            const text = (box.textContent || '').trim();
+            const hasTitle = /APOLLO\.IO\s*[—-]\s*REPLIED EMAILS/i.test(text);
+            const hasTable = !!box.querySelector('table, thead, tbody');
+            const tooBig = text.length > 40000 || box.querySelector('header');
+
+            if (hasTitle && hasTable && !tooBig) {
+              box.remove();
+              return;
+            }
+            box = box.parentElement;
+          }
+
+          h.remove();
+        }
+      })
+      .catch(() => {});
+  });
+})();
+</script>
+\n</body>
 </html>
