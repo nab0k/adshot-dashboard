@@ -156,6 +156,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 .er-table tr:hover td{background:rgba(255,255,255,.02)}
 .er-seq{font-size:11px;padding:2px 8px;border-radius:4px;background:#1a2a3a;color:#4a9eff;white-space:nowrap}
 </style>
+  <link rel="stylesheet" href="apollo_email_replies.css">
 </head>
 <body>
 <header>
@@ -309,6 +310,16 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     <div class="kpi"><div class="kpi-val accent" id="ap-rr">—</div><div class="kpi-lbl">Reply rate</div></div>
   </div>
   <div class="ap-grid" id="ap-sequences"></div>
+
+<div class="divider"></div>
+<section id="apollo-email-replies-section">
+  <div class="section-title">Apollo.io - Email replies</div>
+  <div class="muted" id="aer-meta">Завантаження реальних email-відповідей...</div>
+  <div id="aer-list">
+    <div class="aer-empty">Завантаження...</div>
+  </div>
+</section>
+
 </main>
 <footer>
   <span>Adshot Europe · <a href="https://adshot.eu" target="_blank">adshot.eu</a></span>
@@ -834,5 +845,6 @@ init().catch(e=>{document.querySelector('main').innerHTML=`<p style="color:var(-
   });
 })();
 </script>
-\n</body>
+\n  <script src="apollo_email_replies.js" defer></script>
+</body>
 </html>
