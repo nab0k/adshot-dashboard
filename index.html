@@ -250,7 +250,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
   <div id="an-funnel" class="an-panel" style="display:none">
     <div class="ta-chart-wrap">
       <div class="ta-legend">
-        <span class="ta-leg"><span class="ta-leg-dot" style="background:rgba(74,158,255,.4)"></span>Оброблено</span>
+        <span class="ta-leg"><span class="ta-leg-dot" style="background:rgba(74,158,255,.4)"></span>В базі</span>
         <span class="ta-leg"><span class="ta-leg-dot" style="background:#4a9eff"></span>Прийнято</span>
         <span class="ta-leg"><span class="ta-leg-dot" style="background:#f5a623"></span>Повідомлень</span>
         <span class="ta-leg"><span class="ta-leg-dot" style="background:#2ecc71"></span>Відповідей</span>
@@ -356,7 +356,7 @@ async function init(){
     const r=cur[i],info=ACCOUNTS[acc],mx=r.processed||1;
     const ar=r.processed>0?(r.accepted/r.processed*100).toFixed(1):0;
     const rr=r.messaged>0?(r.replied/r.messaged*100).toFixed(1):null;
-    grid.innerHTML+=`<div class="card"><div class="card-head"><div class="av ${info.cls}">${acc}</div><div><div class="card-name">${info.label}</div><div class="card-role">${info.role}</div></div></div><div class="funnel">${['processed','accepted','messaged','replied'].map((k,j)=>`<div class="funnel-step"><div class="funnel-num">${r[k]||0}</div><div class="funnel-lbl">${['Оброблено','Прийнято','Повідомлень','Відповідей'][j]}</div><div class="funnel-bar ${'bar-proc bar-acc bar-msg bar-rep'.split(' ')[j]}" style="width:${Math.round((r[k]||0)/mx*100)}%"></div></div>`).join('')}</div><div class="rates"><span class="pill pill-acc">Accept ${ar}%</span>${rr!==null?`<span class="pill pill-rep">Reply ${rr}%</span>`:`<span class="pill pill-warn">Messaging не запущено</span>`}</div></div>`;
+    grid.innerHTML+=`<div class="card"><div class="card-head"><div class="av ${info.cls}">${acc}</div><div><div class="card-name">${info.label}</div><div class="card-role">${info.role}</div></div></div><div class="funnel">${['processed','accepted','messaged','replied'].map((k,j)=>`<div class="funnel-step"><div class="funnel-num">${r[k]||0}</div><div class="funnel-lbl">${['В базі','Надіслано конект','Надіслано msg','Відповідей'][j]}</div><div class="funnel-bar ${'bar-proc bar-acc bar-msg bar-rep'.split(' ')[j]}" style="width:${Math.round((r[k]||0)/mx*100)}%"></div></div>`).join('')}</div><div class="rates"><span class="pill pill-acc">Accept ${ar}%</span>${rr!==null?`<span class="pill pill-rep">Reply ${rr}%</span>`:`<span class="pill ${rr!==null?'pill-rep':'pill-warn'}">${rr!==null?'Reply '+rr+'%':'Повідомлень: '+r.messaged}</span>`}</div></div>`;
   });
 
   new Chart(document.getElementById('replyChart'),{
@@ -634,7 +634,7 @@ async function init(){
   function renderFunnelTab(){
     if(chartFunnel)chartFunnel.destroy();
     const latest=records.filter(r=>!r.is_baseline).reduce((m,r)=>{if(!m[r.account]||r.date>m[r.account].date)m[r.account]=r;return m},{});
-    chartFunnel=new Chart(document.getElementById('ta-chart-funnel'),{type:'bar',data:{labels:ACCS4.map(a=>ACC_LABELS4[a]),datasets:[{label:'Оброблено',data:ACCS4.map(a=>latest[a]?.processed||0),backgroundColor:'rgba(74,158,255,.35)',borderRadius:3},{label:'Прийнято',data:ACCS4.map(a=>latest[a]?.accepted||0),backgroundColor:'#4a9eff',borderRadius:3},{label:'Повідомлень',data:ACCS4.map(a=>latest[a]?.messaged||0),backgroundColor:'#f5a623',borderRadius:3},{label:'Відповідей',data:ACCS4.map(a=>latest[a]?.replied||0),backgroundColor:'#2ecc71',borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}},y:{grid:{display:false},ticks:{color:'#6b6860'}}}}});
+    chartFunnel=new Chart(document.getElementById('ta-chart-funnel'),{type:'bar',data:{labels:ACCS4.map(a=>ACC_LABELS4[a]),datasets:[{label:'В базі',data:ACCS4.map(a=>latest[a]?.processed||0),backgroundColor:'rgba(74,158,255,.35)',borderRadius:3},{label:'Прийнято',data:ACCS4.map(a=>latest[a]?.accepted||0),backgroundColor:'#4a9eff',borderRadius:3},{label:'Повідомлень',data:ACCS4.map(a=>latest[a]?.messaged||0),backgroundColor:'#f5a623',borderRadius:3},{label:'Відповідей',data:ACCS4.map(a=>latest[a]?.replied||0),backgroundColor:'#2ecc71',borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}},y:{grid:{display:false},ticks:{color:'#6b6860'}}}}});
   }
 
   function renderReplyTab(){
