@@ -456,9 +456,11 @@ async function init(){
 
       const mainRow = document.createElement('tr');
       mainRow.className = 'rd-row';
+      const lastMsg = d.messages && d.messages.length > 0 ? d.messages[d.messages.length-1] : null;
+      const hasUnread = lastMsg && lastMsg.direction === 'received';
       mainRow.innerHTML = `
         <td>
-          <div style="font-weight:500">${contact.name||'—'}<span class="chevron">▶</span></div>
+          <div style="font-weight:500">${contact.name||'—'}<span class="chevron">▶</span>${hasUnread ? '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff4d00;margin-left:6px;vertical-align:middle" title="Нова відповідь — ще не відповіли"></span>' : ''}</div>
           ${contact.headline ? `<div style="font-size:11px;color:var(--muted);margin-top:2px">${contact.headline}</div>` : ''}
         </td>
         <td>${rdAccTag(account.name)}</td>
