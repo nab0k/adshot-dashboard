@@ -1,178 +1,184 @@
 (function () {
   var section = document.getElementById("apollo-email-replies-section");
-  var listEl = document.getElementById("aer-list");
-  var metaEl = document.getElementById("aer-meta");
-
+  var listEl  = document.getElementById("aer-list");
+  var metaEl  = document.getElementById("aer-meta");
   if (!section || !listEl || !metaEl) return;
 
-  function fmtDate(value) {
-    if (!value) return "—";
-    var d = new Date(value);
-    if (Number.isNaN(d.getTime())) return value;
-    return d.toLocaleDateString("uk-UA", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric"
-    });
+  var currentFilter = "all";
+
+  function fmtDate(v) {
+    if (!v) return "—";
+    var d = new Date(v);
+    return isNaN(d) ? v : d.toLocaleDateString("uk-UA", { day:"2-digit", month:"2-digit", year:"numeric" });
   }
 
-  function fmtDateTime(value) {
-    if (!value) return "";
-    var d = new Date(value);
-    if (Number.isNaN(d.getTime())) return value;
-    return d.toLocaleString("uk-UA", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
+  function fmtDateTime(v) {
+    if (!v) return "";
+    var d = new Date(v);
+    return isNaN(d) ? v : d.toLocaleString("uk-UA", { day:"2-digit", month:"2-digit", year:"numeric", hour:"2-digit", minute:"2-digit" });
   }
 
-  function replySignal(replyClass) {
-    var red = ["not_interested", "unsubscribe", "already_left_company_or_not_right_person"];
-    var green = ["willing_to_meet", "follow_up_question", "person_referral"];
-
-    if (red.indexOf(replyClass) !== -1) return { color: "red", label: "негативний" };
-    if (green.indexOf(replyClass) !== -1) return { color: "green", label: "позитивний" };
-    return { color: "yellow", label: "увага" };
+  function signalFor(rc) {
+    var red   = ["not_interested","unsubscribe","already_left_company_or_not_right_person"];
+    var green = ["willing_to_meet","follow_up_question","person_referral"];
+    if (red.indexOf(rc) !== -1)   return { color:"red",    label:"відмова" };
+    if (green.indexOf(rc) !== -1) return { color:"green",  label: rc === "willing_to_meet" ? "готовий" : "питання" };
+    return { color:"yellow", label:"увага" };
   }
 
-  function replyClassLabel(value) {
+  function classLabel(rc) {
     var map = {
-      willing_to_meet: "готовий",
-      follow_up_question: "питання",
-      person_referral: "referral",
-      out_of_office: "OOO",
-      already_left_company_or_not_right_person: "не та людина",
-      not_interested: "відмова",
-      unsubscribe: "unsubscribe",
-      none_of_the_above: "інше"
+      willing_to_meet:"готовий", follow_up_question:"питання", person_referral:"referral",
+      out_of_office:"OOO", already_left_company_or_not_right_person:"не та людина",
+      not_interested:"відмова", unsubscribe:"unsubscribe", none_of_the_above:"інше"
     };
-    return map[value] || value || "інше";
+    return map[rc] || rc || "інше";
   }
 
-  function el(tag, className, text) {
-    var node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined && text !== null) node.textContent = String(text);
-    return node;
+  function isUnread(r) {
+    var msgs = r.thread_messages || [];
+    if (!msgs.length) return false;
+    return msgs[msgs.length - 1].direction === "received";
   }
 
-  function addChip(parent, text) {
-    if (!text) return;
-    parent.appendChild(el("span", "aer-chip", text));
+  function el(tag, cls, txt) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (txt !== undefined && txt !== null) n.textContent = String(txt);
+    return n;
   }
 
-  function renderMessage(parent, m) {
-    var direction = m.direction === "sent" ? "sent" : "received";
-    var msg = el("div", "aer-msg " + direction);
+  function updateKPIs(replies) {
+    var pos  = replies.filter(function(r){ var s=signalFor(r.reply_class); return s.color==="green"; }).length;
+    var neg  = replies.filter(function(r){ var s=signalFor(r.reply_class); return s.color==="red"; }).length;
+    var attn = replies.filter(function(r){ var s=signalFor(r.reply_class); return s.color==="yellow"; }).length;
+    var unr  = replies.filter(isUnread).length;
 
-    var who = m.from_name || m.from_email || "";
-    var when = fmtDateTime(m.at);
-    var label = direction === "sent" ? "Sent" : "Received";
-
-    msg.appendChild(el("div", "aer-msg-head", label + " · " + who + (when ? " · " + when : "")));
-    msg.appendChild(el("div", "", m.text || ""));
-
-    parent.appendChild(msg);
+    document.getElementById("aer-kpi-pos").textContent  = pos;
+    document.getElementById("aer-kpi-neg").textContent  = neg;
+    document.getElementById("aer-kpi-attn").textContent = attn;
+    document.getElementById("aer-kpi-unr").textContent  = unr;
   }
 
   function renderTable(replies) {
     listEl.innerHTML = "";
 
-    var wrap = el("div", "aer-table-wrap");
-    var table = document.createElement("table");
-    var thead = document.createElement("thead");
-    var header = document.createElement("tr");
-
-    ["Контакт", "Тема", "Дата", "Сигнал"].forEach(function (name) {
-      header.appendChild(el("th", "", name));
+    var sorted = replies.slice().sort(function(a, b) {
+      var order = { willing_to_meet:0, follow_up_question:1, person_referral:2 };
+      var oa = order[a.reply_class] !== undefined ? order[a.reply_class] : 9;
+      var ob = order[b.reply_class] !== undefined ? order[b.reply_class] : 9;
+      if (oa !== ob) return oa - ob;
+      return new Date(b.received_at) - new Date(a.received_at);
     });
 
-    thead.appendChild(header);
+    var filtered = currentFilter === "all" ? sorted : sorted.filter(function(r) {
+      var s = signalFor(r.reply_class);
+      if (currentFilter === "positive") return s.color === "green";
+      if (currentFilter === "negative") return s.color === "red";
+      if (currentFilter === "attention") return s.color === "yellow";
+      return true;
+    });
+
+    if (!filtered.length) {
+      listEl.appendChild(el("div", "aer-empty", "Немає відповідей у цій категорії."));
+      return;
+    }
+
+    var wrap  = el("div", "aer-table-wrap");
+    var table = document.createElement("table");
+    var thead = document.createElement("thead");
+    var hrow  = document.createElement("tr");
+    ["Контакт", "Тема", "Дата", "Сигнал"].forEach(function(n){ hrow.appendChild(el("th","",n)); });
+    thead.appendChild(hrow);
     table.appendChild(thead);
 
     var tbody = document.createElement("tbody");
 
-    replies.forEach(function (r) {
+    filtered.forEach(function(r) {
       var contact = r.contact || {};
-      var name = contact.name || contact.email || "Unknown contact";
-      var email = contact.email || "";
-      var company = contact.company || "";
+      var name    = contact.name || contact.email || "Unknown";
+      var email   = contact.email || "";
       var subject = r.subject || "";
-      var signal = replySignal(r.reply_class);
+      var sig     = signalFor(r.reply_class);
+      var unread  = isUnread(r);
 
       var row = el("tr", "aer-main-row");
 
-      var tdContact = document.createElement("td");
-      var nameLine = el("div", "aer-name", name + " ");
+      // Contact cell
+      var tdC = document.createElement("td");
+      var nameEl = el("div", "aer-name");
+      var nameText = document.createTextNode(name + " ");
+      nameEl.appendChild(nameText);
       var caret = el("span", "aer-caret", "▶");
-      nameLine.appendChild(caret);
-      tdContact.appendChild(nameLine);
-      tdContact.appendChild(el("div", "aer-sub", email || company || "—"));
+      nameEl.appendChild(caret);
+      if (unread) {
+        var dot = el("span", "aer-unread-dot");
+        dot.title = "Ми ще не відповіли";
+        nameEl.appendChild(dot);
+      }
+      tdC.appendChild(nameEl);
+      if (email) tdC.appendChild(el("div", "aer-sub", email));
 
-      var tdSubject = document.createElement("td");
-      tdSubject.appendChild(el("div", "aer-subject", subject || "—"));
+      // Subject cell with preview
+      var tdS = document.createElement("td");
+      tdS.appendChild(el("div", "aer-subject-line", subject || "—"));
+      var preview = r.preview || "";
+      if (preview) {
+        var firstLine = preview.split(/\r?\n/)[0].trim().slice(0, 90);
+        if (firstLine) tdS.appendChild(el("div", "aer-preview", firstLine));
+      }
 
-      var tdDate = document.createElement("td");
-      tdDate.appendChild(el("div", "aer-date", fmtDate(r.received_at)));
+      // Date cell
+      var tdD = document.createElement("td");
+      tdD.appendChild(el("div", "aer-date", fmtDate(r.received_at)));
 
-      var tdSignal = document.createElement("td");
+      // Signal cell
+      var tdSig = document.createElement("td");
       var sigWrap = el("span", "aer-signal");
-      sigWrap.appendChild(el("span", "aer-dot " + signal.color));
-      sigWrap.appendChild(el("span", "", replyClassLabel(r.reply_class)));
-      tdSignal.appendChild(sigWrap);
+      sigWrap.appendChild(el("span", "aer-dot " + sig.color));
+      sigWrap.appendChild(el("span", "aer-sig-label " + sig.color, classLabel(r.reply_class)));
+      tdSig.appendChild(sigWrap);
 
-      row.appendChild(tdContact);
-      row.appendChild(tdSubject);
-      row.appendChild(tdDate);
-      row.appendChild(tdSignal);
+      row.appendChild(tdC);
+      row.appendChild(tdS);
+      row.appendChild(tdD);
+      row.appendChild(tdSig);
 
-      var detail = el("tr", "aer-detail-row");
+      // Detail row (thread)
+      var detail  = el("tr", "aer-detail-row");
       var detailTd = document.createElement("td");
       detailTd.colSpan = 4;
 
-      var meta = el("div", "aer-thread-meta");
-      addChip(meta, "Email: " + (email || "—"));
-      if (company) addChip(meta, "Company: " + company);
-      addChip(meta, "Subject: " + (subject || "—"));
+      var thread = el("div", "aer-thread");
 
       var messages = Array.isArray(r.thread_messages) && r.thread_messages.length
         ? r.thread_messages
-        : [{
-            direction: "received",
-            from_name: name,
-            from_email: email,
-            at: r.received_at,
-            text: r.reply_text || ""
-          }];
+        : [{ direction:"received", from_name:name, from_email:email, at:r.received_at, text:r.reply_text||"" }];
 
-      addChip(meta, "Messages: " + messages.length);
-      detailTd.appendChild(meta);
-
-      var thread = el("div", "aer-thread");
-      messages.forEach(function (m) {
-        renderMessage(thread, m);
+      messages.forEach(function(m) {
+        var isSent = m.direction === "sent";
+        var msgEl  = el("div", "aer-msg-wrap " + (isSent ? "sent" : "received"));
+        var head   = el("div", "aer-msg-head", (isSent ? "Ми" : (m.from_name || m.from_email || "Контакт")) + " · " + fmtDateTime(m.at));
+        if (isSent) head.style.textAlign = "right";
+        var body = el("div", "aer-msg-body " + (isSent ? "sent" : "received"), m.text || "");
+        msgEl.appendChild(head);
+        msgEl.appendChild(body);
+        thread.appendChild(msgEl);
       });
 
       detailTd.appendChild(thread);
       detail.appendChild(detailTd);
 
-      row.addEventListener("click", function () {
+      row.addEventListener("click", function() {
         var isOpen = detail.style.display === "table-row";
-
-        section.querySelectorAll(".aer-detail-row").forEach(function (x) {
-          x.style.display = "none";
-        });
-
-        section.querySelectorAll(".aer-caret").forEach(function (x) {
-          x.textContent = "▶";
-        });
-
+        section.querySelectorAll(".aer-detail-row").forEach(function(x){ x.style.display = "none"; });
+        section.querySelectorAll(".aer-caret").forEach(function(x){ x.textContent = "▶"; });
+        section.querySelectorAll(".aer-main-row").forEach(function(x){ x.classList.remove("active"); });
         if (!isOpen) {
           detail.style.display = "table-row";
           caret.textContent = "▼";
+          row.classList.add("active");
+          setTimeout(function(){ row.scrollIntoView({ behavior:"smooth", block:"nearest" }); }, 50);
         }
       });
 
@@ -185,32 +191,39 @@
     listEl.appendChild(wrap);
   }
 
-  fetch("apollo_email_replies.json?v=" + Date.now(), { cache: "no-store" })
-    .then(function (res) {
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      return res.json();
-    })
-    .then(function (data) {
-      var replies = Array.isArray(data.replies)
-        ? data.replies.filter(function (r) {
-            return String(r.reply_text || "").trim();
-          })
-        : [];
+  function applyFilter(replies, filter) {
+    currentFilter = filter;
+    section.querySelectorAll(".aer-chip").forEach(function(c){ c.classList.remove("active"); });
+    section.querySelector(".aer-chip[data-f='" + filter + "']").classList.add("active");
+    renderTable(replies);
+  }
+
+  fetch("apollo_email_replies.json?v=" + Date.now(), { cache:"no-store" })
+    .then(function(res){ if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); })
+    .then(function(data) {
+      var replies = (data.replies || []).filter(function(r){ return String(r.reply_text||"").trim(); });
 
       metaEl.textContent = replies.length + " реальних email-відповідей · " + (data.mailbox || "serhii@adshot-eu.com");
 
-      if (!replies.length) {
-        listEl.innerHTML = "";
-        listEl.appendChild(el("div", "aer-empty", "Поки немає email-відповідей з реальним текстом."));
-        return;
+      updateKPIs(replies);
+
+      // Filter chips
+      var chips = section.querySelector(".aer-chips");
+      if (chips) {
+        chips.querySelectorAll(".aer-chip").forEach(function(c) {
+          c.addEventListener("click", function(){ applyFilter(replies, c.dataset.f); });
+        });
       }
 
+      if (!replies.length) {
+        listEl.appendChild(el("div","aer-empty","Поки немає email-відповідей з реальним текстом."));
+        return;
+      }
       renderTable(replies);
     })
-    .catch(function (err) {
-      console.error("Apollo email thread viewer failed:", err);
+    .catch(function(err) {
+      console.error("Apollo email replies:", err);
       metaEl.textContent = "Не вдалося завантажити Apollo email replies";
-      listEl.innerHTML = "";
-      listEl.appendChild(el("div", "aer-empty", "apollo_email_replies.json не завантажився."));
+      listEl.appendChild(el("div","aer-empty","apollo_email_replies.json не завантажився."));
     });
 })();
