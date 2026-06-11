@@ -201,6 +201,38 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
 
 
   <div class="divider"></div>
+  <div class="section-title">Replied Dialogs — переписки з LinkedIn</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val" id="rd-total">—</div><div class="kpi-lbl">Всього діалогів</div></div>
+    <div class="kpi"><div class="kpi-val green" id="rd-positive">—</div><div class="kpi-lbl">Позитивних</div></div>
+    <div class="kpi"><div class="kpi-val blue" id="rd-followup">—</div><div class="kpi-lbl">Follow-up</div></div>
+    <div class="kpi"><div class="kpi-val accent" id="rd-new">—</div><div class="kpi-lbl">Нових</div></div>
+  </div>
+  <div class="rd-filters" id="rd-filters">
+    <span class="rd-chip active" data-acc="all">Всі</span>
+    <span class="rd-chip" data-acc="ДВ">Дмитро</span>
+    <span class="rd-chip" data-acc="КС">Катерина</span>
+    <span class="rd-chip" data-acc="СЦ">Циганенко</span>
+    <span class="rd-chip" data-acc="СН">Набок</span>
+  </div>
+  <div class="chart-wrap" style="padding:0;overflow:hidden">
+    <table class="rd-table">
+      <thead><tr>
+        <th style="width:35%">Контакт</th>
+        <th>Акаунт</th>
+        <th>Кампанія</th>
+        <th>Дата</th>
+        <th>Статус</th>
+      </tr></thead>
+      <tbody id="rd-tbody"><tr><td colspan="5" class="rd-loading">Завантаження...</td></tr></tbody>
+    </table>
+  </div>
+
+
+
+
+
+  <div class="divider"></div>
   <div class="section-title">Аналітика</div>
 
   <div class="an-tabs" id="an-tabs">
@@ -277,38 +309,6 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
     <div class="kpi"><div class="kpi-val accent" id="ap-rr">—</div><div class="kpi-lbl">Reply rate</div></div>
   </div>
   <div class="ap-grid" id="ap-sequences"></div>
-
-
-  <div class="divider"></div>
-  <div class="section-title">Replied Dialogs — переписки з LinkedIn</div>
-  <div class="kpi-row">
-    <div class="kpi"><div class="kpi-val" id="rd-total">—</div><div class="kpi-lbl">Всього діалогів</div></div>
-    <div class="kpi"><div class="kpi-val green" id="rd-positive">—</div><div class="kpi-lbl">Позитивних</div></div>
-    <div class="kpi"><div class="kpi-val blue" id="rd-followup">—</div><div class="kpi-lbl">Follow-up</div></div>
-    <div class="kpi"><div class="kpi-val accent" id="rd-new">—</div><div class="kpi-lbl">Нових</div></div>
-  </div>
-  <div class="rd-filters" id="rd-filters">
-    <span class="rd-chip active" data-acc="all">Всі</span>
-    <span class="rd-chip" data-acc="ДВ">Дмитро</span>
-    <span class="rd-chip" data-acc="КС">Катерина</span>
-    <span class="rd-chip" data-acc="СЦ">Циганенко</span>
-    <span class="rd-chip" data-acc="СН">Набок</span>
-  </div>
-  <div class="chart-wrap" style="padding:0;overflow:hidden">
-    <table class="rd-table">
-      <thead><tr>
-        <th style="width:35%">Контакт</th>
-        <th>Акаунт</th>
-        <th>Кампанія</th>
-        <th>Дата</th>
-        <th>Статус</th>
-      </tr></thead>
-      <tbody id="rd-tbody"><tr><td colspan="5" class="rd-loading">Завантаження...</td></tr></tbody>
-    </table>
-  </div>
-
-
-
 </main>
 <footer>
   <span>Adshot Europe · <a href="https://adshot.eu" target="_blank">adshot.eu</a></span>
