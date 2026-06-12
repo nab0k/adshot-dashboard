@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-11T10:49:23Z",
+  "updated_at": "2026-06-12T09:55:29Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -162,14 +162,27 @@
     {
       "name": "Ankit Ruia — Sempre Fixe",
       "company": "Sempre Fixe / Campo de Ourique",
-      "contact": "Ankit Ruia, Prerna Ruia",
+      "contact": "Prerna Ruia, Ankit Ruia",
       "stage": "Meeting scheduled",
       "deal_size": 4000,
-      "next_steps": "Зустріч у вівторок 16.06 о 10:30 — Prerna і Ankit.",
+      "next_steps": "Зустріч вівторок 17.06 о 10:30 в офісі Prerna. Brainstorming 1.5-2 год: target audience, channels, budget, directions. Підтверджено в WhatsApp.",
       "notes": "Особисто знайомі. Офф-план розробка Campo de Ourique. Фреймінг: one video, two audiences, one budget. Бюджет не підтверджено. Орієнтир: €2-4k за відео згідно з надісланими матеріалами.",
       "linkedin_url": "",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30619/",
       "last_contact": "2026-06-10",
+      "next_steps_date": "2026-06-17"
+    },
+    {
+      "name": "Frederico Almeida de Carvalho — Co.op Homes",
+      "company": "Co.op Homes",
+      "contact": "Frederico Almeida de Carvalho",
+      "stage": "Meeting scheduled",
+      "deal_size": 0,
+      "next_steps": "Обмінялись номерами в WhatsApp. Завтра надіслати презентацію про нас і запропонувати зустріч.",
+      "notes": "Особистий контакт з залу. Теплий.",
+      "linkedin_url": "",
+      "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30624/",
+      "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-17"
     },
     {
@@ -204,7 +217,7 @@
       "contact": "Roger Wertheim",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Надіслати портфоліо з фармацевтичними кейсами (Atoxil, Additiva). Згадати що працюємо з pharma брендами.",
+      "next_steps": "Особиста зустріч відбулась. Roger подивився повідомлення і пообіцяв відреагувати. Чекаємо відповіді.",
       "notes": "Познайомились особисто в залі 10.06.2026. Показав відео, виявив інтерес. Власник компанії.\n\nAymes International — oral nutritional supplements для NHS (UK). Pharma/медичний сектор. Продукти: ActaGain, ActaSolve, AYMES Shake. B Corp сертифікований. Sunday Times Best Place to Work 2026.\n\nРелевантні типи відео: product explainer, HCP-навчання, patient-facing відео, rebranding контент (зараз активно ребрендуються — AYMES → ActaGain/ActaSolve). Є розділ Mixing Instruction Videos на сайті — потенційно можемо робити.",
       "linkedin_url": "https://www.linkedin.com/in/rogerwertheimaymes/",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30625/",
@@ -249,19 +262,6 @@
       "bitrix_url": "",
       "last_contact": "2026-06-09",
       "next_steps_date": "2026-06-16"
-    },
-    {
-      "name": "Frederico Almeida de Carvalho — Co.op Homes",
-      "company": "Co.op Homes",
-      "contact": "Frederico Almeida de Carvalho",
-      "stage": "Contacted",
-      "deal_size": 0,
-      "next_steps": "Запропонувати неформальну зустріч.",
-      "notes": "Особистий контакт з залу. Теплий.",
-      "linkedin_url": "",
-      "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30624/",
-      "last_contact": "2026-06-09",
-      "next_steps_date": "2026-06-17"
     },
     {
       "name": "Filipe Moreira — WYgroup",
