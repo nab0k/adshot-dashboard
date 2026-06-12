@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-12T09:55:29Z",
+  "updated_at": "2026-06-12T19:48:19Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -87,6 +87,17 @@
       "messaged": 18,
       "replied": 1,
       "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-12",
+      "account": "СН",
+      "date": "2026-06-12",
+      "processed": 259,
+      "accepted": 253,
+      "messaged": 25,
+      "replied": 1,
+      "failed": 0,
       "is_baseline": false
     }
   ],
@@ -199,6 +210,19 @@
       "next_steps_date": "2026-06-17"
     },
     {
+      "name": "Riccardo Antonino — Robin Studio",
+      "company": "Robin Studio",
+      "contact": "Riccardo Antonino — ricky@robin.studio / ",
+      "stage": "Meeting scheduled",
+      "deal_size": 0,
+      "next_steps": "Intro call confirmed: June 18, 2026 at 14:00 Italy time (13:00 Portugal). Google Meet: ",
+      "notes": "Apollo Creative Heads lead. Interested in freelance collaboration on AI video projects. Meeting confirmed by email.",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": null,
+      "next_steps_date": "2026-06-18"
+    },
+    {
       "name": "Nuno Calado — WPP Production",
       "company": "WPP Production Portugal",
       "contact": "Nuno Calado",
@@ -264,6 +288,19 @@
       "next_steps_date": "2026-06-16"
     },
     {
+      "name": "Co.op.Homes",
+      "company": "Co.op.Homes",
+      "contact": "Frederico Almeida de Carvalho (Fred)",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Чекати відповідь → запропонувати особисту зустріч в Лісабоні",
+      "notes": "Канал: WhatsApp. Відправлено портфоліо: Atoxil (AI campaign, 12 videos/9 days), Grimbergen (360° campaign), showreel. Контакт встановлено через WhatsApp. Проект: Caparica Hills II.",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": "2026-06-12",
+      "next_steps_date": "2026-06-19"
+    },
+    {
       "name": "Filipe Moreira — WYgroup",
       "company": "WYgroup",
       "contact": "Filipe Moreira",
@@ -306,6 +343,15 @@
         "messaged": 18,
         "replied": 1,
         "failed": 4
+      }
+    },
+    "2026-06-12": {
+      "СН": {
+        "processed": 259,
+        "accepted": 253,
+        "messaged": 25,
+        "replied": 1,
+        "failed": 0
       }
     },
     "2026-06-09": {
