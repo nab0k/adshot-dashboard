@@ -251,6 +251,9 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
       <span class="ta-chip" data-acc="СЦ">Циганенко</span>
       <span class="ta-chip" data-acc="СН">Набок</span>
     </div>
+    <div id="ta-scope-note" style="font-size:11px;color:var(--muted);margin:-.5rem 0 1rem">
+      Загальний тренд показує лише дні, коли є звіти всіх 4 акаунтів.
+    </div>
     <div class="ta-metric-row">
       <div class="ta-metric"><div class="ta-val" id="ta-acc">—</div><div class="ta-lbl">Надіслано конект</div><div class="ta-delta flat" id="ta-acc-d">—</div></div>
       <div class="ta-metric"><div class="ta-val" id="ta-msg">—</div><div class="ta-lbl">Повідомлень</div><div class="ta-delta flat" id="ta-msg-d">—</div></div>
@@ -263,7 +266,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text
         <canvas id="ta-chart-a" role="img" aria-label="Лінійний графік тренду по днях">Тренд метрик по днях.</canvas>
       </div>
       <div id="ta-empty" style="display:none;text-align:center;padding:2rem 0;color:var(--muted);font-size:13px">
-        Графік з'явиться після 3+ днів даних. Зараз: <span id="ta-days">2</span> точки.
+        Графік з'явиться після 2+ звітів. Зараз: <span id="ta-days">1</span> точка.
       </div>
     </div>
   </div>
@@ -616,27 +619,48 @@ async function init(){
   let chartTrend=null, chartAcc=null, chartFunnel=null, chartReply=null;
   let taFilter='all';
 
-  function getDates(){return Object.keys(daily).sort();}
-  function aggByDate(dates,acc){return dates.map(d=>{const day=daily[d]||{};if(acc==='all')return{accepted:ACCS4.reduce((s,a)=>s+(day[a]?.accepted||0),0),messaged:ACCS4.reduce((s,a)=>s+(day[a]?.messaged||0),0),replied:ACCS4.reduce((s,a)=>s+(day[a]?.replied||0),0)};return day[acc]||{accepted:0,messaged:0,replied:0};});}
+  function getDates(acc){
+    return Object.keys(daily).sort().filter(d=>{
+      const day=daily[d]||{};
+      return acc==='all' ? ACCS4.every(a=>day[a]) : Boolean(day[acc]);
+    });
+  }
+  function aggByDate(dates,acc){
+    return dates.map(d=>{
+      const day=daily[d]||{};
+      if(acc==='all')return{
+        accepted:ACCS4.reduce((s,a)=>s+day[a].accepted,0),
+        messaged:ACCS4.reduce((s,a)=>s+day[a].messaged,0),
+        replied:ACCS4.reduce((s,a)=>s+day[a].replied,0)
+      };
+      return day[acc];
+    });
+  }
 
   function renderTrendTab(acc){
-    const dates=getDates(),lbls=dates.map(d=>d.slice(5)),vals=aggByDate(dates,acc);
+    const dates=getDates(acc),lbls=dates.map(d=>d.slice(5)),vals=aggByDate(dates,acc);
     const last=vals[vals.length-1]||{},prev=vals[vals.length-2]||{};
     const cur={accepted:last.accepted||0,messaged:last.messaged||0,replied:last.replied||0};
-    document.getElementById('ta-acc').textContent=cur.accepted;
-    document.getElementById('ta-msg').textContent=cur.messaged;
-    document.getElementById('ta-rep').textContent=cur.replied;
+    const hasData=vals.length>0;
+    document.getElementById('ta-acc').textContent=hasData?cur.accepted:'—';
+    document.getElementById('ta-msg').textContent=hasData?cur.messaged:'—';
+    document.getElementById('ta-rep').textContent=hasData?cur.replied:'—';
     document.getElementById('ta-rr').textContent=cur.messaged>0?(cur.replied/cur.messaged*100).toFixed(1)+'%':'—';
     const fmt=(n,l)=>n===0?'—':(n>0?'+':'')+n+' '+l;
     const cls=n=>n>0?'up':n<0?'down':'flat';
-    const da=(last.accepted||0)-(prev.accepted||0),dm=(last.messaged||0)-(prev.messaged||0),dr=(last.replied||0)-(prev.replied||0);
-    document.getElementById('ta-acc-d').textContent=fmt(da,'вчора');document.getElementById('ta-acc-d').className='ta-delta '+cls(da);
-    document.getElementById('ta-msg-d').textContent=fmt(dm,'вчора');document.getElementById('ta-msg-d').className='ta-delta '+cls(dm);
-    document.getElementById('ta-rep-d').textContent=fmt(dr,'вчора');document.getElementById('ta-rep-d').className='ta-delta '+cls(dr);
+    const hasPrev=vals.length>1;
+    const da=hasPrev?last.accepted-prev.accepted:0,dm=hasPrev?last.messaged-prev.messaged:0,dr=hasPrev?last.replied-prev.replied:0;
+    const deltaLabel='з попер. звіту';
+    document.getElementById('ta-acc-d').textContent=hasPrev?fmt(da,deltaLabel):'—';document.getElementById('ta-acc-d').className='ta-delta '+cls(da);
+    document.getElementById('ta-msg-d').textContent=hasPrev?fmt(dm,deltaLabel):'—';document.getElementById('ta-msg-d').className='ta-delta '+cls(dm);
+    document.getElementById('ta-rep-d').textContent=hasPrev?fmt(dr,deltaLabel):'—';document.getElementById('ta-rep-d').className='ta-delta '+cls(dr);
     document.getElementById('ta-rr-d').textContent='—';
+    document.getElementById('ta-scope-note').textContent=acc==='all'
+      ?'Загальний тренд показує лише дні, коли є звіти всіх 4 акаунтів.'
+      :'Показані лише дні, коли цей акаунт надіслав звіт.';
     const wrap=document.getElementById('ta-chart-wrap-a'),empty=document.getElementById('ta-empty');
     document.getElementById('ta-days').textContent=dates.length;
-    if(dates.length<3){wrap.style.display='none';empty.style.display='block';return;}
+    if(dates.length<2){wrap.style.display='none';empty.style.display='block';return;}
     wrap.style.display='block';empty.style.display='none';
     const ds=acc==='all'
       ?[{label:'Надіслано конект',data:vals.map(v=>v.accepted),borderColor:'#4a9eff',backgroundColor:'rgba(74,158,255,.07)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#4a9eff'},
@@ -652,8 +676,8 @@ async function init(){
 
   function renderAccountsTab(){
     if(chartAcc)chartAcc.destroy();
-    const dates=getDates(),lbls=dates.map(d=>d.slice(5));
-    chartAcc=new Chart(document.getElementById('ta-chart-acc'),{type:'bar',data:{labels:lbls,datasets:ACCS4.map(acc=>({label:ACC_LABELS4[acc],data:dates.map(d=>(daily[d]?.[acc]?.accepted||0)),backgroundColor:ACC_COLORS4[acc],borderRadius:3}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860'}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}}}}});
+    const dates=Object.keys(daily).sort(),lbls=dates.map(d=>d.slice(5));
+    chartAcc=new Chart(document.getElementById('ta-chart-acc'),{type:'bar',data:{labels:lbls,datasets:ACCS4.map(acc=>({label:ACC_LABELS4[acc],data:dates.map(d=>daily[d]?.[acc]?.accepted??null),backgroundColor:ACC_COLORS4[acc],borderRadius:3}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b6860'}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#6b6860'}}}}});
   }
 
   function renderFunnelTab(){
