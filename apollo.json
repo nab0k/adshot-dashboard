@@ -1,6 +1,25 @@
 {
-  "updated_at": "2026-06-17T21:06:08Z",
+  "updated_at": "2026-06-18T11:06:41Z",
   "sequences": [
+    {
+      "id": "6a33bd23924b3e001c60e497",
+      "name": "Pharma",
+      "active": false,
+      "stats": {
+        "num_active": 0,
+        "num_paused": 550,
+        "num_finished": 0,
+        "num_bounced": 0,
+        "num_not_sent": 0,
+        "unique_scheduled": 0,
+        "emails_sent": 0,
+        "emails_opened": 0,
+        "emails_clicked": 0,
+        "emails_replied": 0,
+        "open_rate": 0.0,
+        "reply_rate": 0.0
+      }
+    },
     {
       "id": "6a272dc179965a000c3b68c0",
       "name": "Allegro ",
@@ -31,12 +50,12 @@
         "num_bounced": 2,
         "num_not_sent": 5,
         "unique_scheduled": 659,
-        "emails_sent": 335,
+        "emails_sent": 350,
         "emails_opened": 73,
         "emails_clicked": 0,
         "emails_replied": 9,
-        "open_rate": 21.8,
-        "reply_rate": 2.7
+        "open_rate": 20.9,
+        "reply_rate": 2.6
       }
     },
     {
