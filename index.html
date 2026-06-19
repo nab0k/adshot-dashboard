@@ -566,13 +566,29 @@ async function init(){
   });
 
   // ── Apollo ────────────────────────────────────────────────────────────────
+  function apNum(value) {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : 0;
+  }
+  function normalizeApolloStats(stats) {
+    const st = stats || {};
+    return {
+      num_active: apNum(st.num_active),
+      num_paused: apNum(st.num_paused),
+      num_finished: apNum(st.num_finished),
+      num_bounced: apNum(st.num_bounced),
+      emails_sent: apNum(st.emails_sent),
+      emails_opened: apNum(st.emails_opened),
+      emails_replied: apNum(st.emails_replied)
+    };
+  }
   const apollo = apolloData || data.apollo || null;
   if (apollo && apollo.sequences && apollo.sequences.length) {
     const seqs = apollo.sequences.filter(s => ['Creative Heads','Allegro'].some(n => s.name.trim().toLowerCase().startsWith(n.toLowerCase())));
     const activeSeqs = seqs.filter(s => s.active);
-    const totContacts = seqs.reduce((s,q)=>s+(q.stats.num_active||0),0);
-    const totReplied = seqs.reduce((s,q)=>s+(q.stats.emails_replied||0),0);
-    const totSent = seqs.reduce((s,q)=>s+(q.stats.emails_sent||0),0);
+    const totContacts = seqs.reduce((s,q)=>s+normalizeApolloStats(q.stats).num_active,0);
+    const totReplied = seqs.reduce((s,q)=>s+normalizeApolloStats(q.stats).emails_replied,0);
+    const totSent = seqs.reduce((s,q)=>s+normalizeApolloStats(q.stats).emails_sent,0);
     const rr = totSent > 0 ? (totReplied/totSent*100).toFixed(1)+'%' : '—';
 
     document.getElementById('ap-total').textContent = activeSeqs.length || seqs.length;
@@ -582,7 +598,7 @@ async function init(){
 
     const grid = document.getElementById('ap-sequences');
     seqs.forEach(s => {
-      const st = s.stats;
+      const st = normalizeApolloStats(s.stats);
       const total = (st.num_active||0) + (st.num_paused||0) + (st.num_finished||0);
       const openRate = st.emails_sent > 0 ? Math.round(st.emails_opened/st.emails_sent*100) : 0;
       const replyRate = st.emails_sent > 0 ? (st.emails_replied/st.emails_sent*100).toFixed(1) : '0';

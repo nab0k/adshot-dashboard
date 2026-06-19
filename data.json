@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-12T20:02:34Z",
+  "updated_at": "2026-06-19T08:35:20.523Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -46,58 +46,179 @@
       "is_baseline": true
     },
     {
-      "name": "СЦ — 2026-06-10",
-      "account": "СЦ",
-      "date": "2026-06-10",
-      "processed": 243,
-      "accepted": 237,
-      "messaged": 0,
-      "replied": 0,
-      "failed": 6,
-      "is_baseline": false
-    },
-    {
-      "name": "ДВ — 2026-06-10",
+      "name": "ДВ — 2026-06-16",
       "account": "ДВ",
-      "date": "2026-06-10",
-      "processed": 345,
-      "accepted": 344,
-      "messaged": 28,
-      "replied": 2,
+      "date": "2026-06-16",
+      "processed": 496,
+      "accepted": 495,
+      "messaged": 49,
+      "replied": 4,
       "failed": 1,
       "is_baseline": false
     },
     {
-      "name": "КС — 2026-06-10",
+      "name": "КС — 2026-06-16",
       "account": "КС",
-      "date": "2026-06-10",
-      "processed": 346,
-      "accepted": 344,
-      "messaged": 46,
+      "date": "2026-06-16",
+      "processed": 594,
+      "accepted": 590,
+      "messaged": 91,
+      "replied": 14,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-16",
+      "account": "СН",
+      "date": "2026-06-16",
+      "processed": 259,
+      "accepted": 253,
+      "messaged": 32,
+      "replied": 1,
+      "failed": 6,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-16",
+      "account": "СЦ",
+      "date": "2026-06-16",
+      "processed": 340,
+      "accepted": 332,
+      "messaged": 41,
+      "replied": 1,
+      "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-17",
+      "account": "ДВ",
+      "date": "2026-06-17",
+      "processed": 543,
+      "accepted": 542,
+      "messaged": 56,
+      "replied": 4,
+      "failed": 1,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-17",
+      "account": "КС",
+      "date": "2026-06-17",
+      "processed": 641,
+      "accepted": 637,
+      "messaged": 102,
+      "replied": 16,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-17",
+      "account": "СН",
+      "date": "2026-06-17",
+      "processed": 307,
+      "accepted": 300,
+      "messaged": 34,
+      "replied": 1,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-17",
+      "account": "СЦ",
+      "date": "2026-06-17",
+      "processed": 386,
+      "accepted": 378,
+      "messaged": 41,
+      "replied": 1,
+      "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-18",
+      "account": "ДВ",
+      "date": "2026-06-18",
+      "processed": 593,
+      "accepted": 591,
+      "messaged": 103,
       "replied": 5,
       "failed": 2,
       "is_baseline": false
     },
     {
-      "name": "СН — 2026-06-10",
-      "account": "СН",
-      "date": "2026-06-10",
-      "processed": 210,
-      "accepted": 206,
-      "messaged": 18,
-      "replied": 1,
+      "name": "КС — 2026-06-18",
+      "account": "КС",
+      "date": "2026-06-18",
+      "processed": 647,
+      "accepted": 643,
+      "messaged": 175,
+      "replied": 23,
       "failed": 4,
       "is_baseline": false
     },
     {
-      "name": "СН — 2026-06-12",
+      "name": "СН — 2026-06-18",
       "account": "СН",
-      "date": "2026-06-12",
-      "processed": 259,
-      "accepted": 253,
-      "messaged": 25,
+      "date": "2026-06-18",
+      "processed": 356,
+      "accepted": 349,
+      "messaged": 70,
+      "replied": 2,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-18",
+      "account": "СЦ",
+      "date": "2026-06-18",
+      "processed": 389,
+      "accepted": 381,
+      "messaged": 73,
       "replied": 1,
-      "failed": 0,
+      "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-19",
+      "account": "ДВ",
+      "date": "2026-06-19",
+      "processed": 593,
+      "accepted": 591,
+      "messaged": 106,
+      "replied": 5,
+      "failed": 2,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-19",
+      "account": "КС",
+      "date": "2026-06-19",
+      "processed": 647,
+      "accepted": 643,
+      "messaged": 175,
+      "replied": 24,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-19",
+      "account": "СН",
+      "date": "2026-06-19",
+      "processed": 356,
+      "accepted": 349,
+      "messaged": 71,
+      "replied": 2,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-19",
+      "account": "СЦ",
+      "date": "2026-06-19",
+      "processed": 389,
+      "accepted": 381,
+      "messaged": 75,
+      "replied": 2,
+      "failed": 8,
       "is_baseline": false
     }
   ],
@@ -171,30 +292,17 @@
   ],
   "crm": [
     {
-      "name": "Ankit Ruia — Sempre Fixe",
+      "name": "Prerna Ruia, Ankit Ruia — Sempre Fixe",
       "company": "Sempre Fixe / Campo de Ourique",
-      "contact": "Prerna Ruia, Ankit Ruia",
+      "contact": "Ankit Ruia, Prerna Ruia",
       "stage": "Meeting scheduled",
       "deal_size": 4000,
-      "next_steps": "Зустріч вівторок 17.06 о 10:30 в офісі Prerna. Brainstorming 1.5-2 год: target audience, channels, budget, directions. Підтверджено в WhatsApp.",
-      "notes": "Особисто знайомі. Офф-план розробка Campo de Ourique. Фреймінг: one video, two audiences, one budget. Бюджет не підтверджено. Орієнтир: €2-4k за відео згідно з надісланими матеріалами.",
+      "next_steps": "Підготувати і надіслати комерційну пропозицію у понеділок 22.06: що знімаємо, що вони отримують, бюджет і наступний крок.",
+      "notes": "Після брейншторму і communication strategy Ankit відповів позитивно: very impressive starting point, looking forward to exploring further. Поки stage лишаємо Meeting scheduled до відправки proposal.",
       "linkedin_url": "",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30619/",
-      "last_contact": "2026-06-10",
-      "next_steps_date": "2026-06-17"
-    },
-    {
-      "name": "Frederico Almeida de Carvalho — Co.op Homes",
-      "company": "Co.op Homes",
-      "contact": "Frederico Almeida de Carvalho",
-      "stage": "Meeting scheduled",
-      "deal_size": 0,
-      "next_steps": "Обмінялись номерами в WhatsApp. Завтра надіслати презентацію про нас і запропонувати зустріч.",
-      "notes": "Особистий контакт з залу. Теплий.",
-      "linkedin_url": "",
-      "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30624/",
-      "last_contact": "2026-06-09",
-      "next_steps_date": "2026-06-17"
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-06-22"
     },
     {
       "name": "Miguel Duarte Silva — Wells/Sonae MC",
@@ -202,25 +310,12 @@
       "contact": "Miguel Duarte Silva",
       "stage": "Meeting scheduled",
       "deal_size": 5000,
-      "next_steps": "Зустріч наступного тижня. Дізнатись про болі і тип відео. Wells pharmacy retail.",
-      "notes": "Теплий контакт — ходимо в один зал, познайомились на івенті Better Marketing. Канал: WhatsApp + особиста зустріч. Бренд: Wells (pharmacy retail, Sonae MC). Тип відео ще не обговорювали.",
+      "next_steps": "Зустріч 23.06 о 10:00 Lisbon. Підготувати короткий контекст Adshot Europe, AI video і питання про потреби Wells/Sonae MC.",
+      "notes": "Теплий контакт — ходимо в один зал, познайомились на івенті Better Marketing. Канал: WhatsApp + особиста зустріч. Бренд: Wells (pharmacy retail, Sonae MC). Teams meeting confirmed.",
       "linkedin_url": "",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30622/",
-      "last_contact": "2026-06-09",
-      "next_steps_date": "2026-06-17"
-    },
-    {
-      "name": "Riccardo Antonino — Robin Studio",
-      "company": "Robin Studio",
-      "contact": "Riccardo Antonino — ricky@robin.studio / ",
-      "stage": "Meeting scheduled",
-      "deal_size": 0,
-      "next_steps": "Intro call confirmed: June 18, 2026 at 14:00 Italy time (13:00 Portugal). Google Meet: ",
-      "notes": "Apollo Creative Heads lead. Interested in freelance collaboration on AI video projects. Meeting confirmed by email.",
-      "linkedin_url": "",
-      "bitrix_url": "",
-      "last_contact": null,
-      "next_steps_date": "2026-06-18"
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-06-23"
     },
     {
       "name": "Nuno Calado — WPP Production",
@@ -236,17 +331,30 @@
       "next_steps_date": "2026-06-25"
     },
     {
+      "name": "Riccardo Antonino — Robin Studio",
+      "company": "Robin Studio",
+      "contact": "Riccardo Antonino",
+      "stage": "Meeting scheduled",
+      "deal_size": 0,
+      "next_steps": "Підтримати контакт після зустрічі 18.06; за потреби надіслати короткий підсумок або релевантний матеріал.",
+      "notes": "Email: ricky@robin.studio. Зустріч відбулася 18.06, тримаємо зв'язок.",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-06-25"
+    },
+    {
       "name": "Roger Wertheim — Aymes International",
       "company": "Aymes International",
       "contact": "Roger Wertheim",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Особиста зустріч відбулась. Roger подивився повідомлення і пообіцяв відреагувати. Чекаємо відповіді.",
-      "notes": "Познайомились особисто в залі 10.06.2026. Показав відео, виявив інтерес. Власник компанії.\n\nAymes International — oral nutritional supplements для NHS (UK). Pharma/медичний сектор. Продукти: ActaGain, ActaSolve, AYMES Shake. B Corp сертифікований. Sunday Times Best Place to Work 2026.\n\nРелевантні типи відео: product explainer, HCP-навчання, patient-facing відео, rebranding контент (зараз активно ребрендуються — AYMES → ActaGain/ActaSolve). Є розділ Mixing Instruction Videos на сайті — потенційно можемо робити.",
+      "next_steps": "Нагадати про себе у вікні 23–26.06: Roger передав повідомлення своєму маркетологу, треба спитати чи вони встигли подивитись.",
+      "notes": "Познайомились особисто в залі 10.06.2026. Показав відео, виявив інтерес. Власник компанії. 18.06: Roger передав повідомлення маркетологу.\n\nAymes International — oral nutritional supplements для NHS (UK). Pharma/медичний сектор. Релевантні типи відео: product explainer, HCP-навчання, patient-facing відео, rebranding content.",
       "linkedin_url": "https://www.linkedin.com/in/rogerwertheimaymes/",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30625/",
-      "last_contact": "2026-06-10",
-      "next_steps_date": "2026-06-12"
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-06-24"
     },
     {
       "name": "Francisco Rodrigues — Spraga Kombucha",
@@ -254,12 +362,12 @@
       "contact": "Francisco Rodrigues",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Очікуємо відповіді від Francisco або прийняття в LinkedIn від Filipa/Evgeny.",
-      "notes": "Особиста зустріч з Francisco Rodrigues (Operations). Попросив познайомити з маркетингом.\n\nТри канали виходу:\n1. Francisco Rodrigues — особисто попросив вивести на Filipa Roque (Marketing)\n2. Filipa Roque — додана в LinkedIn, чекаємо прийняття\n3. Ӏвген Шевченко — Board Member, доданий в LinkedIn. Email: ",
+      "next_steps": "Francisco мовчить. Нагадати 22–23.06 легким follow-up без тиску.",
+      "notes": "Особиста зустріч з Francisco Rodrigues (Operations). Попросив познайомити з маркетингом.\n\nТри канали виходу:\n1. Francisco Rodrigues — особисто попросив вивести на Filipa Roque (Marketing)\n2. Filipa Roque — додана в LinkedIn, чекаємо прийняття\n3. Ӏвген Шевченко — Board Member, доданий в LinkedIn.",
       "linkedin_url": "",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30626/",
-      "last_contact": "2026-06-09",
-      "next_steps_date": "2026-06-16"
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-06-22"
     },
     {
       "name": "João Bernardo — TotalEnergies",
@@ -267,38 +375,51 @@
       "contact": "João Bernardo",
       "stage": "Contacted",
       "deal_size": 4500,
-      "next_steps": "Чекаємо коли João зустрінеться з director of Safety. Презентація вже готова. Follow-up ~16 червня якщо немає новин.",
-      "notes": "Head of Communication & Image, TotalEnergies Renewables Portugal. Email: ",
+      "next_steps": "Повернутися на початку липня після управлінського переходу.",
+      "notes": "Head of Communication & Image, TotalEnergies Renewables Portugal. 18.06 João написав, що зараз триває перехід управління, Managing Director іде в кінці місяця, до того він не може ухвалювати рішення. Ми відповіли, що повернемось на початку липня.",
       "linkedin_url": "https://www.linkedin.com/in/joao-bernardo/",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30342/",
-      "last_contact": "2026-06-09",
-      "next_steps_date": "2026-06-16"
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-07-02"
     },
     {
-      "name": "Zendesk Lisbon",
+      "name": "Zendesk — Marta Bradley",
       "company": "Zendesk",
-      "contact": "",
+      "contact": "Marta Bradley",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Продовжувати діалог, запросити інтро до marketing team.",
-      "notes": "",
+      "next_steps": "Написати LinkedIn intro про Adshot Europe / AI video і спитати правильний marketing/content контакт у Zendesk.",
+      "notes": "Lisbon office has no marketing team. Marta Bradley: Marketing made human | Employer Branding @ Zendesk.",
       "linkedin_url": "",
       "bitrix_url": "",
-      "last_contact": "2026-06-09",
-      "next_steps_date": "2026-06-16"
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-06-19"
     },
     {
-      "name": "Co.op.Homes",
-      "company": "Co.op.Homes",
+      "name": "Zendesk — Sergio Pedroso",
+      "company": "Zendesk",
+      "contact": "Sergio Pedroso",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Написати коротке intro і попросити правильний контакт у marketing/comms.",
+      "notes": "Lisbon office has no marketing team. Sergio Pedroso: Director of Communications LATAM.",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-06-19"
+    },
+    {
+      "name": "Frederico Almeida de Carvalho (Fred) — Co.op Homes",
+      "company": "Co.op Homes",
       "contact": "Frederico Almeida de Carvalho (Fred)",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Чекати відповідь → запропонувати особисту зустріч в Лісабоні",
-      "notes": "Канал: WhatsApp. Відправлено портфоліо: Atoxil (AI campaign, 12 videos/9 days), Grimbergen (360° campaign), showreel. Контакт встановлено через WhatsApp. Проект: Caparica Hills II.",
+      "next_steps": "Повернутися після старту роботи з Ankit / Sempre Fixe, після 15.07.",
+      "notes": "Особистий контакт з залу. Теплий. Не дублювати контакт: Fred і Frederico Almeida de Carvalho — одна людина.",
       "linkedin_url": "",
-      "bitrix_url": "",
-      "last_contact": "2026-06-12",
-      "next_steps_date": "2026-06-19"
+      "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30624/",
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-07-16"
     },
     {
       "name": "Filipe Moreira — WYgroup",
@@ -306,54 +427,15 @@
       "contact": "Filipe Moreira",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Очікуємо коли прийде відео-завдання. Вони челенджать нас на прорахунок.",
-      "notes": "Агенція-партнерство. Філіппе — особистий знайомий з залу, працює стратегом. Була зустріч з командою, проговорили всі можливості. Договір: коли буде відео-завдання — челенджують нас.",
+      "next_steps": "Повернутися після 15.07, коли буде більше конкретики/кейсу після старту роботи з Ankit.",
+      "notes": "Агенція-партнерство. Філіппе — особистий знайомий з залу, працює стратегом. Була зустріч з командою, проговорили всі можливості. Після 15 липня повернутись з новим контекстом.",
       "linkedin_url": "",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30621/",
-      "last_contact": "2026-06-10",
-      "next_steps_date": "2026-07-01"
+      "last_contact": "2026-06-18",
+      "next_steps_date": "2026-07-17"
     }
   ],
   "daily": {
-    "2026-06-10": {
-      "СЦ": {
-        "processed": 243,
-        "accepted": 237,
-        "messaged": 0,
-        "replied": 0,
-        "failed": 6
-      },
-      "ДВ": {
-        "processed": 345,
-        "accepted": 344,
-        "messaged": 28,
-        "replied": 2,
-        "failed": 1
-      },
-      "КС": {
-        "processed": 346,
-        "accepted": 344,
-        "messaged": 46,
-        "replied": 5,
-        "failed": 2
-      },
-      "СН": {
-        "processed": 210,
-        "accepted": 206,
-        "messaged": 18,
-        "replied": 1,
-        "failed": 4
-      }
-    },
-    "2026-06-12": {
-      "СН": {
-        "processed": 259,
-        "accepted": 253,
-        "messaged": 25,
-        "replied": 1,
-        "failed": 0
-      }
-    },
     "2026-06-09": {
       "СН": {
         "processed": 163,
@@ -382,6 +464,126 @@
         "messaged": 0,
         "replied": 0,
         "failed": 5
+      }
+    },
+    "2026-06-16": {
+      "ДВ": {
+        "processed": 496,
+        "accepted": 495,
+        "messaged": 49,
+        "replied": 4,
+        "failed": 1
+      },
+      "КС": {
+        "processed": 594,
+        "accepted": 590,
+        "messaged": 91,
+        "replied": 14,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 259,
+        "accepted": 253,
+        "messaged": 32,
+        "replied": 1,
+        "failed": 6
+      },
+      "СЦ": {
+        "processed": 340,
+        "accepted": 332,
+        "messaged": 41,
+        "replied": 1,
+        "failed": 8
+      }
+    },
+    "2026-06-17": {
+      "ДВ": {
+        "processed": 543,
+        "accepted": 542,
+        "messaged": 56,
+        "replied": 4,
+        "failed": 1
+      },
+      "КС": {
+        "processed": 641,
+        "accepted": 637,
+        "messaged": 102,
+        "replied": 16,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 307,
+        "accepted": 300,
+        "messaged": 34,
+        "replied": 1,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 386,
+        "accepted": 378,
+        "messaged": 41,
+        "replied": 1,
+        "failed": 8
+      }
+    },
+    "2026-06-18": {
+      "ДВ": {
+        "processed": 593,
+        "accepted": 591,
+        "messaged": 103,
+        "replied": 5,
+        "failed": 2
+      },
+      "КС": {
+        "processed": 647,
+        "accepted": 643,
+        "messaged": 175,
+        "replied": 23,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 356,
+        "accepted": 349,
+        "messaged": 70,
+        "replied": 2,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 389,
+        "accepted": 381,
+        "messaged": 73,
+        "replied": 1,
+        "failed": 8
+      }
+    },
+    "2026-06-19": {
+      "ДВ": {
+        "processed": 593,
+        "accepted": 591,
+        "messaged": 106,
+        "replied": 5,
+        "failed": 2
+      },
+      "КС": {
+        "processed": 647,
+        "accepted": 643,
+        "messaged": 175,
+        "replied": 24,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 356,
+        "accepted": 349,
+        "messaged": 71,
+        "replied": 2,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 389,
+        "accepted": 381,
+        "messaged": 75,
+        "replied": 2,
+        "failed": 8
       }
     }
   }
