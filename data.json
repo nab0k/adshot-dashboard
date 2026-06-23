@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T08:35:20.523Z",
+  "updated_at": "2026-06-23T15:57:16.791307+00:00",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -336,12 +336,12 @@
       "contact": "Riccardo Antonino",
       "stage": "Meeting scheduled",
       "deal_size": 0,
-      "next_steps": "Підтримати контакт після зустрічі 18.06; за потреби надіслати короткий підсумок або релевантний матеріал.",
-      "notes": "Email: ricky@robin.studio. Зустріч відбулася 18.06, тримаємо зв'язок.",
+      "next_steps": "Надіслати AI-презентацію, подякувати за зустріч і запропонувати порахувати їхні поточні або минулі video/AI production задачі в реаліях українського ринку: підхід, таймінг і бюджет.",
+      "notes": "Email: ricky@robin.studio. Зустріч відбулася 19.06, контакт теплий. Після зустрічі потрібно надіслати AI-презентацію і перевести розмову в практичний розрахунок: взяти те, що вони вже робили або планують, і показати, як це може виглядати по production, строках і бюджету в Україні.",
       "linkedin_url": "",
       "bitrix_url": "",
-      "last_contact": "2026-06-18",
-      "next_steps_date": "2026-06-25"
+      "last_contact": "2026-06-19",
+      "next_steps_date": "2026-06-23"
     },
     {
       "name": "Roger Wertheim — Aymes International",
@@ -433,6 +433,45 @@
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30621/",
       "last_contact": "2026-06-18",
       "next_steps_date": "2026-07-17"
+    },
+    {
+      "name": "Antonio Gigliotti — M&C Saatchi Milano",
+      "company": "M&C Saatchi Milano",
+      "contact": "Antonio Gigliotti",
+      "stage": "Meeting scheduled",
+      "deal_size": 0,
+      "next_steps": "Надіслати AI-презентацію, подякувати за зустріч і запропонувати порахувати їхні поточні або минулі video/AI production задачі в реаліях українського ринку: підхід, таймінг і бюджет.",
+      "notes": "Email: antonio.gigliotti@mcsaatchi-milano.com; у Mail також є адреса droppie110@gmail.com. Зустріч/розмова відбулася 19.06. Потрібно подякувати за зустріч, надіслати AI-презентацію і запропонувати порахувати їхні актуальні або минулі проєкти в реаліях українського ринку.",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": "2026-06-19",
+      "next_steps_date": "2026-06-23"
+    },
+    {
+      "name": "Софія Юнюк — WEDEX",
+      "company": "WEDEX",
+      "contact": "Софія Юнюк",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Завтра надіслати Софії в Telegram приклади наших AI/video робіт і коротко запропонувати обговорити, які формати можуть підійти WEDEX.",
+      "notes": "Telegram chat/user id: 7650788505. У Telegram видно контакт “Софія manager WEDEX Юнюк”. Контекст: Софія очікує від нас приклади робіт; потрібно завтра надіслати добірку AI/video кейсів. Теплий контакт, не загубити follow-up.",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": "2026-06-23",
+      "next_steps_date": "2026-06-24"
+    },
+    {
+      "name": "Marlena Cichocka-Ratajczak — Melitta Group",
+      "company": "Melitta Group",
+      "contact": "Marlena Cichocka-Ratajczak",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Зробити follow-up після відправленого портфоліо: запитати, чи встигла подивитися, і запропонувати підготувати короткий offer/варіанти AI/video production під їхні launches, social content або seasonal campaigns.",
+      "notes": "LinkedIn контакт. Marlena — Marketing Manager / Product Marketing & Go-to-Market Execution у Melitta Group. Вона відповіла, що Melitta використовує video для product marketing, і попросила поділитися portfolio and offer. 23.06 портфоліо відправлено.",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": "2026-06-23",
+      "next_steps_date": "2026-06-26"
     }
   ],
   "daily": {
