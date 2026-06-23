@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-22T21:31:21Z",
+  "updated_at": "2026-06-23T10:33:57Z",
   "sequences": [
     {
       "id": "6a33bd23924b3e001c60e497",
@@ -25,18 +25,18 @@
       "name": "Allegro ",
       "active": true,
       "stats": {
-        "num_active": 19,
-        "num_paused": 0,
-        "num_finished": 0,
-        "num_bounced": 0,
-        "num_not_sent": 0,
-        "unique_scheduled": 19,
-        "emails_sent": 0,
-        "emails_opened": 0,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 18,
+        "emails_sent": 2,
+        "emails_opened": 1,
         "emails_clicked": 0,
-        "emails_replied": 0,
-        "open_rate": 0.0,
-        "reply_rate": 0.0
+        "emails_replied": 1,
+        "open_rate": 50.0,
+        "reply_rate": 50.0
       }
     },
     {
@@ -49,13 +49,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 608,
-        "emails_sent": 422,
-        "emails_opened": 100,
+        "unique_scheduled": 599,
+        "emails_sent": 435,
+        "emails_opened": 103,
         "emails_clicked": 0,
-        "emails_replied": 13,
+        "emails_replied": 15,
         "open_rate": 23.7,
-        "reply_rate": 3.1
+        "reply_rate": 3.4
       }
     },
     {
