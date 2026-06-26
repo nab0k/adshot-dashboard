@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-25T20:56:05Z",
+  "updated_at": "2026-06-26T10:20:08Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
@@ -25,17 +25,17 @@
       "name": "Pharma",
       "active": true,
       "stats": {
-        "num_active": 545,
-        "num_paused": 0,
-        "num_finished": 0,
-        "num_bounced": 0,
-        "num_not_sent": 0,
-        "unique_scheduled": 545,
-        "emails_sent": 52,
-        "emails_opened": 0,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 542,
+        "emails_sent": 96,
+        "emails_opened": 1,
         "emails_clicked": 0,
         "emails_replied": 0,
-        "open_rate": 0.0,
+        "open_rate": 1.0,
         "reply_rate": 0.0
       }
     },
@@ -50,12 +50,12 @@
         "num_bounced": 0,
         "num_not_sent": 0,
         "unique_scheduled": 18,
-        "emails_sent": 2,
-        "emails_opened": 1,
+        "emails_sent": 3,
+        "emails_opened": 2,
         "emails_clicked": 0,
         "emails_replied": 1,
-        "open_rate": 50.0,
-        "reply_rate": 50.0
+        "open_rate": 66.7,
+        "reply_rate": 33.3
       }
     },
     {
@@ -69,11 +69,11 @@
         "num_bounced": 2,
         "num_not_sent": 6,
         "unique_scheduled": 572,
-        "emails_sent": 467,
+        "emails_sent": 473,
         "emails_opened": 119,
         "emails_clicked": 0,
         "emails_replied": 16,
-        "open_rate": 25.5,
+        "open_rate": 25.2,
         "reply_rate": 3.4
       }
     },
