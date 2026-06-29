@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T15:57:16.791307+00:00",
+  "updated_at": "2026-06-29T12:27:52.900Z",
   "records": [
     {
       "name": "СН — Baseline 09.06.2026",
@@ -181,9 +181,9 @@
       "name": "ДВ — 2026-06-19",
       "account": "ДВ",
       "date": "2026-06-19",
-      "processed": 593,
-      "accepted": 591,
-      "messaged": 106,
+      "processed": 598,
+      "accepted": 596,
+      "messaged": 108,
       "replied": 5,
       "failed": 2,
       "is_baseline": false
@@ -194,8 +194,8 @@
       "date": "2026-06-19",
       "processed": 647,
       "accepted": 643,
-      "messaged": 175,
-      "replied": 24,
+      "messaged": 190,
+      "replied": 25,
       "failed": 4,
       "is_baseline": false
     },
@@ -203,9 +203,9 @@
       "name": "СН — 2026-06-19",
       "account": "СН",
       "date": "2026-06-19",
-      "processed": 356,
-      "accepted": 349,
-      "messaged": 71,
+      "processed": 402,
+      "accepted": 395,
+      "messaged": 75,
       "replied": 2,
       "failed": 7,
       "is_baseline": false
@@ -216,9 +216,449 @@
       "date": "2026-06-19",
       "processed": 389,
       "accepted": 381,
-      "messaged": 75,
+      "messaged": 80,
       "replied": 2,
       "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-20",
+      "account": "ДВ",
+      "date": "2026-06-20",
+      "processed": 598,
+      "accepted": 596,
+      "messaged": 116,
+      "replied": 5,
+      "failed": 2,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-20",
+      "account": "КС",
+      "date": "2026-06-20",
+      "processed": 647,
+      "accepted": 643,
+      "messaged": 200,
+      "replied": 25,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-20",
+      "account": "СН",
+      "date": "2026-06-20",
+      "processed": 451,
+      "accepted": 444,
+      "messaged": 82,
+      "replied": 2,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-20",
+      "account": "СЦ",
+      "date": "2026-06-20",
+      "processed": 389,
+      "accepted": 381,
+      "messaged": 83,
+      "replied": 2,
+      "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-21",
+      "account": "ДВ",
+      "date": "2026-06-21",
+      "processed": 598,
+      "accepted": 596,
+      "messaged": 120,
+      "replied": 5,
+      "failed": 2,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-21",
+      "account": "КС",
+      "date": "2026-06-21",
+      "processed": 647,
+      "accepted": 643,
+      "messaged": 205,
+      "replied": 25,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-21",
+      "account": "СН",
+      "date": "2026-06-21",
+      "processed": 451,
+      "accepted": 444,
+      "messaged": 89,
+      "replied": 2,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-21",
+      "account": "СЦ",
+      "date": "2026-06-21",
+      "processed": 389,
+      "accepted": 381,
+      "messaged": 83,
+      "replied": 2,
+      "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-22",
+      "account": "ДВ",
+      "date": "2026-06-22",
+      "processed": 645,
+      "accepted": 642,
+      "messaged": 128,
+      "replied": 5,
+      "failed": 3,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-22",
+      "account": "КС",
+      "date": "2026-06-22",
+      "processed": 693,
+      "accepted": 689,
+      "messaged": 218,
+      "replied": 25,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-22",
+      "account": "СН",
+      "date": "2026-06-22",
+      "processed": 497,
+      "accepted": 490,
+      "messaged": 105,
+      "replied": 3,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-22",
+      "account": "СЦ",
+      "date": "2026-06-22",
+      "processed": 435,
+      "accepted": 427,
+      "messaged": 124,
+      "replied": 5,
+      "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-23",
+      "account": "ДВ",
+      "date": "2026-06-23",
+      "processed": 672,
+      "accepted": 669,
+      "messaged": 132,
+      "replied": 5,
+      "failed": 3,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-23",
+      "account": "КС",
+      "date": "2026-06-23",
+      "processed": 714,
+      "accepted": 710,
+      "messaged": 223,
+      "replied": 25,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-23",
+      "account": "СН",
+      "date": "2026-06-23",
+      "processed": 544,
+      "accepted": 537,
+      "messaged": 115,
+      "replied": 5,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-23",
+      "account": "СЦ",
+      "date": "2026-06-23",
+      "processed": 436,
+      "accepted": 428,
+      "messaged": 125,
+      "replied": 6,
+      "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-24",
+      "account": "ДВ",
+      "date": "2026-06-24",
+      "processed": 719,
+      "accepted": 714,
+      "messaged": 141,
+      "replied": 6,
+      "failed": 5,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-24",
+      "account": "КС",
+      "date": "2026-06-24",
+      "processed": 759,
+      "accepted": 755,
+      "messaged": 246,
+      "replied": 25,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-24",
+      "account": "СН",
+      "date": "2026-06-24",
+      "processed": 572,
+      "accepted": 565,
+      "messaged": 136,
+      "replied": 7,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-24",
+      "account": "СЦ",
+      "date": "2026-06-24",
+      "processed": 481,
+      "accepted": 473,
+      "messaged": 135,
+      "replied": 7,
+      "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-25",
+      "account": "ДВ",
+      "date": "2026-06-25",
+      "processed": 765,
+      "accepted": 760,
+      "messaged": 151,
+      "replied": 6,
+      "failed": 5,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-25",
+      "account": "КС",
+      "date": "2026-06-25",
+      "processed": 805,
+      "accepted": 801,
+      "messaged": 262,
+      "replied": 25,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-25",
+      "account": "СН",
+      "date": "2026-06-25",
+      "processed": 572,
+      "accepted": 565,
+      "messaged": 146,
+      "replied": 8,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-25",
+      "account": "СЦ",
+      "date": "2026-06-25",
+      "processed": 527,
+      "accepted": 519,
+      "messaged": 146,
+      "replied": 7,
+      "failed": 8,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-26",
+      "account": "ДВ",
+      "date": "2026-06-26",
+      "processed": 801,
+      "accepted": 796,
+      "messaged": 159,
+      "replied": 6,
+      "failed": 5,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-26",
+      "account": "КС",
+      "date": "2026-06-26",
+      "processed": 845,
+      "accepted": 841,
+      "messaged": 281,
+      "replied": 26,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-26",
+      "account": "СН",
+      "date": "2026-06-26",
+      "processed": 572,
+      "accepted": 565,
+      "messaged": 153,
+      "replied": 8,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-26",
+      "account": "СЦ",
+      "date": "2026-06-26",
+      "processed": 577,
+      "accepted": 568,
+      "messaged": 156,
+      "replied": 8,
+      "failed": 9,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-27",
+      "account": "ДВ",
+      "date": "2026-06-27",
+      "processed": 801,
+      "accepted": 796,
+      "messaged": 169,
+      "replied": 7,
+      "failed": 5,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-27",
+      "account": "КС",
+      "date": "2026-06-27",
+      "processed": 845,
+      "accepted": 841,
+      "messaged": 306,
+      "replied": 26,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-27",
+      "account": "СН",
+      "date": "2026-06-27",
+      "processed": 572,
+      "accepted": 565,
+      "messaged": 170,
+      "replied": 8,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-27",
+      "account": "СЦ",
+      "date": "2026-06-27",
+      "processed": 590,
+      "accepted": 581,
+      "messaged": 163,
+      "replied": 11,
+      "failed": 9,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-28",
+      "account": "ДВ",
+      "date": "2026-06-28",
+      "processed": 801,
+      "accepted": 796,
+      "messaged": 177,
+      "replied": 7,
+      "failed": 5,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-28",
+      "account": "КС",
+      "date": "2026-06-28",
+      "processed": 845,
+      "accepted": 841,
+      "messaged": 316,
+      "replied": 26,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-28",
+      "account": "СН",
+      "date": "2026-06-28",
+      "processed": 572,
+      "accepted": 565,
+      "messaged": 174,
+      "replied": 8,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-28",
+      "account": "СЦ",
+      "date": "2026-06-28",
+      "processed": 590,
+      "accepted": 581,
+      "messaged": 163,
+      "replied": 11,
+      "failed": 9,
+      "is_baseline": false
+    },
+    {
+      "name": "ДВ — 2026-06-29",
+      "account": "ДВ",
+      "date": "2026-06-29",
+      "processed": 850,
+      "accepted": 845,
+      "messaged": 248,
+      "replied": 8,
+      "failed": 5,
+      "is_baseline": false
+    },
+    {
+      "name": "КС — 2026-06-29",
+      "account": "КС",
+      "date": "2026-06-29",
+      "processed": 894,
+      "accepted": 890,
+      "messaged": 407,
+      "replied": 26,
+      "failed": 4,
+      "is_baseline": false
+    },
+    {
+      "name": "СН — 2026-06-29",
+      "account": "СН",
+      "date": "2026-06-29",
+      "processed": 572,
+      "accepted": 565,
+      "messaged": 174,
+      "replied": 9,
+      "failed": 7,
+      "is_baseline": false
+    },
+    {
+      "name": "СЦ — 2026-06-29",
+      "account": "СЦ",
+      "date": "2026-06-29",
+      "processed": 641,
+      "accepted": 630,
+      "messaged": 178,
+      "replied": 12,
+      "failed": 11,
       "is_baseline": false
     }
   ],
@@ -295,14 +735,14 @@
       "name": "Prerna Ruia, Ankit Ruia — Sempre Fixe",
       "company": "Sempre Fixe / Campo de Ourique",
       "contact": "Ankit Ruia, Prerna Ruia",
-      "stage": "Meeting scheduled",
+      "stage": "Negotiation",
       "deal_size": 4000,
-      "next_steps": "Підготувати і надіслати комерційну пропозицію у понеділок 22.06: що знімаємо, що вони отримують, бюджет і наступний крок.",
-      "notes": "Після брейншторму і communication strategy Ankit відповів позитивно: very impressive starting point, looking forward to exploring further. Поки stage лишаємо Meeting scheduled до відправки proposal.",
+      "next_steps": "Узгодити форму оплати і перейти до підписання договору. Тримати фокус на конкретному scope, бюджеті, payment terms і даті старту.",
+      "notes": "Після брейншторму, communication strategy і комерційної пропозиції йде обговорення форми оплати. Наступний практичний крок — договір.",
       "linkedin_url": "",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30619/",
-      "last_contact": "2026-06-18",
-      "next_steps_date": "2026-06-22"
+      "last_contact": "2026-06-28",
+      "next_steps_date": "2026-06-30"
     },
     {
       "name": "Miguel Duarte Silva — Wells/Sonae MC",
@@ -336,12 +776,12 @@
       "contact": "Riccardo Antonino",
       "stage": "Meeting scheduled",
       "deal_size": 0,
-      "next_steps": "Надіслати AI-презентацію, подякувати за зустріч і запропонувати порахувати їхні поточні або минулі video/AI production задачі в реаліях українського ринку: підхід, таймінг і бюджет.",
-      "notes": "Email: ricky@robin.studio. Зустріч відбулася 19.06, контакт теплий. Після зустрічі потрібно надіслати AI-презентацію і перевести розмову в практичний розрахунок: взяти те, що вони вже робили або планують, і показати, як це може виглядати по production, строках і бюджету в Україні.",
+      "next_steps": "Дочекатися реакції на надіслані матеріали. Якщо тиша — follow-up: запропонувати взяти один їхній поточний/минулий video або AI production проєкт і порахувати український production scenario.",
+      "notes": "Після зустрічі Riccardo надіслано brief/матеріали про нас. Наступний крок — перевести розмову в практичний розрахунок: approach, timing, team, budget.",
       "linkedin_url": "",
       "bitrix_url": "",
-      "last_contact": "2026-06-19",
-      "next_steps_date": "2026-06-23"
+      "last_contact": "2026-06-28",
+      "next_steps_date": "2026-07-02"
     },
     {
       "name": "Roger Wertheim — Aymes International",
@@ -349,12 +789,12 @@
       "contact": "Roger Wertheim",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Нагадати про себе у вікні 23–26.06: Roger передав повідомлення своєму маркетологу, треба спитати чи вони встигли подивитись.",
-      "notes": "Познайомились особисто в залі 10.06.2026. Показав відео, виявив інтерес. Власник компанії. 18.06: Roger передав повідомлення маркетологу.\n\nAymes International — oral nutritional supplements для NHS (UK). Pharma/медичний сектор. Релевантні типи відео: product explainer, HCP-навчання, patient-facing відео, rebranding content.",
+      "next_steps": "Почекати, чи повернеться маркетолог. Якщо не буде відповіді — зробити мʼякий follow-up на початку липня.",
+      "notes": "28.06 нагадав Roger. Він пообіцяв щось зробити, щоб його маркетолог повернувся до нас. Контакт теплий, але рішення/наступний контакт залежить від маркетолога.",
       "linkedin_url": "https://www.linkedin.com/in/rogerwertheimaymes/",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30625/",
-      "last_contact": "2026-06-18",
-      "next_steps_date": "2026-06-24"
+      "last_contact": "2026-06-28",
+      "next_steps_date": "2026-07-02"
     },
     {
       "name": "Francisco Rodrigues — Spraga Kombucha",
@@ -362,12 +802,12 @@
       "contact": "Francisco Rodrigues",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Francisco мовчить. Нагадати 22–23.06 легким follow-up без тиску.",
-      "notes": "Особиста зустріч з Francisco Rodrigues (Operations). Попросив познайомити з маркетингом.\n\nТри канали виходу:\n1. Francisco Rodrigues — особисто попросив вивести на Filipa Roque (Marketing)\n2. Filipa Roque — додана в LinkedIn, чекаємо прийняття\n3. Ӏвген Шевченко — Board Member, доданий в LinkedIn.",
+      "next_steps": "Дочекатися інтро з маркетологом. Якщо Francisco не познайомить — нагадати на початку липня.",
+      "notes": "28.06 Francisco пообіцяв познайомити з маркетологом. Раніше був особистий контакт і прохання вивести на marketing.",
       "linkedin_url": "",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30626/",
-      "last_contact": "2026-06-18",
-      "next_steps_date": "2026-06-22"
+      "last_contact": "2026-06-28",
+      "next_steps_date": "2026-07-02"
     },
     {
       "name": "João Bernardo — TotalEnergies",
@@ -375,12 +815,12 @@
       "contact": "João Bernardo",
       "stage": "Contacted",
       "deal_size": 4500,
-      "next_steps": "Повернутися на початку липня після управлінського переходу.",
-      "notes": "Head of Communication & Image, TotalEnergies Renewables Portugal. 18.06 João написав, що зараз триває перехід управління, Managing Director іде в кінці місяця, до того він не може ухвалювати рішення. Ми відповіли, що повернемось на початку липня.",
+      "next_steps": "Нагадати про себе в перші дні липня після завершення управлінського переходу.",
+      "notes": "Новин поки немає. João раніше написав, що через зміну managing director до кінця місяця не може ухвалювати рішення. Повернутися на початку липня.",
       "linkedin_url": "https://www.linkedin.com/in/joao-bernardo/",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30342/",
       "last_contact": "2026-06-18",
-      "next_steps_date": "2026-07-02"
+      "next_steps_date": "2026-07-03"
     },
     {
       "name": "Zendesk — Marta Bradley",
@@ -388,12 +828,12 @@
       "contact": "Marta Bradley",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Написати LinkedIn intro про Adshot Europe / AI video і спитати правильний marketing/content контакт у Zendesk.",
-      "notes": "Lisbon office has no marketing team. Marta Bradley: Marketing made human | Employer Branding @ Zendesk.",
+      "next_steps": "Другий Zendesk-контакт. Основний поточний рух — через Sergio Pedroso; до Marta повертатися тільки якщо Pedroso не відповість.",
+      "notes": "Lisbon office has no marketing team. Marta Bradley: Employer Branding @ Zendesk. Поки не основний канал.",
       "linkedin_url": "",
       "bitrix_url": "",
       "last_contact": "2026-06-18",
-      "next_steps_date": "2026-06-19"
+      "next_steps_date": "2026-07-08"
     },
     {
       "name": "Zendesk — Sergio Pedroso",
@@ -401,12 +841,12 @@
       "contact": "Sergio Pedroso",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Написати коротке intro і попросити правильний контакт у marketing/comms.",
-      "notes": "Lisbon office has no marketing team. Sergio Pedroso: Director of Communications LATAM.",
+      "next_steps": "Почекати реакцію на LinkedIn-повідомлення. Якщо тиша — зробити короткий follow-up і попросити правильний marketing/comms контакт.",
+      "notes": "Надіслано повідомлення Pedroso. Контекст: у Lisbon office немає маркетингу, шукаємо вихід на інші офіси/marketing/comms.",
       "linkedin_url": "",
       "bitrix_url": "",
-      "last_contact": "2026-06-18",
-      "next_steps_date": "2026-06-19"
+      "last_contact": "2026-06-28",
+      "next_steps_date": "2026-07-03"
     },
     {
       "name": "Frederico Almeida de Carvalho (Fred) — Co.op Homes",
@@ -414,8 +854,8 @@
       "contact": "Frederico Almeida de Carvalho (Fred)",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Повернутися після старту роботи з Ankit / Sempre Fixe, після 15.07.",
-      "notes": "Особистий контакт з залу. Теплий. Не дублювати контакт: Fred і Frederico Almeida de Carvalho — одна людина.",
+      "next_steps": "Почати нову розмову після того, як буде перший конкретний результат або старт роботи для Ankit / Sempre Fixe.",
+      "notes": "Особистий теплий контакт. Не чіпати раніше, ніж зʼявиться кейс/рух по Ankit, щоб повернутися з сильнішим приводом.",
       "linkedin_url": "",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30624/",
       "last_contact": "2026-06-18",
@@ -427,12 +867,12 @@
       "contact": "Filipe Moreira",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Повернутися після 15.07, коли буде більше конкретики/кейсу після старту роботи з Ankit.",
-      "notes": "Агенція-партнерство. Філіппе — особистий знайомий з залу, працює стратегом. Була зустріч з командою, проговорили всі можливості. Після 15 липня повернутись з новим контекстом.",
+      "next_steps": "Повернутися в серпні з оновленим контекстом і, бажано, прикладом після роботи з Ankit / Sempre Fixe.",
+      "notes": "Агенційний потенціал. Краще не тиснути в липні; запланувати легкий follow-up у серпні.",
       "linkedin_url": "",
       "bitrix_url": "https://bx.adshot.com.ua/crm/deal/details/30621/",
       "last_contact": "2026-06-18",
-      "next_steps_date": "2026-07-17"
+      "next_steps_date": "2026-08-05"
     },
     {
       "name": "Antonio Gigliotti — M&C Saatchi Milano",
@@ -440,12 +880,12 @@
       "contact": "Antonio Gigliotti",
       "stage": "Meeting scheduled",
       "deal_size": 0,
-      "next_steps": "Надіслати AI-презентацію, подякувати за зустріч і запропонувати порахувати їхні поточні або минулі video/AI production задачі в реаліях українського ринку: підхід, таймінг і бюджет.",
-      "notes": "Email: antonio.gigliotti@mcsaatchi-milano.com; у Mail також є адреса droppie110@gmail.com. Зустріч/розмова відбулася 19.06. Потрібно подякувати за зустріч, надіслати AI-презентацію і запропонувати порахувати їхні актуальні або минулі проєкти в реаліях українського ринку.",
+      "next_steps": "Дочекатися реакції на надіслані матеріали. Якщо тиша — follow-up з пропозицією порахувати один їхній поточний або минулий production/AI проєкт у реаліях українського ринку.",
+      "notes": "Після зустрічі Antonio надіслано brief/матеріали про нас. Фокус наступного листа: подяка, AI/video capabilities, practical estimate for approach, timing and budget.",
       "linkedin_url": "",
       "bitrix_url": "",
-      "last_contact": "2026-06-19",
-      "next_steps_date": "2026-06-23"
+      "last_contact": "2026-06-28",
+      "next_steps_date": "2026-07-02"
     },
     {
       "name": "Софія Юнюк — WEDEX",
@@ -453,12 +893,12 @@
       "contact": "Софія Юнюк",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Завтра надіслати Софії в Telegram приклади наших AI/video робіт і коротко запропонувати обговорити, які формати можуть підійти WEDEX.",
-      "notes": "Telegram chat/user id: 7650788505. У Telegram видно контакт “Софія manager WEDEX Юнюк”. Контекст: Софія очікує від нас приклади робіт; потрібно завтра надіслати добірку AI/video кейсів. Теплий контакт, не загубити follow-up.",
+      "next_steps": "Після відправленого портфоліо зробити короткий follow-up: чи встигла подивитися, і запропонувати 2-3 релевантні формати для WEDEX.",
+      "notes": "Telegram chat/user id: 7650788505. Софія очікувала приклади робіт; портфоліо вже надіслано.",
       "linkedin_url": "",
       "bitrix_url": "",
       "last_contact": "2026-06-23",
-      "next_steps_date": "2026-06-24"
+      "next_steps_date": "2026-06-30"
     },
     {
       "name": "Marlena Cichocka-Ratajczak — Melitta Group",
@@ -466,12 +906,38 @@
       "contact": "Marlena Cichocka-Ratajczak",
       "stage": "Contacted",
       "deal_size": 0,
-      "next_steps": "Зробити follow-up після відправленого портфоліо: запитати, чи встигла подивитися, і запропонувати підготувати короткий offer/варіанти AI/video production під їхні launches, social content або seasonal campaigns.",
+      "next_steps": "Зробити follow-up після відправленого портфоліо: чи встигла подивитися, і запропонувати короткий offer/варіанти AI/video production під launches, social content або seasonal campaigns.",
       "notes": "LinkedIn контакт. Marlena — Marketing Manager / Product Marketing & Go-to-Market Execution у Melitta Group. Вона відповіла, що Melitta використовує video для product marketing, і попросила поділитися portfolio and offer. 23.06 портфоліо відправлено.",
       "linkedin_url": "",
       "bitrix_url": "",
       "last_contact": "2026-06-23",
-      "next_steps_date": "2026-06-26"
+      "next_steps_date": "2026-07-01"
+    },
+    {
+      "name": "Marcin Niewiadomski — JAMEL",
+      "company": "JAMEL",
+      "contact": "Marcin Niewiadomski",
+      "stage": "Meeting scheduled",
+      "deal_size": 0,
+      "next_steps": "Продовжити комунікацію в пошті: після brief/матеріалів запропонувати взяти один реальний або минулий проєкт JAMEL і порахувати production/AI scenario.",
+      "notes": "Зустріч відбулася, зараз іде комунікація в пошті. Логіка така сама, як для Riccardo/Antonio: закріпити контакт і перевести в конкретний розрахунок задачі.",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": "2026-06-28",
+      "next_steps_date": "2026-07-01"
+    },
+    {
+      "name": "Daniel Piątkowski — Allegro",
+      "company": "Allegro",
+      "contact": "Daniel Piątkowski",
+      "stage": "Contacted",
+      "deal_size": 0,
+      "next_steps": "Дочекатися відповіді на лист із пропозицією короткої зустрічі. Якщо відповіді немає — мʼяко нагадати на початку липня.",
+      "notes": "Daniel відповів, що зараз Allegro не планує broad marketing activities in Ukraine, але уточнив, чи ми працюємо з України. Йому надіслано лист з поясненням Adshot, Kyiv/Lisbon presence, напрямками роботи і пропозицією зустрічі.",
+      "linkedin_url": "",
+      "bitrix_url": "",
+      "last_contact": "2026-06-28",
+      "next_steps_date": "2026-07-03"
     }
   ],
   "daily": {
@@ -597,33 +1063,342 @@
     },
     "2026-06-19": {
       "ДВ": {
-        "processed": 593,
-        "accepted": 591,
-        "messaged": 106,
+        "processed": 598,
+        "accepted": 596,
+        "messaged": 108,
         "replied": 5,
         "failed": 2
       },
       "КС": {
         "processed": 647,
         "accepted": 643,
-        "messaged": 175,
-        "replied": 24,
+        "messaged": 190,
+        "replied": 25,
         "failed": 4
       },
       "СН": {
-        "processed": 356,
-        "accepted": 349,
-        "messaged": 71,
+        "processed": 402,
+        "accepted": 395,
+        "messaged": 75,
         "replied": 2,
         "failed": 7
       },
       "СЦ": {
         "processed": 389,
         "accepted": 381,
-        "messaged": 75,
+        "messaged": 80,
         "replied": 2,
         "failed": 8
       }
+    },
+    "2026-06-20": {
+      "ДВ": {
+        "processed": 598,
+        "accepted": 596,
+        "messaged": 116,
+        "replied": 5,
+        "failed": 2
+      },
+      "КС": {
+        "processed": 647,
+        "accepted": 643,
+        "messaged": 200,
+        "replied": 25,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 451,
+        "accepted": 444,
+        "messaged": 82,
+        "replied": 2,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 389,
+        "accepted": 381,
+        "messaged": 83,
+        "replied": 2,
+        "failed": 8
+      }
+    },
+    "2026-06-21": {
+      "ДВ": {
+        "processed": 598,
+        "accepted": 596,
+        "messaged": 120,
+        "replied": 5,
+        "failed": 2
+      },
+      "КС": {
+        "processed": 647,
+        "accepted": 643,
+        "messaged": 205,
+        "replied": 25,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 451,
+        "accepted": 444,
+        "messaged": 89,
+        "replied": 2,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 389,
+        "accepted": 381,
+        "messaged": 83,
+        "replied": 2,
+        "failed": 8
+      }
+    },
+    "2026-06-22": {
+      "ДВ": {
+        "processed": 645,
+        "accepted": 642,
+        "messaged": 128,
+        "replied": 5,
+        "failed": 3
+      },
+      "КС": {
+        "processed": 693,
+        "accepted": 689,
+        "messaged": 218,
+        "replied": 25,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 497,
+        "accepted": 490,
+        "messaged": 105,
+        "replied": 3,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 435,
+        "accepted": 427,
+        "messaged": 124,
+        "replied": 5,
+        "failed": 8
+      }
+    },
+    "2026-06-23": {
+      "ДВ": {
+        "processed": 672,
+        "accepted": 669,
+        "messaged": 132,
+        "replied": 5,
+        "failed": 3
+      },
+      "КС": {
+        "processed": 714,
+        "accepted": 710,
+        "messaged": 223,
+        "replied": 25,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 544,
+        "accepted": 537,
+        "messaged": 115,
+        "replied": 5,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 436,
+        "accepted": 428,
+        "messaged": 125,
+        "replied": 6,
+        "failed": 8
+      }
+    },
+    "2026-06-24": {
+      "ДВ": {
+        "processed": 719,
+        "accepted": 714,
+        "messaged": 141,
+        "replied": 6,
+        "failed": 5
+      },
+      "КС": {
+        "processed": 759,
+        "accepted": 755,
+        "messaged": 246,
+        "replied": 25,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 572,
+        "accepted": 565,
+        "messaged": 136,
+        "replied": 7,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 481,
+        "accepted": 473,
+        "messaged": 135,
+        "replied": 7,
+        "failed": 8
+      }
+    },
+    "2026-06-25": {
+      "ДВ": {
+        "processed": 765,
+        "accepted": 760,
+        "messaged": 151,
+        "replied": 6,
+        "failed": 5
+      },
+      "КС": {
+        "processed": 805,
+        "accepted": 801,
+        "messaged": 262,
+        "replied": 25,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 572,
+        "accepted": 565,
+        "messaged": 146,
+        "replied": 8,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 527,
+        "accepted": 519,
+        "messaged": 146,
+        "replied": 7,
+        "failed": 8
+      }
+    },
+    "2026-06-26": {
+      "ДВ": {
+        "processed": 801,
+        "accepted": 796,
+        "messaged": 159,
+        "replied": 6,
+        "failed": 5
+      },
+      "КС": {
+        "processed": 845,
+        "accepted": 841,
+        "messaged": 281,
+        "replied": 26,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 572,
+        "accepted": 565,
+        "messaged": 153,
+        "replied": 8,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 577,
+        "accepted": 568,
+        "messaged": 156,
+        "replied": 8,
+        "failed": 9
+      }
+    },
+    "2026-06-27": {
+      "ДВ": {
+        "processed": 801,
+        "accepted": 796,
+        "messaged": 169,
+        "replied": 7,
+        "failed": 5
+      },
+      "КС": {
+        "processed": 845,
+        "accepted": 841,
+        "messaged": 306,
+        "replied": 26,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 572,
+        "accepted": 565,
+        "messaged": 170,
+        "replied": 8,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 590,
+        "accepted": 581,
+        "messaged": 163,
+        "replied": 11,
+        "failed": 9
+      }
+    },
+    "2026-06-28": {
+      "ДВ": {
+        "processed": 801,
+        "accepted": 796,
+        "messaged": 177,
+        "replied": 7,
+        "failed": 5
+      },
+      "КС": {
+        "processed": 845,
+        "accepted": 841,
+        "messaged": 316,
+        "replied": 26,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 572,
+        "accepted": 565,
+        "messaged": 174,
+        "replied": 8,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 590,
+        "accepted": 581,
+        "messaged": 163,
+        "replied": 11,
+        "failed": 9
+      }
+    },
+    "2026-06-29": {
+      "ДВ": {
+        "processed": 850,
+        "accepted": 845,
+        "messaged": 248,
+        "replied": 8,
+        "failed": 5
+      },
+      "КС": {
+        "processed": 894,
+        "accepted": 890,
+        "messaged": 407,
+        "replied": 26,
+        "failed": 4
+      },
+      "СН": {
+        "processed": 572,
+        "accepted": 565,
+        "messaged": 174,
+        "replied": 9,
+        "failed": 7
+      },
+      "СЦ": {
+        "processed": 641,
+        "accepted": 630,
+        "messaged": 178,
+        "replied": 12,
+        "failed": 11
+      }
     }
+  },
+  "live_conversations_count": 54,
+  "latest_sync_run": {
+    "device_id": "DESKTOP-61MJMV5",
+    "account_code": null,
+    "received_at": "2026-06-29T12:17:05.791Z",
+    "status": "ok",
+    "stats_count": 4,
+    "conversation_count": 64
   }
 }

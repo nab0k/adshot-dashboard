@@ -352,11 +352,75 @@ const COLORS={'ДВ':'#4a9eff','КС':'#2ecc71','СЦ':'#b085f5','СН':'#ff4d00
 const STATUS_CLS={'Новий':'s-new','В роботі':'s-work','Зустріч':'s-meet','Відмова':'s-no','Не релевантний':'s-irr','New':'s-new'};
 
 let allReplies=[];
+const LIVE_DASHBOARD_API = 'https://adshot-eu-sync-v2.nabokmanberstein.workers.dev/api/dashboard';
+
+function liveSnapshotRecord(snapshot){
+  const account = snapshot.account_code;
+  const date = snapshot.date;
+  return {
+    name: `${account} — ${date}`,
+    account,
+    date,
+    processed: Number(snapshot.processed || 0),
+    accepted: Number(snapshot.accepted || 0),
+    messaged: Number(snapshot.messaged || 0),
+    replied: Number(snapshot.replied || 0),
+    failed: Number(snapshot.failed || 0),
+    is_baseline: false
+  };
+}
+
+function buildDaily(records){
+  return records.reduce((daily,row)=>{
+    if(!row.account || !row.date) return daily;
+    daily[row.date] = daily[row.date] || {};
+    daily[row.date][row.account] = {
+      processed: Number(row.processed || 0),
+      accepted: Number(row.accepted || 0),
+      messaged: Number(row.messaged || 0),
+      replied: Number(row.replied || 0),
+      failed: Number(row.failed || 0)
+    };
+    return daily;
+  },{});
+}
+
+async function loadDashboardData(){
+  const staticData = await fetch('data.json?_='+Date.now()).then(r=>r.json());
+  try{
+    const live = await fetch(LIVE_DASHBOARD_API+'?_='+Date.now(), {cache:'no-store'}).then(r=>r.json());
+    const liveRecords = (live.snapshots || [])
+      .filter(s => ACCOUNTS[s.account_code] && s.date)
+      .map(liveSnapshotRecord);
+    if(liveRecords.length){
+      const baselines = (staticData.records || []).filter(r => r.is_baseline === true);
+      const seen = new Set();
+      const records = [];
+      [...baselines, ...liveRecords].forEach(row=>{
+        const key = `${row.account}|${row.date}|${row.is_baseline ? 1 : 0}`;
+        if(seen.has(key)) return;
+        seen.add(key);
+        records.push(row);
+      });
+      return {
+        ...staticData,
+        updated_at: live.updated_at || staticData.updated_at,
+        records,
+        daily: buildDaily(records),
+        live_conversations_count: (live.conversations || []).length,
+        latest_sync_run: (live.sync_runs || [])[0] || staticData.latest_sync_run
+      };
+    }
+  }catch(error){
+    console.warn('Live outreach data unavailable, using static data.json', error);
+  }
+  return staticData;
+}
 
 
 async function init(){
   const [data, apolloData] = await Promise.all([
-    fetch('data.json?_='+Date.now()).then(r=>r.json()),
+    loadDashboardData(),
     fetch('apollo.json?_='+Date.now()).then(r=>r.json()).catch(()=>({sequences:[]}))
   ]);
   const{updated_at,records=[],replies=[]}=data;
