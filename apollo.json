@@ -1,28 +1,9 @@
 {
-  "updated_at": "2026-07-07T20:49:13Z",
+  "updated_at": "2026-07-08T09:23:04Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
       "name": "Creative Heads 2",
-      "active": true,
-      "stats": {
-        "num_active": 2625,
-        "num_paused": 4,
-        "num_finished": 16,
-        "num_bounced": 5,
-        "num_not_sent": 13,
-        "unique_scheduled": 2625,
-        "emails_sent": 195,
-        "emails_opened": 25,
-        "emails_clicked": 3,
-        "emails_replied": 14,
-        "open_rate": 12.8,
-        "reply_rate": 7.2
-      }
-    },
-    {
-      "id": "6a33bd23924b3e001c60e497",
-      "name": "Pharma",
       "active": true,
       "stats": {
         "num_active": "loading",
@@ -30,12 +11,31 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
+        "unique_scheduled": 2625,
+        "emails_sent": 215,
+        "emails_opened": 25,
+        "emails_clicked": 3,
+        "emails_replied": 14,
+        "open_rate": 11.6,
+        "reply_rate": 6.5
+      }
+    },
+    {
+      "id": "6a33bd23924b3e001c60e497",
+      "name": "Pharma",
+      "active": true,
+      "stats": {
+        "num_active": 395,
+        "num_paused": 5,
+        "num_finished": 135,
+        "num_bounced": 8,
+        "num_not_sent": 2,
         "unique_scheduled": 395,
-        "emails_sent": 294,
+        "emails_sent": 297,
         "emails_opened": 129,
         "emails_clicked": 0,
         "emails_replied": 3,
-        "open_rate": 43.9,
+        "open_rate": 43.4,
         "reply_rate": 1.0
       }
     },
@@ -63,18 +63,18 @@
       "name": "Creative Heads",
       "active": true,
       "stats": {
-        "num_active": 712,
-        "num_paused": 6,
-        "num_finished": 22,
-        "num_bounced": 4,
-        "num_not_sent": 6,
-        "unique_scheduled": 462,
-        "emails_sent": 564,
-        "emails_opened": 166,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 453,
+        "emails_sent": 567,
+        "emails_opened": 170,
         "emails_clicked": 0,
-        "emails_replied": 21,
-        "open_rate": 29.4,
-        "reply_rate": 3.7
+        "emails_replied": 22,
+        "open_rate": 30.0,
+        "reply_rate": 3.9
       }
     },
     {
