@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T20:19:10Z",
+  "updated_at": "2026-07-09T10:20:38Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
@@ -11,13 +11,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 2625,
-        "emails_sent": 236,
-        "emails_opened": 25,
-        "emails_clicked": "loading",
-        "emails_replied": 14,
-        "open_rate": 10.6,
-        "reply_rate": 5.9
+        "unique_scheduled": 2618,
+        "emails_sent": 250,
+        "emails_opened": 42,
+        "emails_clicked": 4,
+        "emails_replied": 18,
+        "open_rate": 16.8,
+        "reply_rate": 7.2
       }
     },
     {
@@ -30,13 +30,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 395,
-        "emails_sent": 310,
-        "emails_opened": 129,
+        "unique_scheduled": 386,
+        "emails_sent": 318,
+        "emails_opened": 137,
         "emails_clicked": 0,
         "emails_replied": 3,
-        "open_rate": 41.6,
-        "reply_rate": 1.0
+        "open_rate": 43.1,
+        "reply_rate": 0.9
       }
     },
     {
@@ -44,11 +44,11 @@
       "name": "Allegro ",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
+        "num_active": 16,
+        "num_paused": 0,
+        "num_finished": 3,
+        "num_bounced": 0,
+        "num_not_sent": 0,
         "unique_scheduled": 16,
         "emails_sent": 9,
         "emails_opened": 5,
@@ -63,17 +63,17 @@
       "name": "Creative Heads",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
+        "num_active": 708,
+        "num_paused": 7,
+        "num_finished": 23,
+        "num_bounced": 5,
+        "num_not_sent": 7,
         "unique_scheduled": 443,
-        "emails_sent": 573,
+        "emails_sent": 581,
         "emails_opened": 174,
         "emails_clicked": 0,
         "emails_replied": 22,
-        "open_rate": 30.4,
+        "open_rate": 29.9,
         "reply_rate": 3.8
       }
     },
