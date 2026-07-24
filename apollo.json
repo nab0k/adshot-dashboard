@@ -1,23 +1,23 @@
 {
-  "updated_at": "2026-07-23T20:11:34Z",
+  "updated_at": "2026-07-24T09:17:13Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
       "name": "Creative Heads 2",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
+        "num_active": 2596,
+        "num_paused": 11,
+        "num_finished": 31,
+        "num_bounced": 7,
+        "num_not_sent": 18,
         "unique_scheduled": 2596,
-        "emails_sent": 320,
-        "emails_opened": 78,
+        "emails_sent": 325,
+        "emails_opened": 79,
         "emails_clicked": 4,
         "emails_replied": 23,
-        "open_rate": 24.4,
-        "reply_rate": 7.2
+        "open_rate": 24.3,
+        "reply_rate": 7.1
       }
     },
     {
@@ -30,13 +30,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 373,
-        "emails_sent": 350,
-        "emails_opened": 159,
+        "unique_scheduled": 370,
+        "emails_sent": 353,
+        "emails_opened": 164,
         "emails_clicked": 0,
         "emails_replied": 3,
-        "open_rate": 45.4,
-        "reply_rate": 0.9
+        "open_rate": 46.5,
+        "reply_rate": 0.8
       }
     },
     {
@@ -44,11 +44,11 @@
       "name": "Allegro ",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
+        "num_active": 15,
+        "num_paused": 0,
+        "num_finished": 3,
+        "num_bounced": 0,
+        "num_not_sent": 1,
         "unique_scheduled": 15,
         "emails_sent": 9,
         "emails_opened": 5,
@@ -63,12 +63,12 @@
       "name": "Creative Heads",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
-        "unique_scheduled": 390,
+        "num_active": 706,
+        "num_paused": 7,
+        "num_finished": 24,
+        "num_bounced": 5,
+        "num_not_sent": 8,
+        "unique_scheduled": 387,
         "emails_sent": 599,
         "emails_opened": 189,
         "emails_clicked": 0,
