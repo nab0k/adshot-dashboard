@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28T09:33:10Z",
+  "updated_at": "2026-07-28T20:15:25Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
@@ -12,12 +12,12 @@
         "num_bounced": "loading",
         "num_not_sent": "loading",
         "unique_scheduled": 2572,
-        "emails_sent": 393,
+        "emails_sent": 411,
         "emails_opened": 101,
         "emails_clicked": 6,
         "emails_replied": 24,
-        "open_rate": 25.7,
-        "reply_rate": 6.1
+        "open_rate": 24.6,
+        "reply_rate": 5.8
       }
     },
     {
@@ -31,11 +31,11 @@
         "num_bounced": "loading",
         "num_not_sent": "loading",
         "unique_scheduled": 361,
-        "emails_sent": 359,
+        "emails_sent": 369,
         "emails_opened": 189,
         "emails_clicked": 0,
         "emails_replied": 3,
-        "open_rate": 52.6,
+        "open_rate": 51.2,
         "reply_rate": 0.8
       }
     },
@@ -50,12 +50,12 @@
         "num_bounced": 0,
         "num_not_sent": 1,
         "unique_scheduled": 14,
-        "emails_sent": 10,
+        "emails_sent": 11,
         "emails_opened": 5,
         "emails_clicked": 0,
         "emails_replied": 3,
-        "open_rate": 50.0,
-        "reply_rate": 30.0
+        "open_rate": 45.5,
+        "reply_rate": 27.3
       }
     },
     {
@@ -63,17 +63,17 @@
       "name": "Creative Heads",
       "active": true,
       "stats": {
-        "num_active": 702,
-        "num_paused": 8,
-        "num_finished": 27,
-        "num_bounced": 5,
-        "num_not_sent": 8,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
         "unique_scheduled": 367,
-        "emails_sent": 620,
+        "emails_sent": 627,
         "emails_opened": 201,
         "emails_clicked": 0,
         "emails_replied": 25,
-        "open_rate": 32.4,
+        "open_rate": 32.1,
         "reply_rate": 4.0
       }
     },
