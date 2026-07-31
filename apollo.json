@@ -1,23 +1,23 @@
 {
-  "updated_at": "2026-07-30T20:13:20Z",
+  "updated_at": "2026-07-31T09:39:13Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
       "name": "Creative Heads 2",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
+        "num_active": 2527,
+        "num_paused": 17,
+        "num_finished": 88,
+        "num_bounced": 10,
+        "num_not_sent": 21,
         "unique_scheduled": 2533,
-        "emails_sent": 464,
+        "emails_sent": 481,
         "emails_opened": 142,
         "emails_clicked": 8,
         "emails_replied": 29,
-        "open_rate": 30.6,
-        "reply_rate": 6.2
+        "open_rate": 29.5,
+        "reply_rate": 6.0
       }
     },
     {
@@ -25,15 +25,15 @@
       "name": "Pharma",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
-        "unique_scheduled": 341,
-        "emails_sent": 386,
-        "emails_opened": 203,
-        "emails_clicked": 0,
+        "num_active": 340,
+        "num_paused": 7,
+        "num_finished": 179,
+        "num_bounced": 11,
+        "num_not_sent": 8,
+        "unique_scheduled": 340,
+        "emails_sent": 392,
+        "emails_opened": 206,
+        "emails_clicked": 1,
         "emails_replied": 4,
         "open_rate": 52.6,
         "reply_rate": 1.0
@@ -63,18 +63,18 @@
       "name": "Creative Heads",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
-        "unique_scheduled": 321,
-        "emails_sent": 645,
-        "emails_opened": 222,
+        "num_active": 697,
+        "num_paused": 9,
+        "num_finished": 30,
+        "num_bounced": 5,
+        "num_not_sent": 9,
+        "unique_scheduled": 314,
+        "emails_sent": 649,
+        "emails_opened": 226,
         "emails_clicked": 0,
-        "emails_replied": 26,
-        "open_rate": 34.4,
-        "reply_rate": 4.0
+        "emails_replied": 27,
+        "open_rate": 34.8,
+        "reply_rate": 4.2
       }
     },
     {
