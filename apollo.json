@@ -1,23 +1,23 @@
 {
-  "updated_at": "2026-07-31T09:39:13Z",
+  "updated_at": "2026-07-31T20:19:33Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
       "name": "Creative Heads 2",
       "active": true,
       "stats": {
-        "num_active": 2527,
-        "num_paused": 17,
-        "num_finished": 88,
-        "num_bounced": 10,
-        "num_not_sent": 21,
-        "unique_scheduled": 2533,
-        "emails_sent": 481,
-        "emails_opened": 142,
-        "emails_clicked": 8,
-        "emails_replied": 29,
-        "open_rate": 29.5,
-        "reply_rate": 6.0
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 2525,
+        "emails_sent": 517,
+        "emails_opened": 148,
+        "emails_clicked": 9,
+        "emails_replied": 30,
+        "open_rate": 28.6,
+        "reply_rate": 5.8
       }
     },
     {
@@ -25,17 +25,17 @@
       "name": "Pharma",
       "active": true,
       "stats": {
-        "num_active": 340,
-        "num_paused": 7,
-        "num_finished": 179,
-        "num_bounced": 11,
-        "num_not_sent": 8,
-        "unique_scheduled": 340,
-        "emails_sent": 392,
-        "emails_opened": 206,
-        "emails_clicked": 1,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 331,
+        "emails_sent": 404,
+        "emails_opened": 212,
+        "emails_clicked": 2,
         "emails_replied": 4,
-        "open_rate": 52.6,
+        "open_rate": 52.5,
         "reply_rate": 1.0
       }
     },
@@ -68,13 +68,13 @@
         "num_finished": 30,
         "num_bounced": 5,
         "num_not_sent": 9,
-        "unique_scheduled": 314,
-        "emails_sent": 649,
-        "emails_opened": 226,
-        "emails_clicked": 0,
+        "unique_scheduled": 300,
+        "emails_sent": 653,
+        "emails_opened": 235,
+        "emails_clicked": 1,
         "emails_replied": 27,
-        "open_rate": 34.8,
-        "reply_rate": 4.2
+        "open_rate": 36.0,
+        "reply_rate": 4.1
       }
     },
     {
