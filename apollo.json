@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T20:19:33Z",
+  "updated_at": "2026-08-01T09:01:54Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
@@ -11,13 +11,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 2525,
-        "emails_sent": 517,
-        "emails_opened": 148,
+        "unique_scheduled": 2472,
+        "emails_sent": 525,
+        "emails_opened": 158,
         "emails_clicked": 9,
-        "emails_replied": 30,
-        "open_rate": 28.6,
-        "reply_rate": 5.8
+        "emails_replied": 31,
+        "open_rate": 30.1,
+        "reply_rate": 5.9
       }
     },
     {
@@ -25,11 +25,11 @@
       "name": "Pharma",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
+        "num_active": 331,
+        "num_paused": 7,
+        "num_finished": 187,
+        "num_bounced": 12,
+        "num_not_sent": 8,
         "unique_scheduled": 331,
         "emails_sent": 404,
         "emails_opened": 212,
