@@ -1,23 +1,23 @@
 {
-  "updated_at": "2026-08-02T20:08:55Z",
+  "updated_at": "2026-08-03T10:37:26Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
       "name": "Creative Heads 2",
       "active": true,
       "stats": {
-        "num_active": 2472,
-        "num_paused": 20,
-        "num_finished": 120,
-        "num_bounced": 12,
-        "num_not_sent": 39,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
         "unique_scheduled": 2472,
-        "emails_sent": 525,
+        "emails_sent": 553,
         "emails_opened": 158,
         "emails_clicked": 9,
         "emails_replied": 31,
-        "open_rate": 30.1,
-        "reply_rate": 5.9
+        "open_rate": 28.6,
+        "reply_rate": 5.6
       }
     },
     {
@@ -25,17 +25,17 @@
       "name": "Pharma",
       "active": true,
       "stats": {
-        "num_active": 331,
-        "num_paused": 7,
-        "num_finished": 187,
-        "num_bounced": 12,
-        "num_not_sent": 8,
-        "unique_scheduled": 331,
-        "emails_sent": 404,
-        "emails_opened": 212,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 328,
+        "emails_sent": 408,
+        "emails_opened": 217,
         "emails_clicked": 2,
         "emails_replied": 4,
-        "open_rate": 52.5,
+        "open_rate": 53.2,
         "reply_rate": 1.0
       }
     },
@@ -68,12 +68,12 @@
         "num_finished": 30,
         "num_bounced": 5,
         "num_not_sent": 9,
-        "unique_scheduled": 300,
-        "emails_sent": 653,
-        "emails_opened": 235,
-        "emails_clicked": 1,
+        "unique_scheduled": 286,
+        "emails_sent": 664,
+        "emails_opened": 245,
+        "emails_clicked": 2,
         "emails_replied": 27,
-        "open_rate": 36.0,
+        "open_rate": 36.9,
         "reply_rate": 4.1
       }
     },
