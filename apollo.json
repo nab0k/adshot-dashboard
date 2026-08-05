@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-05T09:32:22Z",
+  "updated_at": "2026-08-05T20:25:51Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
@@ -11,13 +11,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 2388,
-        "emails_sent": 734,
-        "emails_opened": 222,
-        "emails_clicked": 19,
-        "emails_replied": 58,
-        "open_rate": 30.2,
-        "reply_rate": 7.9
+        "unique_scheduled": 2348,
+        "emails_sent": 787,
+        "emails_opened": 244,
+        "emails_clicked": 20,
+        "emails_replied": 68,
+        "open_rate": 31.0,
+        "reply_rate": 8.6
       }
     },
     {
@@ -30,12 +30,12 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 306,
-        "emails_sent": 437,
-        "emails_opened": 228,
+        "unique_scheduled": 288,
+        "emails_sent": 447,
+        "emails_opened": 238,
         "emails_clicked": 4,
         "emails_replied": 4,
-        "open_rate": 52.2,
+        "open_rate": 53.2,
         "reply_rate": 0.9
       }
     },
@@ -68,12 +68,12 @@
         "num_finished": 31,
         "num_bounced": 5,
         "num_not_sent": 9,
-        "unique_scheduled": 229,
-        "emails_sent": 679,
-        "emails_opened": 268,
+        "unique_scheduled": 220,
+        "emails_sent": 683,
+        "emails_opened": 271,
         "emails_clicked": 2,
         "emails_replied": 28,
-        "open_rate": 39.5,
+        "open_rate": 39.7,
         "reply_rate": 4.1
       }
     },
