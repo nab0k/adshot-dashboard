@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-13T08:15:48Z",
+  "updated_at": "2026-08-13T19:54:47Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
@@ -11,13 +11,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 2165,
-        "emails_sent": 1120,
-        "emails_opened": 353,
-        "emails_clicked": 33,
-        "emails_replied": 98,
-        "open_rate": 31.5,
-        "reply_rate": 8.8
+        "unique_scheduled": 2158,
+        "emails_sent": 1157,
+        "emails_opened": 370,
+        "emails_clicked": 41,
+        "emails_replied": 99,
+        "open_rate": 32.0,
+        "reply_rate": 8.6
       }
     },
     {
@@ -30,12 +30,12 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 214,
-        "emails_sent": 498,
-        "emails_opened": 307,
-        "emails_clicked": 13,
+        "unique_scheduled": 203,
+        "emails_sent": 502,
+        "emails_opened": 324,
+        "emails_clicked": 29,
         "emails_replied": 9,
-        "open_rate": 61.6,
+        "open_rate": 64.5,
         "reply_rate": 1.8
       }
     },
@@ -63,18 +63,18 @@
       "name": "Creative Heads",
       "active": true,
       "stats": {
-        "num_active": 683,
-        "num_paused": 15,
-        "num_finished": 37,
-        "num_bounced": 5,
-        "num_not_sent": 10,
-        "unique_scheduled": 102,
-        "emails_sent": 713,
-        "emails_opened": 316,
-        "emails_clicked": 2,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 84,
+        "emails_sent": 716,
+        "emails_opened": 324,
+        "emails_clicked": 3,
         "emails_replied": 34,
-        "open_rate": 44.3,
-        "reply_rate": 4.8
+        "open_rate": 45.3,
+        "reply_rate": 4.7
       }
     },
     {
