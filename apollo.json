@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-23T07:28:29Z",
+  "updated_at": "2026-08-23T19:20:34Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
@@ -25,11 +25,11 @@
       "name": "Pharma",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
+        "num_active": 25,
+        "num_paused": 13,
+        "num_finished": 482,
+        "num_bounced": 16,
+        "num_not_sent": 9,
         "unique_scheduled": 25,
         "emails_sent": 523,
         "emails_opened": 396,
