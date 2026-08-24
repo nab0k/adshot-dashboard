@@ -1,23 +1,23 @@
 {
-  "updated_at": "2026-08-23T19:20:34Z",
+  "updated_at": "2026-08-24T07:53:06Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
       "name": "Creative Heads 2",
       "active": true,
       "stats": {
-        "num_active": 2088,
-        "num_paused": 62,
-        "num_finished": 358,
-        "num_bounced": 25,
-        "num_not_sent": 130,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
         "unique_scheduled": 2088,
-        "emails_sent": 1405,
+        "emails_sent": 1411,
         "emails_opened": 500,
         "emails_clicked": 127,
         "emails_replied": 109,
-        "open_rate": 35.6,
-        "reply_rate": 7.8
+        "open_rate": 35.4,
+        "reply_rate": 7.7
       }
     },
     {
@@ -25,17 +25,17 @@
       "name": "Pharma",
       "active": true,
       "stats": {
-        "num_active": 25,
-        "num_paused": 13,
-        "num_finished": 482,
-        "num_bounced": 16,
-        "num_not_sent": 9,
-        "unique_scheduled": 25,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 14,
         "emails_sent": 523,
-        "emails_opened": 396,
-        "emails_clicked": 142,
+        "emails_opened": 397,
+        "emails_clicked": 144,
         "emails_replied": 12,
-        "open_rate": 75.7,
+        "open_rate": 75.9,
         "reply_rate": 2.3
       }
     },
