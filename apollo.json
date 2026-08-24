@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24T07:53:06Z",
+  "updated_at": "2026-08-24T19:28:15Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
@@ -11,13 +11,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 2088,
-        "emails_sent": 1411,
-        "emails_opened": 500,
-        "emails_clicked": 127,
-        "emails_replied": 109,
-        "open_rate": 35.4,
-        "reply_rate": 7.7
+        "unique_scheduled": 2076,
+        "emails_sent": 1439,
+        "emails_opened": 514,
+        "emails_clicked": 139,
+        "emails_replied": 110,
+        "open_rate": 35.7,
+        "reply_rate": 7.6
       }
     },
     {
@@ -30,13 +30,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 14,
+        "unique_scheduled": 9,
         "emails_sent": 523,
-        "emails_opened": 397,
-        "emails_clicked": 144,
-        "emails_replied": 12,
-        "open_rate": 75.9,
-        "reply_rate": 2.3
+        "emails_opened": 399,
+        "emails_clicked": 146,
+        "emails_replied": 13,
+        "open_rate": 76.3,
+        "reply_rate": 2.5
       }
     },
     {
@@ -63,18 +63,18 @@
       "name": "Creative Heads",
       "active": true,
       "stats": {
-        "num_active": 676,
-        "num_paused": 19,
-        "num_finished": 40,
-        "num_bounced": 5,
-        "num_not_sent": 10,
-        "unique_scheduled": 2,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 0,
         "emails_sent": 736,
-        "emails_opened": 354,
-        "emails_clicked": 16,
-        "emails_replied": 37,
-        "open_rate": 48.1,
-        "reply_rate": 5.0
+        "emails_opened": 358,
+        "emails_clicked": 17,
+        "emails_replied": 38,
+        "open_rate": 48.6,
+        "reply_rate": 5.2
       }
     },
     {
