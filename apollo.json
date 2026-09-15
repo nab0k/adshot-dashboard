@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-14T22:15:49Z",
+  "updated_at": "2026-09-15T12:24:49Z",
   "sequences": [
     {
       "id": "6a3d038baad2060018dffe49",
@@ -11,12 +11,12 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 1862,
-        "emails_sent": 1749,
-        "emails_opened": 747,
-        "emails_clicked": 311,
+        "unique_scheduled": 1833,
+        "emails_sent": 1760,
+        "emails_opened": 762,
+        "emails_clicked": 323,
         "emails_replied": 121,
-        "open_rate": 42.7,
+        "open_rate": 43.3,
         "reply_rate": 6.9
       }
     },
