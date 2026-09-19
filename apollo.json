@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T21:26:00Z",
+  "updated_at": "2026-09-19T11:45:03Z",
   "sequences": [
     {
       "id": "6aabaf9dfdeb07001864cc18",
@@ -44,11 +44,11 @@
       "name": "Creative Heads 2",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
+        "num_active": 1734,
+        "num_paused": 55,
+        "num_finished": 687,
+        "num_bounced": 33,
+        "num_not_sent": 154,
         "unique_scheduled": 1734,
         "emails_sent": 1839,
         "emails_opened": 837,
