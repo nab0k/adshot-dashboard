@@ -1,36 +1,17 @@
 {
-  "updated_at": "2026-09-22T21:46:56Z",
+  "updated_at": "2026-09-23T12:30:18Z",
   "sequences": [
-    {
-      "id": "6aabaf9dfdeb07001864cc18",
-      "name": "Inbound Sequence",
-      "active": false,
-      "stats": {
-        "num_active": 0,
-        "num_paused": 15,
-        "num_finished": 0,
-        "num_bounced": 0,
-        "num_not_sent": 0,
-        "unique_scheduled": 0,
-        "emails_sent": 0,
-        "emails_opened": 0,
-        "emails_clicked": 0,
-        "emails_replied": 0,
-        "open_rate": 0.0,
-        "reply_rate": 0.0
-      }
-    },
     {
       "id": "6aaa6cabd1066d000cc14ae7",
       "name": "Agro",
-      "active": false,
+      "active": true,
       "stats": {
-        "num_active": 0,
+        "num_active": 636,
         "num_paused": 0,
         "num_finished": 0,
         "num_bounced": 0,
         "num_not_sent": 0,
-        "unique_scheduled": 0,
+        "unique_scheduled": 636,
         "emails_sent": 0,
         "emails_opened": 0,
         "emails_clicked": 0,
@@ -49,12 +30,12 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 1680,
-        "emails_sent": 1867,
-        "emails_opened": 879,
-        "emails_clicked": 408,
+        "unique_scheduled": 1661,
+        "emails_sent": 1874,
+        "emails_opened": 893,
+        "emails_clicked": 416,
         "emails_replied": 129,
-        "open_rate": 47.1,
+        "open_rate": 47.7,
         "reply_rate": 6.9
       }
     },
