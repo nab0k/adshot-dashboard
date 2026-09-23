@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-23T12:30:18Z",
+  "updated_at": "2026-09-23T22:04:53Z",
   "sequences": [
     {
       "id": "6aaa6cabd1066d000cc14ae7",
       "name": "Agro",
       "active": true,
       "stats": {
-        "num_active": 636,
-        "num_paused": 0,
-        "num_finished": 0,
-        "num_bounced": 0,
-        "num_not_sent": 0,
-        "unique_scheduled": 636,
-        "emails_sent": 0,
-        "emails_opened": 0,
+        "num_active": "loading",
+        "num_paused": "loading",
+        "num_finished": "loading",
+        "num_bounced": "loading",
+        "num_not_sent": "loading",
+        "unique_scheduled": 624,
+        "emails_sent": 18,
+        "emails_opened": 3,
         "emails_clicked": 0,
         "emails_replied": 0,
-        "open_rate": 0.0,
+        "open_rate": 16.7,
         "reply_rate": 0.0
       }
     },
@@ -30,12 +30,12 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 1661,
+        "unique_scheduled": 1645,
         "emails_sent": 1874,
-        "emails_opened": 893,
-        "emails_clicked": 416,
+        "emails_opened": 897,
+        "emails_clicked": 419,
         "emails_replied": 129,
-        "open_rate": 47.7,
+        "open_rate": 47.9,
         "reply_rate": 6.9
       }
     },
