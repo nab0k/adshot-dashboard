@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24T21:59:04Z",
+  "updated_at": "2026-09-25T12:30:44Z",
   "sequences": [
     {
       "id": "6aaa6cabd1066d000cc14ae7",
@@ -11,13 +11,13 @@
         "num_finished": "loading",
         "num_bounced": "loading",
         "num_not_sent": "loading",
-        "unique_scheduled": 618,
-        "emails_sent": 76,
-        "emails_opened": 17,
-        "emails_clicked": 0,
-        "emails_replied": 2,
-        "open_rate": 22.4,
-        "reply_rate": 2.6
+        "unique_scheduled": 617,
+        "emails_sent": 91,
+        "emails_opened": 42,
+        "emails_clicked": 1,
+        "emails_replied": 3,
+        "open_rate": 46.2,
+        "reply_rate": 3.3
       }
     },
     {
@@ -31,7 +31,7 @@
         "num_bounced": "loading",
         "num_not_sent": "loading",
         "unique_scheduled": 1628,
-        "emails_sent": 1877,
+        "emails_sent": 1879,
         "emails_opened": 905,
         "emails_clicked": 425,
         "emails_replied": 129,
