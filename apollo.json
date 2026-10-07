@@ -1,23 +1,23 @@
 {
-  "updated_at": "2026-10-07T14:09:21Z",
+  "updated_at": "2026-10-07T23:26:42Z",
   "sequences": [
     {
       "id": "6aaa6cabd1066d000cc14ae7",
       "name": "Agro",
       "active": true,
       "stats": {
-        "num_active": 517,
+        "num_active": 516,
         "num_paused": 0,
-        "num_finished": 100,
+        "num_finished": 101,
         "num_bounced": 5,
         "num_not_sent": 14,
-        "unique_scheduled": 517,
-        "emails_sent": 305,
-        "emails_opened": 122,
+        "unique_scheduled": 516,
+        "emails_sent": 311,
+        "emails_opened": 124,
         "emails_clicked": 8,
         "emails_replied": 13,
-        "open_rate": 40.0,
-        "reply_rate": 4.3
+        "open_rate": 39.9,
+        "reply_rate": 4.2
       }
     },
     {
@@ -25,17 +25,17 @@
       "name": "Creative Heads 2",
       "active": true,
       "stats": {
-        "num_active": "loading",
-        "num_paused": "loading",
-        "num_finished": "loading",
-        "num_bounced": "loading",
-        "num_not_sent": "loading",
-        "unique_scheduled": 1439,
-        "emails_sent": 1931,
-        "emails_opened": 982,
-        "emails_clicked": 474,
+        "num_active": 1429,
+        "num_paused": 58,
+        "num_finished": 973,
+        "num_bounced": 37,
+        "num_not_sent": 166,
+        "unique_scheduled": 1429,
+        "emails_sent": 1933,
+        "emails_opened": 992,
+        "emails_clicked": 479,
         "emails_replied": 141,
-        "open_rate": 50.9,
+        "open_rate": 51.3,
         "reply_rate": 7.3
       }
     },
